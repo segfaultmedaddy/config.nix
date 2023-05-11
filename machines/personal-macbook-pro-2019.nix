@@ -3,4 +3,5 @@
   nix.useDaemon = true;
 
   programs.zsh.enable = true;
+  programs.neovim.enable = true;
 }
