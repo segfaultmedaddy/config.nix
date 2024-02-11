@@ -2,5 +2,5 @@
 Nix config for my macOS devices
 
 ```
-nix build .#darwinConfigurations.macbook-pro-i7.system
+nix run nix-darwin -- switch --flake .#macbook-pro-i7
 ```
