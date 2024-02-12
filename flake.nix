@@ -2,7 +2,7 @@
   description = "Roman's dotfiles";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     darwin = {
       url = "github:LnL7/nix-darwin";
@@ -22,19 +22,19 @@
       user = "roman";
     in
     {
-     darwinConfigurations.${machine} = darwin.lib.darwinSystem {
+      darwinConfigurations.${machine} = darwin.lib.darwinSystem {
         inherit system;
 
         modules = [
-          home-manager.darwinModules.home-manager
-          {
+          ./users/${user}/darwin.nix
+          home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./users/${user}/home.nix;
           }
           {
             nixpkgs.hostPlatform = "${system}";
           }
-          ./users/${user}/home.nix
         ];
       };
 

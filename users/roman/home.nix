@@ -1,28 +1,19 @@
 { pkgs, ... }: {
-  # homebrew = {
-  #   enable = true;
-  #   casks = [
-  #   "google-chrome"
-  #   "discord"
-  #   ];
-  # };
+  home.stateVersion = "23.11";
+ 
+  # Tell home-manager to manage itself.
+  programs.home-manager.enable = true;
 
-  services.nix-daemon.enable = true;
-  nix.useDaemon = true;
-  nix.settings.experimental-features = "nix-command flakes repl-flake";
-  
+  # home.packages = with pkgs; [];
+
   # Load environment variables from $(cwd)/.env
   # see https://direnv.net/
-  # programs.direnv.enable = true;
-  # programs.direnv.nix-direnv.enable = true;
-
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
-  # programs.neovim.enable = true;
-
-
-  users.users.roman = {
-    home = "/Users/roman";
-    shell = pkgs.fish;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
+
+
+  programs.htop.enable = true;
+  programs.awscli.enable = true;
 }
