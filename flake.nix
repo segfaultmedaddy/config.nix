@@ -27,6 +27,7 @@
 
         modules = [
           ./users/${user}/darwin.nix
+          ./users/${user}/machine.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
