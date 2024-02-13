@@ -1,18 +1,16 @@
-{ pkgs, ... }: {
-  homebrew = {
-    enable = true;
-    casks = [
-      "1password"
-      "google-chrome"
-      "discord"
-      "spotify"
-    ];
-  };
+# This file is an entry to all macOS specific settings, programs, etc.
 
-  # The user should already exist, but we need to set this up so Nix knows
-  # what our home directory is (https://github.com/LnL7/nix-darwin/issues/423).
+{ config, pkgs, ... }: {
+  # homebrew = {
+  #   enable = true;
+  #   casks = [
+  #   "google-chrome"
+  #   "discord"
+  #   ];
+  # };
+
   users.users.roman = {
     home = "/Users/roman";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 }

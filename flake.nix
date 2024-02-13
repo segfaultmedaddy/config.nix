@@ -1,37 +1,46 @@
 {
-  description = "NixOS config for Roman's macOs machines";
+  description = "Roman's dotfiles";
+
   inputs = {
-    nixpkg.url = "github:nixos/nixpkgs/nixos-22.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
-      # use the same set of nixpkgs as system.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, ... }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
     let
-      mkDarwin = import ./lib/mk-darwin.nix;
-      overlays = [ inputs.neovim-nightly-overlay.overlay ];
+      system = "x86_64-darwin";
+      machine = "macbook-pro-i7";
+      user = "roman";
     in
     {
-      darwinConfigurations.personal-macbook-pro-2019 = mkDarwin "personal-macbook-pro-2019" {
-        inherit overlays nixpkgs darwin home-manager;
+      darwinConfigurations.${machine} = darwin.lib.darwinSystem {
+        inherit system;
 
-        system = "x86_64-darwin";
-        user = "roman";
+        modules = [
+          ./users/${user}/darwin.nix
+          ./users/${user}/machine.nix
+          home-manager.darwinModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./users/${user}/home.nix;
+          }
+          {
+            nixpkgs.hostPlatform = "${system}";
+          }
+        ];
       };
 
-      formatter.x86_64-darwin = nixpkgs.legacyPackages.x86_64-darwin.nixpkgs-fmt;
+      darwinPackages = self.darwinConfigurations.${machine}.pkgs;
+
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
     };
 }
