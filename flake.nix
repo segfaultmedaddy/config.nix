@@ -23,9 +23,14 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, agenix, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, darwin, agenix, home-manager, nix-index-database, ... }:
     let
       system = "x86_64-darwin";
       machine = "macbook-pro-i7";
@@ -43,7 +48,17 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./users/${user}/home.nix;
+            home-manager.users.${user} = {
+              imports = [
+                ./users/${user}/home.nix
+                ./modules/btop.nix
+                ./modules/nvim
+                ./modules/home
+                ./modules/wezterm
+                nix-index-database.hmModules.nix-index
+                agenix.homeManagerModules.default
+              ];
+            };
           }
           {
             nixpkgs.hostPlatform = "${system}";

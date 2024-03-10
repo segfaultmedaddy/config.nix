@@ -1,22 +1,17 @@
 # This file is an entry point for the home-manager for a specified user.
 
-{ lib, pkgs, agenix, ... }: {
-  # imports = [
-  #   agenix.homeManagerModules.default
-  # ];
-
+{ lib, pkgs, ... }: {
   home.stateVersion = "23.11";
-
-  # Tell home-manager to manage itself.
-  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     nixd
     nixpkgs-fmt
     nixpkgs-review
     tree-sitter
-
+    gleam # fancy programming language
     volta # nodejs manager
+
+    obsidian
   ] ++ [
     pkgs.apple-sf-mono-font
     # pkgs.dockutil
@@ -41,6 +36,9 @@
       ll = "ls -la";
       ".." = "cd ..";
       "..." = "cd ../..";
+
+      htop = "btop";
+      top = "btop";
 
       # TODO: make configurable 
       switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
@@ -76,39 +74,6 @@
     enableZshIntegration = true;
   };
 
-  # Wezterm is installed via homebrew on macOS, so we need to
-  # manage configs on our own.
-  home.file."./.config/wezterm/" = {
-    source = ./wezterm;
-    recursive = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    extraPackages = with pkgs; [
-      gcc # tree-sitter dep.
-      ripgrep # telescope dep.
-      fzf # telescope dep.
-    ];
-  };
-
-  home.file."./.config/nvim/" = {
-    source = ./nvim;
-    recursive = true;
-  };
-
-  home.sessionVariables = {
-    VOLTA_HOME = "/Users/roman/.volta";
-  };
-
-  home.sessionPath = [
-    "$HOME/.volta/bin"
-  ];
-
-  programs.btop.enable = true;
   programs.awscli.enable = true;
   programs.git = {
     enable = true;
@@ -164,4 +129,13 @@
     goPath = "go";
     package = pkgs.go_1_22;
   };
+
+  home.sessionVariables = {
+    VOLTA_HOME = "/Users/roman/.volta";
+  };
+
+  home.sessionPath = [
+    "$HOME/.volta/bin"
+    "$HOME/go/bin"
+  ];
 }

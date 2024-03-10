@@ -13,6 +13,8 @@
     ripgrep # faster grep
     tree # file tree view
     xsel # clipboard support
+    curl
+    wget
     jq # JSON query utility
     age # tool to encrypt content
     coreutils-full
