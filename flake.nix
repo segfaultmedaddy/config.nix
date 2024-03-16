@@ -60,6 +60,8 @@
                 ./modules/db/home.nix
                 ./modules/go.nix
                 ./modules/node.nix
+                ./modules/tf.nix
+                ./modules/grpc.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];

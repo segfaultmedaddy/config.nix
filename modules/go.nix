@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
-    fnm # nodejs manager
+    golangci-lint
+    golines
   ];
 
   programs.zsh.shellAliases = {
