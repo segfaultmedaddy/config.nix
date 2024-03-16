@@ -2,8 +2,8 @@
   "options": {
     "enable": true,
     "target": {
-      "args": [],
-      "installable": "<flakeref>#darwinConfigurations.macbook-pro-i7.options"
+      "args": ["-f", "default.nix"],
+      "installable": ".#darwinConfigurations.macbook-pro-i7.options"
     }
   }
 }

@@ -1,8 +1,6 @@
 # This file is an entry to all macOS specific settings, programs, etc.
 
-{ config, lib, pkgs, customPkgs, ... }: {
-  imports = [ ];
-
+{ config, lib, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = import ../../lib/overlays.nix;
@@ -28,10 +26,11 @@
       "discord"
       "wezterm"
       "vlc"
-      "transmission"
+      "transmission" # Torrent client. Don't use in Germany, GG.
       "1password"
       "1password-cli"
       "telegram"
+      "languagetool"
     ];
   };
 

@@ -8,6 +8,7 @@
       gcc # tree-sitter dep.
       ripgrep # telescope dep.
       fzf # telescope dep.
+      tree-sitter
     ];
   };
 

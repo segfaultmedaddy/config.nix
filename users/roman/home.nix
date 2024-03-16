@@ -4,12 +4,10 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    nixd
+    # nixd # disabled until bump a new version. see https://github.com/nix-community/nixd/issues/357
     nixpkgs-fmt
     nixpkgs-review
-    tree-sitter
     gleam # fancy programming language
-    volta # nodejs manager
 
     obsidian
   ] ++ [
@@ -123,19 +121,8 @@
         IdentityAgent "/Users/roman/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
   };
-
-  programs.go = {
-    enable = true;
-    goPath = "go";
-    package = pkgs.go_1_22;
-  };
-
-  home.sessionVariables = {
-    VOLTA_HOME = "/Users/roman/.volta";
-  };
+  home.sessionVariables = { };
 
   home.sessionPath = [
-    "$HOME/.volta/bin"
-    "$HOME/go/bin"
   ];
 }

@@ -43,6 +43,7 @@
         modules = [
           ./users/${user}/darwin.nix
           ./users/${user}/machine.nix
+          ./modules/db/darwin.nix
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -52,9 +53,13 @@
               imports = [
                 ./users/${user}/home.nix
                 ./modules/btop.nix
+                ./modules/lima.nix
                 ./modules/nvim
                 ./modules/home
                 ./modules/wezterm
+                ./modules/db/home.nix
+                ./modules/go.nix
+                ./modules/node.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];

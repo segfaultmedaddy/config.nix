@@ -32,8 +32,10 @@ require("lazy").setup({
     },
   },
 
+  -- Automatically check for package updates.
   checker = {
     enabled = true,
+    notify = false,
   },
 })
 
