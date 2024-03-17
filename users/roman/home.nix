@@ -25,12 +25,6 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      gc = "git commit";
-      ga = "git add";
-      gf = "git pull";
-      gp = "git push";
-      gs = "git status";
-
       ll = "ls -la";
       ".." = "cd ..";
       "..." = "cd ../..";
@@ -73,44 +67,6 @@
   };
 
   programs.awscli.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "Roman Vanesyan";
-    userEmail = "roman@vanesyan.com";
-
-    aliases = {
-      co = "checkout";
-    };
-
-    extraConfig = {
-      core = {
-        editor = "nvim";
-        untrackedCache = true;
-        whitespace = "space-before-tab,trailing-space";
-        autocrlf = "input";
-      };
-
-      color.ui = "auto";
-      diff.renames = "copies";
-      help.autoCorrect = "1";
-      log.merge = true;
-      push = {
-        default = "simple";
-        autoSetupRemote = true;
-        gpgSign = "if-asked";
-      };
-
-      url."git@github.com:" = {
-        insteadOf = "https://github.com/";
-        pushInsteadOf = "git://github.com/";
-      };
-
-      url."git@gist.github.com:" = {
-        insteadOf = "https://gist.github.com/";
-        pushInsteadOf = "git://gist.github.com/";
-      };
-    };
-  };
 
   programs.ssh = {
     enable = true;
@@ -123,6 +79,5 @@
   };
   home.sessionVariables = { };
 
-  home.sessionPath = [
-  ];
+  home.sessionPath = [ ];
 }

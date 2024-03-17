@@ -62,6 +62,7 @@
                 ./modules/node.nix
                 ./modules/tf.nix
                 ./modules/grpc.nix
+                ./modules/git.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
