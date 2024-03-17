@@ -29,9 +29,6 @@
       ".." = "cd ..";
       "..." = "cd ../..";
 
-      htop = "btop";
-      top = "btop";
-
       # TODO: make configurable 
       switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
     };
