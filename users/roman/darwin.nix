@@ -7,7 +7,6 @@
 
   environment.systemPackages = with pkgs; [
     neofetch
-    neovim
     ripgrep # faster grep
     tree # file tree view
     xsel # clipboard support
@@ -31,6 +30,8 @@
       "1password-cli"
       "telegram"
       "languagetool"
+      "cloudflare-warp"
+      "obsidian"
     ];
   };
 

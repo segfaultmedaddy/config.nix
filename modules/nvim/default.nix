@@ -8,12 +8,18 @@
       gcc # tree-sitter dep.
       ripgrep # telescope dep.
       fzf # telescope dep.
+      fd # telescope dep.
       tree-sitter
     ];
   };
 
-  home.file."./.config/nvim/" = {
-    source = ./config;
-    recursive = true;
-  };
+  home.packages = with pkgs; [
+    stylua
+    ruff
+  ];
+
+    home.file."./.config/nvim/" = {
+  source = ./config;
+  recursive = true;
+};
 }

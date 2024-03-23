@@ -4,12 +4,10 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    # nixd # disabled until bump a new version. see https://github.com/nix-community/nixd/issues/357
+    nixd
     nixpkgs-fmt
     nixpkgs-review
     gleam # fancy programming language
-
-    obsidian
   ] ++ [
     pkgs.apple-sf-mono-font
     # pkgs.dockutil
@@ -63,7 +61,7 @@
     enableZshIntegration = true;
   };
 
-  programs.awscli.enable = true;
+  # programs.awscli.enable = true;
 
   programs.ssh = {
     enable = true;
@@ -74,7 +72,4 @@
         IdentityAgent "/Users/roman/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
   };
-  home.sessionVariables = { };
-
-  home.sessionPath = [ ];
 }
