@@ -8,60 +8,14 @@
     nixpkgs-fmt
     nixpkgs-review
     gleam # fancy programming language
-  ] ++ [
-    pkgs.apple-sf-mono-font
-    # pkgs.dockutil
-  ];
+  ]; 
 
-  # Load environment variables from $(cwd)/.env
-  # see https://direnv.net/
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
+  programs.zsh.shellAliases = {
+    # TODO: make configurable 
+    switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
   };
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -la";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-
-      # TODO: make configurable 
-      switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
-    };
-
-    history = {
-      size = 3000;
-      save = 3000;
-      ignoreDups = true;
-      ignoreAllDups = true;
-      ignoreSpace = true;
-      expireDuplicatesFirst = true;
-      share = true;
-    };
-
-    syntaxHighlighting = {
-      enable = true;
-      highlighters = [ "main" "brackets" ];
-    };
-  };
-
-  programs.starship = {
-    enable = true;
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.navi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  # programs.awscli.enable = true;
+  programs.awscli.enable = true;
 
   programs.ssh = {
     enable = true;
@@ -73,3 +27,4 @@
     '';
   };
 }
+

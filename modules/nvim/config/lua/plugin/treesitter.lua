@@ -1,53 +1,53 @@
 return {
-  -- Better syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+	-- Better syntax highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 
-    -- Prefer master as latest version is outdated.
-    version = false,
+		-- Prefer master as latest version is outdated.
+		version = false,
 
-    event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 
-    -- @type TSConfig
-    opts = {
-      indent = { enable = true },
+		-- @type TSConfig
+		opts = {
+			indent = { enable = true },
 
-      ensure_installed = {},
+			ensure_installed = {},
 
-      auto_install = true,
+			auto_install = true,
 
-      highlight = {
-        enable = true,
+			highlight = {
+				enable = true,
 
-        -- Speedup highlighting
-        additional_vim_regex_highlight = false,
-      },
-    },
+				-- Speedup highlighting
+				additional_vim_regex_highlight = false,
+			},
+		},
 
-    ---@param opts TSConfig
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
+		---@param opts TSConfig
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
 
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   opts = {
-  --     textobjects = {
-  --       select = {
-  --         enable = true,
-  --         lookahead = true,
-  --       },
-  --     },
-  --   },
-  -- },
+	-- {
+	--   "nvim-treesitter/nvim-treesitter-textobjects",
+	--   opts = {
+	--     textobjects = {
+	--       select = {
+	--         enable = true,
+	--         lookahead = true,
+	--       },
+	--     },
+	--   },
+	-- },
 
-  -- Sticky header for scope context.
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    opts = {
-      enable = true,
-    },
-  },
+	-- Sticky header for scope context.
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {
+			enable = true,
+		},
+	},
 }

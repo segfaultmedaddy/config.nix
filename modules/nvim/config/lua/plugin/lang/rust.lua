@@ -1,40 +1,40 @@
 return {
-  {
-    "Saecki/crates.nvim",
-    event = "BufRead",
-    setup = true,
-  },
+	{
+		"Saecki/crates.nvim",
+		event = "BufRead",
+		setup = true,
+	},
 
-  -- Better syntax highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
+	-- Better syntax highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
 
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "rust" })
-    end,
-  },
+		opts = function(_, opts)
+			vim.list_extend(opts.ensure_installed, { "rust" })
+		end,
+	},
 
-  {
-    "neovim/nvim-lspconfig",
+	{
+		"neovim/nvim-lspconfig",
 
-    -- @param opts lspconfig.options
-    opts = {
-      servers = {
-        rust_analyzer = {},
-      },
-    },
-  },
+		-- @param opts lspconfig.options
+		opts = {
+			servers = {
+				rust_analyzer = {},
+			},
+		},
+	},
 
-  -- Formatters
-  {
-    "nvimtools/none-ls.nvim",
-    event = "BufReadPre",
-    dependencies = { "nvim-lua/plenary.nvim", "williamboman/mason.nvim" },
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      vim.list_extend(opts.sources, {
-        nls.builtins.formatting.rustfmt,
-      })
-    end,
-  },
+	-- Formatters
+	{
+		"nvimtools/none-ls.nvim",
+		event = "BufReadPre",
+		dependencies = { "nvim-lua/plenary.nvim", "williamboman/mason.nvim" },
+		opts = function(_, opts)
+			local nls = require("null-ls")
+			vim.list_extend(opts.sources, {
+				nls.builtins.formatting.rustfmt,
+			})
+		end,
+	},
 }

@@ -6,7 +6,7 @@ M.color_scheme = "duskfox"
 
 -- Fonts
 M.font = wezterm.font("SF Mono", {
-  weight = "Regular",
+  weight = "Medium",
 })
 M.font_size = 15
 M.line_height = 1.1

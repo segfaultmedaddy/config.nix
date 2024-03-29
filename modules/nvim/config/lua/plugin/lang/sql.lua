@@ -1,19 +1,11 @@
 return {
 	-- Formatters
 	{
-		"nvimtools/none-ls.nvim",
-		event = "BufReadPre",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"williamboman/mason.nvim",
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				sql = { "prettier" },
+			},
 		},
-		opts = function(_, opts)
-			local nls = require("null-ls")
-			vim.list_extend(opts.sources, {
-				nls.builtins.formatting.prettier.with({
-					extra_filetypes = { "sql" },
-				}),
-			})
-		end,
 	},
 }

@@ -41,9 +41,9 @@
         inherit system;
 
         modules = [
-          ./users/${user}/darwin.nix
           ./users/${user}/machine.nix
           ./modules/db/darwin.nix
+          ./modules/font/darwin.nix
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -64,6 +64,8 @@
                 ./modules/grpc.nix
                 ./modules/git.nix
                 ./modules/fd.nix
+                ./modules/shell.nix
+                ./modules/font/home.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
