@@ -53,8 +53,6 @@
       "wezterm"
       "vlc"
       "transmission" # Torrent client. Don't use in Germany, GG.
-      "1password"
-      "1password-cli"
       "telegram"
       "languagetool"
       "cloudflare-warp"

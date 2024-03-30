@@ -43,12 +43,16 @@
         modules = [
           ./users/${user}/machine.nix
           ./modules/db/darwin.nix
+          ./modules/xcode/darwin.nix
           ./modules/font/darwin.nix
+          ./modules/ruby/darwin.nix
+          ./modules/1password/darwin
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit user system machine; };
             home-manager.users.${user} = {
               imports = [
                 ./users/${user}/home.nix
@@ -65,7 +69,8 @@
                 ./modules/git.nix
                 ./modules/fd.nix
                 ./modules/shell.nix
-                ./modules/font/home.nix
+                ./modules/ruby/home.nix
+                ./modules/1password/darwin/home.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
