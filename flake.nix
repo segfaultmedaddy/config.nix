@@ -70,6 +70,7 @@
                 ./modules/fd.nix
                 ./modules/shell.nix
                 ./modules/ruby/home.nix
+                ./modules/sst.nix
                 ./modules/1password/darwin/home.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
