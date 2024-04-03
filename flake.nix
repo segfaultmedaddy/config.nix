@@ -46,6 +46,7 @@
           ./modules/xcode/darwin.nix
           ./modules/font/darwin.nix
           ./modules/ruby/darwin.nix
+          ./modules/flow.nix
           ./modules/1password/darwin
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
