@@ -5,7 +5,7 @@ local M = {}
 M.color_scheme = "dayfox"
 
 -- Fonts
-M.font = wezterm.font("Fira Code", {
+M.font = wezterm.font("SF Mono", {
   weight = "Medium",
 })
 M.font_size = 15
