@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.gh = {
     enable = true;
     gitCredentialHelper = {
@@ -21,6 +21,7 @@
     aliases = {
       co = "checkout";
       c = "commit";
+      fr = "!git fetch origin \${1:-main} && git rebase -i \${1:-main}";
     };
 
     extraConfig = {
@@ -29,6 +30,11 @@
         untrackedCache = true;
         whitespace = "space-before-tab,trailing-space";
         autocrlf = "input";
+      };
+
+      rebase = {
+        # Always update all children branches of the current one when rebasing.
+        updateRefs = true;
       };
 
       color.ui = "auto";
@@ -54,10 +60,10 @@
   };
 
   programs.zsh.shellAliases = {
-      gc = "git commit";
-      ga = "git add";
-      gf = "git pull";
-      gp = "git push";
-      gs = "git status";
+    gc = "git commit";
+    ga = "git add";
+    gf = "git pull";
+    gp = "git push";
+    gs = "git status";
   };
 }

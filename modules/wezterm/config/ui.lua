@@ -2,10 +2,10 @@ local wezterm = require("wezterm")
 
 local M = {}
 
-M.color_scheme = "duskfox"
+M.color_scheme = "dayfox"
 
 -- Fonts
-M.font = wezterm.font("SF Mono", {
+M.font = wezterm.font("Fira Code", {
   weight = "Medium",
 })
 M.font_size = 15

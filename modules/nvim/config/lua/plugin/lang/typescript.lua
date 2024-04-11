@@ -57,19 +57,38 @@ return {
 	},
 
 	-- Formatters
+	-- {
+	-- 	"nvimtools/none-ls.nvim",
+	-- 	event = "BufReadPre",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"williamboman/mason.nvim",
+	-- 	},
+	-- 	opts = function(_, opts)
+	-- 		local nls = require("null-ls")
+	-- 		vim.list_extend(opts.sources, {
+	-- 			require("typescript.extensions.null-ls.code-actions"),
+	-- 			nls.builtins.formatting.prettier,
+	-- 		})
+	-- 	end,
+	-- },
+
 	{
-		"nvimtools/none-ls.nvim",
-		event = "BufReadPre",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"williamboman/mason.nvim",
+		"stevearc/conform.nvim",
+		opts = {
+			formatters = {
+				prettier = {
+					ft_parsers = {
+						astro = "astro",
+					},
+				},
+			},
+			formatters_by_ft = {
+				astro = { "prettier" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+			},
 		},
-		opts = function(_, opts)
-			local nls = require("null-ls")
-			vim.list_extend(opts.sources, {
-				require("typescript.extensions.null-ls.code-actions"),
-				nls.builtins.formatting.prettier,
-			})
-		end,
 	},
 }
