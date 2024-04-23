@@ -1,6 +1,6 @@
 { pkgs, lib, fetchFromGitHub, buildGoModule }: buildGoModule rec {
   pname = "sst-ion";
-  version = "0.0.288";
+  version = "0.0.298";
 
   src = fetchFromGitHub {
     owner = "sst";

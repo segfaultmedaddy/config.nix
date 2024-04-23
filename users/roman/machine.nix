@@ -31,6 +31,14 @@
     magnification = false;
   };
 
+  # Increase key repeat rate. It helps with typing faster in neovim.
+  system.defaults.CustomSystemPreferences = {
+    "NSGlobalDomain" = {
+      "InitialKeyRepeat" = 15;
+      "KeyRepeat" = 2;
+    };
+  };
+
   # local = {
   #   dock.enable = true;
   #   dock.entries = [
@@ -50,7 +58,6 @@
       "google-chrome"
       "spotify"
       "discord"
-      "wezterm"
       "vlc"
       "transmission" # Torrent client. Don't use in Germany, GG.
       "telegram"

@@ -48,6 +48,7 @@
           ./modules/ruby/darwin.nix
           ./modules/flow/darwin.nix
           ./modules/tailscale/darwin.nix
+          ./modules/wezterm/darwin.nix
           ./modules/1password/darwin
           ./modules/lightroom/darwin.nix
           agenix.darwinModules.default
