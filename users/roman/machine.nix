@@ -1,6 +1,6 @@
 # This file is an entry to the system settings.
 
-{ config, lib, pkgs, ... }: {
+{ pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = import ../../lib/overlays.nix;
 
@@ -31,13 +31,17 @@
     magnification = false;
   };
 
-  # Increase key repeat rate. It helps with typing faster in neovim.
   system.defaults.CustomSystemPreferences = {
+    # Increase key repeat rate. It helps with typing faster in neovim.
     "NSGlobalDomain" = {
       "InitialKeyRepeat" = 15;
       "KeyRepeat" = 2;
     };
   };
+
+  # Disable long animation for tails switching.
+  system.defaults.universalaccess.reduceMotion = true;
+  system.defaults.universalaccess.reduceTransparency = true;
 
   # local = {
   #   dock.enable = true;

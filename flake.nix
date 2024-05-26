@@ -47,6 +47,7 @@
           ./modules/font/darwin.nix
           ./modules/ruby/darwin.nix
           ./modules/flow/darwin.nix
+          ./modules/android-studio/darwin.nix
           ./modules/tailscale/darwin.nix
           ./modules/wezterm/darwin.nix
           ./modules/1password/darwin
@@ -74,7 +75,7 @@
                 ./modules/fd.nix
                 ./modules/shell.nix
                 ./modules/ruby/home.nix
-                ./modules/sst.nix
+                # ./modules/sst.nix
                 ./modules/1password/darwin/home.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default

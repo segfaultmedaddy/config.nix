@@ -18,6 +18,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Add filetypes.
+vim.filetype.add({ extension = { templ = "templ" } })
+
+-- Load plugins.
 require("lazy").setup({
 	spec = {
 		{ import = "plugin" },

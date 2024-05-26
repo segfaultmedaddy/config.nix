@@ -12,7 +12,20 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				tailwindcss = {},
+				tailwindcss = {
+					filetypes = {
+						"css",
+						"templ",
+						"astro",
+						"javascript",
+						"typescript",
+						"html",
+						"vue",
+						"svelte",
+					},
+
+					init_options = { userLanguages = { templ = "html" } },
+				},
 			},
 		},
 	},
