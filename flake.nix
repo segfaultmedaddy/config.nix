@@ -42,6 +42,7 @@
 
         modules = [
           ./users/${user}/machine.nix
+          ./modules/yabai.nix
           ./modules/db/darwin.nix
           ./modules/xcode/darwin.nix
           ./modules/font/darwin.nix
@@ -75,8 +76,8 @@
                 ./modules/fd.nix
                 ./modules/shell.nix
                 ./modules/ruby/home.nix
-                # ./modules/sst.nix
                 ./modules/1password/darwin/home.nix
+                ./modules/lazygit.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
