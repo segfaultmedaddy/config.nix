@@ -41,8 +41,8 @@
         inherit system;
 
         modules = [
-          ./users/${user}/machine.nix
-          ./modules/yabai.nix
+          ./machines/darwin
+          ./users/${user}/darwin.nix
           ./modules/db/darwin.nix
           ./modules/xcode/darwin.nix
           ./modules/font/darwin.nix
@@ -53,6 +53,8 @@
           ./modules/wezterm/darwin.nix
           ./modules/1password/darwin
           ./modules/lightroom/darwin.nix
+          ./modules/zed/darwin.nix
+          ./modules/aerospace/darwin.nix
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -67,6 +69,8 @@
                 ./modules/nvim
                 ./modules/home
                 ./modules/wezterm
+                ./modules/aerospace
+                # ./modules/zed
                 ./modules/db/home.nix
                 ./modules/go.nix
                 ./modules/node.nix

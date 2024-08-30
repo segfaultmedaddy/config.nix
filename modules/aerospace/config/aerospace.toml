@@ -1,0 +1,130 @@
+# If keys are ommitted from the configuration file then they default one
+# specified by the AeroSpace.
+# See for docs https://nikitabobko.github.io/AeroSpace
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalize tiling tree.
+# AFAIK, aerospace keeps windows in a virtual tree, beside windows,
+# splitters also represented as nodes (vsplit, hsplit.
+# This options prevent it from having
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 24
+
+# Default collapse mode (also possible to set to 'accordion').
+default-root-container-layout = 'tiles'
+
+# Default split mode for tiles: vertical vs horizontal.
+# idk if it works or not, but let's leave it as 'auto' and see if it can handle
+# my current setup (1 vertical and 1 horizontal monitors).
+# Possible values: horizontal|vertical|auto
+default-root-container-orientation = 'auto'
+
+# One day I might use dvorak, but not now.
+key-mapping.preset = 'qwerty'
+
+# Set want mouse should do if focus is shifted.
+# Defaults to: on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+on-focused-monitor-changed = []
+
+# Gaps betweeen windows and monitors.
+[gaps]
+# A bit edge here and there.
+inner.horizontal = 4
+inner.vertical = 4
+outer.left = 4
+outer.bottom = 4
+outer.top = 4
+outer.right = 4
+
+# 'main' mode is equivalent to 'normal' mode in Vim. Meaning that it is the one
+# that is used by default by Aerospace. It is mondatory to specify bindings for
+# 'main' mode.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.main.binding]
+alt-slash = 'layout tiles horizontal vertical'     # switch between vertical and horizontal layout
+alt-comma = 'layout accordion horizontal vertical' # switch to accordion mode
+
+# Change a focused window.
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+# Oh, mom I'll never get used to Vim navigation, let me be noob and use arrows.
+alt-left = 'focus left'
+alt-right = 'focus right'
+alt-up = 'focus up'
+alt-down = 'focus down'
+
+# Moving focused window arround.
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+alt-shift-left = 'move left'
+alt-shift-right = 'move right'
+alt-shift-up = 'move up'
+alt-shift-down = 'move down'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# Switch focus between current and previous windows.
+alt-tab = 'workspace-back-and-forth'
+
+# Move current workspace between monitors.
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+alt-shift-semicolon = 'mode service'
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+
+# Flatten layout
+r = ['flatten-workspace-tree', 'mode main']
+
+# Toggle between floating and tiling layout
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+alt-shift-left = ['join-with left', 'mode main']
+alt-shift-right = ['join-with down', 'mode main']
+alt-shift-up = ['join-with up', 'mode main']
+alt-shift-down = ['join-with right', 'mode main']

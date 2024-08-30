@@ -7,15 +7,13 @@
     nixd
     nixpkgs-fmt
     nixpkgs-review
-    gleam # fancy programming language
-  ]; 
+  ];
 
   programs.zsh.shellAliases = {
-    # TODO: make configurable 
+    # TODO: make configurable
     switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
   };
 
   programs.awscli.enable = true;
   programs.ssh.enable = true;
 }
-

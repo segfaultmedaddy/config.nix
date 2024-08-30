@@ -10,6 +10,7 @@
     age # tool to encrypt content
     bat # cat clone with syntax highlighting
     coreutils-full
+    pv
   ];
 
   programs.zsh = {

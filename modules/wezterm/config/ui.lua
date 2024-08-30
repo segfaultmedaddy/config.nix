@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 local M = {}
 
 M.color_scheme_dirs = {
-  "/Users/roman/.local/share/nvim/lazy/nightfox.nvim/extra/dayfox",
+  "/Users/roman/.local/share/nvim/lazy/nightfox.nvim/extra/dayfox"
 }
 M.color_scheme = "dayfox"
 
