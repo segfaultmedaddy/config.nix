@@ -127,12 +127,11 @@ alt-l = ['join-with right', 'mode main']
 alt-left = ['join-with left', 'mode main']
 alt-right = ['join-with down', 'mode main']
 alt-up = ['join-with up', 'mode main']
-alt-down = ['join-with right', 'mode main']
-
+ 
 # Force workspace assignment to monitors.
 # I have two monitors for now and don't use built-in often.
 # https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
-[workspace-to-monitor-force-assigment]
+[workspace-to-monitor-force-assignment]
 1 = 'main'
 2 = 'secondary'
 A = 'built-in'
