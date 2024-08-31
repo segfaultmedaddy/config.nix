@@ -1,7 +1,5 @@
-# This file is an entry to the system settings.
-
-{ pkgs, ... }: {
-  # local = {
+{ ... }: {
+# local = {
   #   dock.enable = true;
   #   dock.entries = [
   #     { path = "/System/Applications/Mail.app/"; }
@@ -15,7 +13,6 @@
   # };
 
   homebrew = {
-    enable = true;
     casks = [
       "google-chrome"
       "spotify"
@@ -27,10 +24,5 @@
       "cloudflare-warp"
       "obsidian"
     ];
-  };
-
-  users.users.roman = {
-    home = "/Users/roman";
-    shell = pkgs.zsh;
   };
 }

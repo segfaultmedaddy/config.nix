@@ -27,7 +27,7 @@
   system.defaults.dock = {
     show-recents = false;
     orientation = "bottom";
-    autohide = false;
+    autohide = true;
     magnification = false;
   };
 
@@ -50,4 +50,7 @@
 
   # Enable sudo via TouchID or Apple Watch.
   security.pam.enableSudoTouchIdAuth = true;
+
+  # Enable home brew on the device.
+  homebrew.enable = true;
 }

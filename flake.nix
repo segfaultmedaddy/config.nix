@@ -42,7 +42,8 @@
 
         modules = [
           ./machines/darwin
-          ./users/${user}/darwin.nix
+          ./machines/darwin/${machine}
+          ./users/${user}/darwin
           ./modules/db/darwin.nix
           ./modules/xcode/darwin.nix
           ./modules/font/darwin.nix
@@ -63,7 +64,8 @@
             home-manager.extraSpecialArgs = { inherit user system machine; };
             home-manager.users.${user} = {
               imports = [
-                ./users/${user}/home.nix
+                ./users/${user}/darwin/home.nix
+                ./machines/darwin/${machine}/home.nix
                 ./modules/btop.nix
                 ./modules/lima.nix
                 ./modules/nvim

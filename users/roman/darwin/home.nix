@@ -1,6 +1,6 @@
 # This file is an entry point for the home-manager for a specified user.
 
-{ lib, pkgs, ... }: {
+{ pkgs, machine, ... }: {
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
@@ -10,10 +10,9 @@
   ];
 
   programs.zsh.shellAliases = {
-    # TODO: make configurable
-    switch = "nix run nix-darwin -- switch --flake .#macbook-pro-i7";
+    nix-switch-system = "cd $CONFIG_ROOT_DIR && nix run nix-darwin -- switch --flake .#${machine} && cd -";
+    nix-update-system = "cd $CONFIG_ROOT_DIR && nix flake update && cd -";
   };
 
-  programs.awscli.enable = true;
   programs.ssh.enable = true;
 }
