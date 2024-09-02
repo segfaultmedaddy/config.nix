@@ -134,8 +134,9 @@ alt-j = ['join-with down', 'mode main']
 alt-k = ['join-with up', 'mode main']
 alt-l = ['join-with right', 'mode main']
 alt-left = ['join-with left', 'mode main']
-alt-right = ['join-with down', 'mode main']
+alt-right = ['join-with right', 'mode main']
 alt-up = ['join-with up', 'mode main']
+alt-down = ['join-with down', 'mode main']
 
 # Force workspace assignment to monitors.
 # I have two monitors for now and don't use built-in often.

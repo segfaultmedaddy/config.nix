@@ -44,18 +44,18 @@
           ./machines/darwin
           ./machines/darwin/${machine}
           ./users/${user}/darwin
-          ./modules/db/darwin.nix
-          ./modules/xcode/darwin.nix
-          ./modules/font/darwin.nix
-          ./modules/ruby/darwin.nix
-          ./modules/flow/darwin.nix
+          ./modules/1password/darwin
+          ./modules/aerospace/darwin.nix
           ./modules/android-studio/darwin.nix
+          ./modules/db/darwin.nix
+          ./modules/flow/darwin.nix
+          ./modules/font/darwin.nix
+          ./modules/lightroom/darwin.nix
+          ./modules/ruby/darwin.nix
           ./modules/tailscale/darwin.nix
           ./modules/wezterm/darwin.nix
-          ./modules/1password/darwin
-          ./modules/lightroom/darwin.nix
+          ./modules/xcode/darwin.nix
           ./modules/zed/darwin.nix
-          ./modules/aerospace/darwin.nix
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -66,24 +66,25 @@
               imports = [
                 ./users/${user}/darwin/home.nix
                 ./machines/darwin/${machine}/home.nix
-                ./modules/btop.nix
-                ./modules/lima.nix
-                ./modules/nvim
-                ./modules/home
-                ./modules/wezterm
-                ./modules/aerospace
-                # ./modules/zed
-                ./modules/db/home.nix
-                ./modules/go.nix
-                ./modules/node.nix
-                ./modules/tf.nix
-                ./modules/grpc.nix
-                ./modules/git.nix
-                ./modules/fd.nix
-                ./modules/shell.nix
-                ./modules/ruby/home.nix
                 ./modules/1password/darwin/home.nix
+                ./modules/aerospace
+                ./modules/btop.nix
+                ./modules/db/home.nix
+                ./modules/fd.nix
+                ./modules/git.nix
+                ./modules/go.nix
+                ./modules/grpc.nix
+                ./modules/home
                 ./modules/lazygit.nix
+                ./modules/lima.nix
+                ./modules/node.nix
+                ./modules/nvim
+                ./modules/ruby/home.nix
+                ./modules/shell.nix
+                ./modules/tf.nix
+                ./modules/typst.nix
+                ./modules/wezterm
+                # ./modules/zed
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
