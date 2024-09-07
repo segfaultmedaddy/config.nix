@@ -3,5 +3,10 @@
     CONFIG_ROOT_DIR="$HOME/dev/personal/config.nix";
   };
 
+  programs.git = {
+    userName = "Roman Vanesyan";
+    userEmail = "roman@vanesyan.com";
+  };
+
   programs.awscli.enable = true;
 }

@@ -37,11 +37,13 @@
     };
   };
 
-  # Load environment variables from $(cwd)/.env
+  # Load environment variables from $(cwd)/.envrc
   # see https://direnv.net/
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableZshIntegration = true;
+    silent = true;
   };
 
   programs.starship = {

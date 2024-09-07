@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    delta
+  ];
+
   programs.gh = {
     enable = true;
     gitCredentialHelper = {
@@ -15,8 +19,6 @@
 
   programs.git = {
     enable = true;
-    userName = "Roman Vanesyan";
-    userEmail = "roman@vanesyan.com";
 
     aliases = {
       co = "checkout";
@@ -27,9 +29,23 @@
     extraConfig = {
       core = {
         editor = "nvim";
+        pager = "delta";
         untrackedCache = true;
         whitespace = "space-before-tab,trailing-space";
         autocrlf = "input";
+      };
+
+      merge.conflictstyle = "diff3";
+
+      delta = {
+        side-by-side = true;
+        line-numbers = true;
+        hyperlinks = true;
+        navigate = true;
+      };
+
+      interactive = {
+        diffFilter = "delta --color-only";
       };
 
       rebase = {
@@ -38,7 +54,10 @@
       };
 
       color.ui = "auto";
-      diff.renames = "copies";
+      diff = {
+        renames = "copies";
+        colorMoved = "default";
+      };
       help.autoCorrect = "1";
       log.merge = true;
       push = {
@@ -65,5 +84,7 @@
     gf = "git pull";
     gp = "git push";
     gs = "git status";
+    gco = "git co";
+    gb = "git branch";
   };
 }
