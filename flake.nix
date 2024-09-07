@@ -48,6 +48,7 @@
           ./modules/aerospace/darwin.nix
           ./modules/android-studio/darwin.nix
           ./modules/db/darwin.nix
+          ./modules/estonian-id-card-reader/darwin.nix
           ./modules/flow/darwin.nix
           ./modules/font/darwin.nix
           ./modules/lightroom/darwin.nix

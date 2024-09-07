@@ -56,11 +56,6 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
-# Oh, mom I'll never get used to Vim navigation, let me be noob and use arrows.
-alt-left = 'focus left'
-alt-right = 'focus right'
-alt-up = 'focus up'
-alt-down = 'focus down'
 
 # Moving focused window arround.
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
@@ -68,10 +63,6 @@ alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
-alt-shift-left = 'move left'
-alt-shift-right = 'move right'
-alt-shift-up = 'move up'
-alt-shift-down = 'move down'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-1 = 'workspace 1'
@@ -105,17 +96,35 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-esc = 'mode service'
 alt-r = 'mode resize'
 alt-w = 'mode workspace'
+alt-m = 'mode move'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 [mode.resize.binding]
 esc = 'mode main'
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
+alt-left = 'focus left'
+alt-down = 'focus down'
+alt-up = 'focus up'
+alt-right = 'focus right'
+
+[mode.move.binding]
+esc = 'mode main'
+alt-left = 'focus left'
+alt-down = 'focus down'
+alt-up = 'focus up'
+alt-right = 'focus right'
+alt-shift-left = 'move left'
+alt-shift-down = 'move down'
+alt-shift-up = 'move up'
+alt-shift-right = 'move right'
 
 [mode.workspace.binding]
 esc = 'mode main'
-alt-w = ['move-workspace-to-monitor --wrap-around next', 'mode main']
-alt-b = ['move-workspace-to-monitor --wrap-around prev', 'mode main']
+alt-h = ['move-workspace-to-monitor --wrap-around prev', 'mode main']
+alt-l = ['move-workspace-to-monitor --wrap-around next', 'mode main']
+alt-left = ['move-workspace-to-monitor --wrap-around prev', 'mode main']
+alt-right = ['move-workspace-to-monitor --wrap-around next', 'mode main']
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

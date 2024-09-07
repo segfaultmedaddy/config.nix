@@ -5,6 +5,16 @@
   nixpkgs.overlays = import ../../lib/overlays.nix;
 
   services.nix-daemon.enable = true;
+  nix.gc = {
+    automatic = true;
+    interval = {
+      Weekday = 1;
+      Hour = 0;
+      Minute = 0;
+    };
+    options = "--delete-older-than 30d";
+  };
+
   nix.settings.experimental-features = ''
     nix-command flakes repl-flake
   '';
