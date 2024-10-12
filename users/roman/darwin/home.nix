@@ -1,6 +1,7 @@
 # This file is an entry point for the home-manager for a specified user.
 
-{ pkgs, machine, ... }: {
+{ pkgs, machine, ... }:
+{
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [

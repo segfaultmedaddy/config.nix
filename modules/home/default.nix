@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # Tell home-manager to manage itself.
   programs.home-manager.enable = true;
 

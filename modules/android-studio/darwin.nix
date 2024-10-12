@@ -1,8 +1,8 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     casks = [
       "android-studio"
     ];
   };
 }
-

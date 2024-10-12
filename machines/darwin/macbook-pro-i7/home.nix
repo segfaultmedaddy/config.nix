@@ -1,6 +1,7 @@
-{ ... }: {
+{ ... }:
+{
   home.sessionVariables = {
-    CONFIG_ROOT_DIR="$HOME/dev/personal/config.nix";
+    CONFIG_ROOT_DIR = "$HOME/dev/personal/config.nix";
   };
 
   programs.git = {

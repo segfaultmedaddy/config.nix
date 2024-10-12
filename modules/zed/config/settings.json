@@ -1,4 +1,11 @@
 {
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2"
+  },
   "theme": "Atelier Plateau Light",
   "ui_font_size": 14,
   "buffer_font_size": 14,
@@ -18,10 +25,52 @@
 
   "format_on_save": "on",
   "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+
+  "preferred_line_length": 80,
+  "show_wrap_guides": true,
+  "wrap_guides": [80, 100, 120],
 
   "vim": {
     "use_multiline_find": true,
     "use_smartcase_find": true,
     "use_system_clipboard": "always"
+  },
+
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": false,
+          "constantValues": false,
+          "functionTypeParameters": false,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        },
+        "gofumpt": true
+      }
+    }
+  },
+
+  "languages": {
+    "Go": {
+      "tab_size": 8,
+      "preferred_line_length": 100
+    },
+
+    "Markdown": {
+      "soft_wrap": "preferred_line_length"
+    },
+
+    "SQL": {
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    }
   }
 }

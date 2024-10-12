@@ -1,4 +1,5 @@
-{ user, ... }: {
+{ user, ... }:
+{
   programs.ssh = {
     # I use 1password for storing my SSH key. 1password is installed via
     # homebrew.

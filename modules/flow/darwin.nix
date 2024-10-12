@@ -1,3 +1,6 @@
-{ ... }: {
-  homebrew.masApps = { Flow = 1423210932; };
+{ ... }:
+{
+  homebrew.masApps = {
+    Flow = 1423210932;
+  };
 }

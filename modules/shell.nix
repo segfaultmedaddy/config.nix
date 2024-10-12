@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     neofetch
     ripgrep # faster grep
@@ -33,7 +34,10 @@
 
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" ];
+      highlighters = [
+        "main"
+        "brackets"
+      ];
     };
   };
 

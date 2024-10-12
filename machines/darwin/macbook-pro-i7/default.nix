@@ -1,5 +1,8 @@
-{ ... }: {
-# local = {
+{ ... }:
+{
+  system.stateVersion = 4;
+
+  # local = {
   #   dock.enable = true;
   #   dock.entries = [
   #     { path = "/System/Applications/Mail.app/"; }

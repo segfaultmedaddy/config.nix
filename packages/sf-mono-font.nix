@@ -1,16 +1,26 @@
-{ pkgs, lib, fetchurl, stdenv, ... }: stdenv.mkDerivation rec {
+{
+  pkgs,
+  lib,
+  fetchurl,
+  stdenv,
+  ...
+}:
+stdenv.mkDerivation {
   pname = "apple-font-sf-mono";
-  version = "0.1.0";
+  version = "0.1.1";
 
   src = fetchurl {
     url = "https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg";
-    sha256 = "sha256-tZHV6g427zqYzrNf3wCwiCh5Vjo8PAai9uEvayYPsjM=";
+    sha256 = "sha256-bUoLeOOqzQb5E/ZCzq0cfbSvNO1IhW1xcaLgtV2aeUU=";
   };
 
   dontBuild = true;
   sourceRoot = "./Library/Fonts";
 
-  nativeBuildInputs = [ pkgs.libarchive pkgs.p7zip ];
+  nativeBuildInputs = [
+    pkgs.libarchive
+    pkgs.p7zip
+  ];
 
   unpackPhase = ''
     7z x $src

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     lima-bin # container runtime. Installs nerdctl as well.
     qemu

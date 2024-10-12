@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   homebrew = {
     masApps = {
       "DigiDoc4 Client" = 1370791134;

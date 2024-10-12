@@ -30,11 +30,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, agenix, home-manager, nix-index-database, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      darwin,
+      agenix,
+      home-manager,
+      nix-index-database,
+      ...
+    }:
     let
       system = "x86_64-darwin";
       machine = "macbook-pro-i7";
       user = "roman";
+      pkgs = import nixpkgs { inherit system; };
     in
     {
       darwinConfigurations.${machine} = darwin.lib.darwinSystem {
@@ -52,7 +62,6 @@
           ./modules/flow/darwin.nix
           ./modules/font/darwin.nix
           ./modules/lightroom/darwin.nix
-          ./modules/ruby/darwin.nix
           ./modules/tailscale/darwin.nix
           ./modules/wezterm/darwin.nix
           ./modules/xcode/darwin.nix
@@ -62,7 +71,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit user system machine; };
+            home-manager.extraSpecialArgs = {
+              inherit user system machine;
+            };
             home-manager.users.${user} = {
               imports = [
                 ./users/${user}/darwin/home.nix
@@ -70,6 +81,7 @@
                 ./modules/1password/darwin/home.nix
                 ./modules/aerospace
                 ./modules/btop.nix
+                ./modules/dart.nix
                 ./modules/db/home.nix
                 ./modules/fd.nix
                 ./modules/git.nix
@@ -80,7 +92,6 @@
                 ./modules/lima.nix
                 ./modules/node.nix
                 ./modules/nvim
-                ./modules/ruby/home.nix
                 ./modules/shell.nix
                 ./modules/tf.nix
                 ./modules/typst.nix
@@ -98,6 +109,6 @@
       };
 
       darwinPackages = self.darwinConfigurations.${machine}.pkgs;
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
