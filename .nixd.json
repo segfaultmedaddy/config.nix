@@ -1,9 +1,0 @@
-{
-  "options": {
-    "enable": true,
-    "target": {
-      "args": ["-f", "default.nix"],
-      "installable": ".#darwinConfigurations.macbook-pro-i7.options"
-    }
-  }
-}

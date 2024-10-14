@@ -5,9 +5,8 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    nixd
-    nixpkgs-fmt
-    nixpkgs-review
+    nixd # nix LSP server
+    nixfmt-rfc-style # formatter
   ];
 
   programs.zsh.shellAliases = {
