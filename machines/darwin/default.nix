@@ -17,7 +17,7 @@
   };
 
   nix.settings.experimental-features = ''
-    nix-command flakes repl-flake
+    nix-command flakes
   '';
 
   # zsh is default shell on macOS, make sure that it is configured properly with

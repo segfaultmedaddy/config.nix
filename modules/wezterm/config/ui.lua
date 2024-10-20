@@ -3,23 +3,23 @@ local wezterm = require("wezterm")
 local M = {}
 
 M.color_scheme_dirs = {
-  "/Users/roman/.local/share/nvim/lazy/nightfox.nvim/extra/dayfox"
+	"/Users/roman/.local/share/nvim/lazy/nightfox.nvim/extra/dayfox",
 }
 M.color_scheme = "dayfox"
 
 -- Fonts
 M.font = wezterm.font("SF Mono", {
-  weight = "Medium",
+	weight = "Medium",
 })
 M.font_size = 15
 M.line_height = 1.1
 
 -- Window
 M.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 
 -- Tabs

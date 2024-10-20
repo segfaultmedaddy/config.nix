@@ -8,7 +8,7 @@ local keymaps = require("keymaps")
 local config = {}
 
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+	config = wezterm.config_builder()
 end
 
 -- General
