@@ -28,10 +28,12 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dart.url = "github:roman-vanesyan/dart-overlay";
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       darwin,
@@ -51,6 +53,7 @@
         inherit system;
 
         modules = [
+          { nixpkgs.overlays = [ inputs.dart.overlays.default ]; }
           ./machines/darwin
           ./machines/darwin/${machine}
           ./users/${user}/darwin
@@ -108,7 +111,6 @@
         ];
       };
 
-      darwinPackages = self.darwinConfigurations.${machine}.pkgs;
       formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
