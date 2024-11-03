@@ -100,6 +100,7 @@
                 ./modules/typst.nix
                 ./modules/wezterm
                 # ./modules/zed
+                ./modules/asciinema.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];

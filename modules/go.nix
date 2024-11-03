@@ -2,13 +2,14 @@
 {
   home.packages = with pkgs; [
     golangci-lint
-    golines
+    golines # lines format
+    gofumpt # alternative formatter
   ];
 
   programs.go = {
     enable = true;
     goPath = "go";
-    package = pkgs.go_1_23;
+    package = pkgs.go;
   };
 
   home.sessionPath = [
