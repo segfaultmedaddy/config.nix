@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    delta
+    delta # custom highlighter
   ];
 
   programs.gh = {

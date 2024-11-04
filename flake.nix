@@ -101,6 +101,7 @@
                 ./modules/wezterm
                 # ./modules/zed
                 ./modules/asciinema.nix
+                ./modules/ffmpeg.nix
                 nix-index-database.hmModules.nix-index
                 agenix.homeManagerModules.default
               ];
