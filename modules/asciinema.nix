@@ -2,6 +2,6 @@
 {
   home.packages = with pkgs; [
     asciinema
-    asciinema-agg
+    asciinema-agg # convert ascii scene to gif
   ];
 }

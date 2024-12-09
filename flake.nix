@@ -30,6 +30,11 @@
     };
 
     dart.url = "github:roman-vanesyan/dart-overlay";
+
+    rust = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -53,7 +58,12 @@
         inherit system;
 
         modules = [
-          { nixpkgs.overlays = [ inputs.dart.overlays.default ]; }
+          {
+            nixpkgs.overlays = [
+              inputs.dart.overlays.default
+              (import inputs.rust)
+            ];
+          }
           ./machines/darwin
           ./machines/darwin/${machine}
           ./users/${user}/darwin
@@ -69,6 +79,7 @@
           ./modules/wezterm/darwin.nix
           ./modules/xcode/darwin.nix
           ./modules/zed/darwin.nix
+          ./modules/corp/darwin.nix
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -92,7 +103,7 @@
                 ./modules/grpc.nix
                 ./modules/home
                 ./modules/lazygit.nix
-                ./modules/lima.nix
+                ./modules/colima.nix
                 ./modules/node.nix
                 ./modules/nvim
                 ./modules/shell.nix
