@@ -1,5 +1,3 @@
-# This file is an entry to the system settings.
-
 { pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;

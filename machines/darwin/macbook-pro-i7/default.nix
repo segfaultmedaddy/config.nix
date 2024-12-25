@@ -21,7 +21,7 @@
       "spotify"
       "discord"
       "vlc"
-      "transmission" # Torrent client. Don't use in Germany, GG.
+      "transmission" # Torrent client.
       "telegram"
       "languagetool"
       "cloudflare-warp"
