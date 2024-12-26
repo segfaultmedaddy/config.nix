@@ -2,6 +2,9 @@
 {
   home.packages = with pkgs; [
     colima
+    docker-client
+    kubectl
+    kubectx
   ];
 
   programs.zsh.shellAliases = {

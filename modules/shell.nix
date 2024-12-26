@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     neofetch
     ripgrep # faster grep
+    fd # faster find
     tree # file tree view
     xsel # clipboard support
     curl
@@ -12,14 +13,19 @@
     bat # cat clone with syntax highlighting
     coreutils-full
     pv
+    asciinema # terminal recording
+    asciinema-agg # convert ascii scene to gif
   ];
 
   programs.zsh = {
     enable = true;
     shellAliases = {
       ll = "ls -la";
-      ".." = "cd ..";
-      "..." = "cd ../..";
+      ".." = "z ..";
+      "..." = "z ../..";
+      cat = "bat";
+      htop = "btop";
+      top = "btop";
     };
 
     history = {
@@ -41,8 +47,10 @@
     };
   };
 
-  # Load environment variables from $(cwd)/.envrc
-  # see https://direnv.net/
+  programs.btop = {
+    enable = true;
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
@@ -59,8 +67,7 @@
     enableZshIntegration = true;
   };
 
-  programs.navi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+  home.file.".fdignore".text = ''
+    .git
+  '';
 }

@@ -4,20 +4,6 @@
     delta # custom highlighter
   ];
 
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper = {
-      enable = true;
-    };
-
-    settings = {
-      aliases = {
-        co = "pr checkout";
-        pv = "pr view";
-      };
-    };
-  };
-
   programs.git = {
     enable = true;
 
@@ -79,6 +65,26 @@
     };
   };
 
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
+
+    settings = {
+      aliases = {
+        co = "pr checkout";
+        pv = "pr view";
+      };
+    };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    package = pkgs.lazygit;
+    settings = { };
+  };
+
   programs.zsh.shellAliases = {
     gc = "git commit";
     ga = "git add";
@@ -87,5 +93,6 @@
     gs = "git status";
     gco = "git co";
     gb = "git branch";
+    lg = "lazygit";
   };
 }

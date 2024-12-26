@@ -4,6 +4,8 @@
     golangci-lint
     golines # lines format
     gofumpt # alternative formatter
+
+    sqlc # db codegen
   ];
 
   programs.go = {

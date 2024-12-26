@@ -44,12 +44,11 @@
     }:
     let
       mkDarwinX64System = import ./machines/darwin/mkSystem.nix rec {
-        pkgs = nixpkgs { inherit system; };
         system = "x86_64-darwin";
       };
     in
     {
-      darwinConfigurations."macbook-pro-i7" = mkDarwinX64System rec {
+      darwinConfigurations."macbook-pro-i7" = mkDarwinX64System {
         inherit inputs;
         machine = "macbook-pro-i7";
         user = "roman";
