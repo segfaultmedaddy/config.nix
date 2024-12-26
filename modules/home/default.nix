@@ -21,8 +21,6 @@
     ../go.nix
     ../grpc.nix
     ../tf.nix
-
-    ../virt/home.nix
   ];
 
   home.packages = with pkgs; [
