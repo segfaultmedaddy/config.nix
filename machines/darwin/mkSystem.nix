@@ -19,23 +19,21 @@ in
 inputs.darwin.lib.darwinSystem {
   inherit system;
   modules = [
-    {
-      nixpkgs.overlays = [
-        inputs.dart.overlays.default
-        (import inputs.rust)
-      ];
-      nixpkgs.hostPlatform = "${system}";
-    }
-
     defaultConfig
     ./${machine}
-    ../../users/${user}/darwin
+
+    {
+      users.users.${user} = {
+        home = "/Users/${user}";
+      };
+    }
+
+    ./${machine}/users/${user}/darwin.nix
 
     {
       home-manager.users.${user} = {
         imports = [
-          ./${machine}/home.nix
-          ../../users/${user}/darwin/home.nix
+          ./${machine}/users/${user}/home.nix
         ];
       };
     }

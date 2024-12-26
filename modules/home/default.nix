@@ -32,5 +32,9 @@
     # Languages
     pkgs.rust-bin.stable.latest.default
     pkgs.dartpkgs.stable
+    nixd
+    nixfmt-rfc-style
   ];
+
+  programs.awscli.enable = true;
 }

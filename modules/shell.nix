@@ -47,6 +47,8 @@
     };
   };
 
+  programs.ssh.enable = true;
+
   programs.btop = {
     enable = true;
   };

@@ -43,7 +43,7 @@
       ...
     }:
     let
-      mkDarwinX64System = import ./machines/darwin/mkSystem.nix rec {
+      mkDarwinX64System = import ./machines/darwin/mkSystem.nix {
         system = "x86_64-darwin";
       };
     in
@@ -53,6 +53,5 @@
         machine = "macbook-pro-i7";
         user = "roman";
       };
-      # formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
