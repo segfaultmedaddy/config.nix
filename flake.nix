@@ -38,10 +38,7 @@
   };
 
   outputs =
-    inputs@{
-      nixpkgs,
-      ...
-    }:
+    { ... }@inputs:
     let
       mkDarwinX64System = import ./machines/darwin/mkSystem.nix {
         system = "x86_64-darwin";
@@ -53,13 +50,19 @@
     {
       darwinConfigurations."macbook-pro-i7" = mkDarwinX64System {
         inherit inputs;
-        machine = "macbook-pro-i7";
+        machine = "alpha";
         user = "roman";
       };
 
       darwinConfigurations."macbook-pro-m2" = mkDarwinAarch64System {
         inherit inputs;
-        machine = "macbook-pro-m2";
+        machine = "bravo";
+        user = "roman";
+      };
+
+      darwinConfigurations."charlie" = mkDarwinAarch64System {
+        inherit inputs;
+        machine = "charlie";
         user = "roman";
       };
     };

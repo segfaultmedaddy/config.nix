@@ -1,11 +1,22 @@
+{ useColima }:
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    colima
-    docker-client
-    kubectl
-    kubectx
-  ];
+  home.packages =
+    with pkgs;
+    [
+      kubectl
+      kubectx
+    ]
+    ++ (
+      if useColima then
+        [
+          colima
+          docker-compose
+          docker-client
+        ]
+      else
+        [ ]
+    );
 
   programs.zsh.shellAliases = {
     nerd = "colima nerdctl";

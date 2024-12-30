@@ -1,0 +1,21 @@
+{ ... }:
+let
+  virtModule = import ../../../../../modules/virt/home.nix {
+    useColima = false;
+  };
+in
+{
+  home.stateVersion = "23.11";
+  home.sessionVariables = {
+    CONFIG_ROOT_DIR = "$HOME/dev/personal/config.nix";
+  };
+
+  programs.git = {
+    userName = "Roman Vanesyan";
+    userEmail = "roman@vanesyan.com";
+  };
+
+  imports = [
+    virtModule
+  ];
+}

@@ -69,7 +69,6 @@
       "telegram"
       "cloudflare-warp"
       "beekeeper-studio"
-      "tailscale"
     ];
   };
 }

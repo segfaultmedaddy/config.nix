@@ -1,6 +1,6 @@
 { ... }:
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 
   home.sessionVariables = {
     CONFIG_ROOT_DIR = "$HOME/dev/personal/config.nix";
@@ -10,8 +10,4 @@
     userName = "Roman Vanesyan";
     userEmail = "roman@vanesyan.com";
   };
-
-  imports = [
-    ../../../../../modules/virt/home.nix
-  ];
 }

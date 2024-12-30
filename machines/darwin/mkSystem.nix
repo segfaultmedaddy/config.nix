@@ -23,6 +23,7 @@ inputs.darwin.lib.darwinSystem {
     ./${machine}
 
     {
+      networking.hostName = "${machine}";
       users.users.${user} = {
         home = "/Users/${user}";
       };
