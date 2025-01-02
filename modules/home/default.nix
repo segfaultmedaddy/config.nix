@@ -32,6 +32,16 @@
     pkgs.dartpkgs.stable
     nixd
     nixfmt-rfc-style
+
+    # Cloud
+    kubectl
+    kubectx
+    (google-cloud-sdk.withExtraComponents (
+      with google-cloud-sdk.components;
+      [
+        # plugins if any
+      ]
+    ))
   ];
 
   programs.awscli.enable = true;

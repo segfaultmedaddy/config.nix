@@ -56,7 +56,7 @@
     masApps = {
       Xcode = 497799835;
       Flow = 1423210932; # pomodoro timer
-      "DigiDoc4 Client" = 1370791134;
+      DigiDoc4 = 1370791134;
       "Web eID" = 1576665083;
     };
 

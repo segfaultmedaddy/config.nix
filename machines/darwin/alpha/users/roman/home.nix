@@ -1,9 +1,4 @@
 { ... }:
-let
-  virtModule = import ../../../../../modules/virt/home.nix {
-    useColima = false;
-  };
-in
 {
   home.stateVersion = "23.11";
   home.sessionVariables = {
@@ -14,8 +9,4 @@ in
     userName = "Roman Vanesyan";
     userEmail = "roman@vanesyan.com";
   };
-
-  imports = [
-    virtModule
-  ];
 }
