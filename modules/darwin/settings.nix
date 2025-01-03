@@ -1,21 +1,11 @@
 { ... }:
 {
+
   system.defaults.dock = {
     show-recents = false;
     orientation = "bottom";
     autohide = false;
     magnification = false;
-
-    persistent-apps = [
-      "/System/Applications/Launchpad.app"
-      "/System/Applications/Notes.app"
-      "/System/Applications/Calendar.app"
-      "/System/Applications/Mail.app"
-      "/Applications/Safari.app"
-      "/Applications/Telegram.app"
-      "/Applications/WezTerm.app"
-      "/Applications/Zed.app"
-    ];
 
     # hot corners
     wvous-tr-corner = 1; # disabled

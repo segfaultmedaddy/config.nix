@@ -9,10 +9,6 @@
 
     casks = [
       "transmission"
-      "languagetool"
-      "obsidian"
-      "linear-linear" # linear.app
-      "notion"
       "android-studio"
     ];
   };
