@@ -8,7 +8,6 @@
     "transmission"
     "android-studio"
     "obsidian"
-    "linear-linear" # linear.app
     "notion"
   ];
 
@@ -16,11 +15,12 @@
     "/System/Applications/Launchpad.app"
     "/System/Applications/Calendar.app"
     "/System/Applications/Mail.app"
-    "/Applications/Safari.app"
+    "/Applications/Google Chrome.app"
     "/Applications/Obsidian.app"
     "/Applications/WezTerm.app"
     "/Applications/Zed.app"
     "/Applications/Telegram.app"
     "/Applications/Slack.app"
+    "/Applications/Notion.app"
   ];
 }

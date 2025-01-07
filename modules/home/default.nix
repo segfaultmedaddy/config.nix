@@ -1,5 +1,5 @@
 # Home contains all the configurations for the home-manager.
-# It supposed to be system independent.
+# It supposed to be OS independent.
 # If system dependent configuration is needed,
 # put it under modules/<system>/home.nix
 { pkgs, ... }:
