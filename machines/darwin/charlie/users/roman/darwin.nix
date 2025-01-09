@@ -9,6 +9,9 @@
     "android-studio"
     "obsidian"
     "notion"
+    "obs"
+
+    "steam"
   ];
 
   system.defaults.dock.persistent-apps = [

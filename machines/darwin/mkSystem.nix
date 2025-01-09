@@ -29,6 +29,18 @@ inputs.darwin.lib.darwinSystem {
       };
     }
 
+    (
+      if system == "aarch64-darwin" then
+        {
+          # Install rosetta.
+          system.activationScripts.extraActivation.text = ''
+            softwareupdate --install-rosetta --agree-to-license
+          '';
+        }
+      else
+        { }
+    )
+
     ./${machine}/users/${user}/darwin.nix
 
     {
