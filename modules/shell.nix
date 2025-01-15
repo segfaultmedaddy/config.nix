@@ -9,6 +9,7 @@
     curl
     wget
     jq # JSON query utility
+    yq-go # like jq but for yaml
     age # tool to encrypt content
     bat # cat clone with syntax highlighting
     coreutils-full

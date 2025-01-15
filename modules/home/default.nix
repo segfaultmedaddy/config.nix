@@ -34,12 +34,14 @@
     nixfmt-rfc-style
 
     # Cloud
+    kubernetes-helm
+    helm-docs
     kubectl
     kubectx
     (google-cloud-sdk.withExtraComponents (
       with google-cloud-sdk.components;
       [
-        # plugins if any
+        gke-gcloud-auth-plugin
       ]
     ))
   ];

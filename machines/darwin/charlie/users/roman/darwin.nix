@@ -10,7 +10,6 @@
     "obsidian"
     "notion"
     "obs"
-
     "steam"
   ];
 

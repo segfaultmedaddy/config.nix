@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.stateVersion = "24.11";
 
@@ -10,4 +10,9 @@
     userName = "Roman Vanesyan";
     userEmail = "roman@vanesyan.com";
   };
+
+  home.packages = with pkgs; [
+    # Ethereum tools
+    foundry
+  ];
 }
