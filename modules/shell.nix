@@ -77,6 +77,10 @@
         "$character"
       ];
 
+      right_format = lib.concatStrings [
+        "$kubernetes"
+      ];
+
       directory.style = "blue";
 
       character = {
@@ -110,6 +114,12 @@
       cmd_duration = {
         format = "[$duration]($style) ";
         style = "yellow";
+      };
+
+      kubernetes = {
+        format = "[$context:$namespace]($style)";
+        style = "blue";
+        disabled = false;
       };
     };
   };
