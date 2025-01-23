@@ -9,6 +9,7 @@
 
     aliases = {
       co = "checkout";
+      swi = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f";
       c = "commit";
       fr = "!git fetch origin \${1:-main} && git rebase -i \${1:-main}";
     };
@@ -86,12 +87,14 @@
   };
 
   programs.zsh.shellAliases = {
+    g = "git";
     gc = "git commit";
     ga = "git add";
     gf = "git pull";
     gp = "git push";
     gs = "git status";
     gco = "git co";
+    gswi = "git swi";
     gb = "git branch";
     lg = "lazygit";
   };

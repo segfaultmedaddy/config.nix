@@ -71,6 +71,7 @@
       "beekeeper-studio"
       "languagetool"
       "obsidian"
+      "github" # desktop.github.com
     ];
   };
 }
