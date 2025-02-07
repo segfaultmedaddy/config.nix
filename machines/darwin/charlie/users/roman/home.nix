@@ -14,5 +14,7 @@
   home.packages = with pkgs; [
     # Ethereum tools
     foundry
+    
+    vscodium
   ];
 }

@@ -6,7 +6,6 @@
 
   homebrew.casks = [
     "transmission"
-    "android-studio"
     "obsidian"
     "notion"
     "obs"

@@ -16,6 +16,7 @@
     pv
     asciinema # terminal recording
     asciinema-agg # convert ascii scene to gif
+    ast-grep # grep for code
   ];
 
   programs.zsh = {

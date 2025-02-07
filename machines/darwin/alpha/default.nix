@@ -9,7 +9,6 @@
 
     casks = [
       "transmission"
-      "android-studio"
     ];
   };
 }

@@ -58,6 +58,7 @@
       Flow = 1423210932; # pomodoro timer
       DigiDoc4 = 1370791134;
       "Web eID" = 1576665083;
+      WhatsApp = 310633997;
     };
 
     casks = [
@@ -71,7 +72,6 @@
       "beekeeper-studio"
       "languagetool"
       "obsidian"
-      "github" # desktop.github.com
     ];
   };
 }
