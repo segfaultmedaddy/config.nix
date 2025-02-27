@@ -1,6 +1,6 @@
 { ... }:
 {
-  services.nix-daemon.enable = true;
+  # nix.enable = true;
   nix.gc = {
     automatic = true;
     interval = {

@@ -26,7 +26,7 @@
   system.defaults.universalaccess.reduceTransparency = true;
 
   # Enable sudo via TouchID or Apple Watch.
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   programs.gnupg.agent = {
     enable = true;

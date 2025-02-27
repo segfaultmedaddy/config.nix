@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
-    neofetch
+    fastfetch # fetch system info
     ripgrep # faster grep
     fd # faster find
     tree # file tree view

@@ -5,7 +5,7 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,7 +54,7 @@
         user = "roman";
       };
 
-      darwinConfigurations."macbook-pro-m2" = mkDarwinAarch64System {
+      darwinConfigurations."bravo" = mkDarwinAarch64System {
         inherit inputs;
         machine = "bravo";
         user = "roman";
