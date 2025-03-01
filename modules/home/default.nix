@@ -30,14 +30,17 @@
     # Languages
     pkgs.rust-bin.stable.latest.default
     pkgs.dartpkgs.stable
-    nixd
+    nodejs
+    nixd # nix lsp
     nixfmt-rfc-style
+    sourcekit-lsp # swift lsp
 
     # Cloud
     kubernetes-helm
     helm-docs
     kubectl
     kubectx
+    kubeconform # manifest validator
     (google-cloud-sdk.withExtraComponents (
       with google-cloud-sdk.components;
       [

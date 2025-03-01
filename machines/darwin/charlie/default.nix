@@ -1,6 +1,6 @@
 { ... }:
 {
-  system.stateVersion = 1;
+  system.stateVersion = 6;
 
   imports = [
     (import ../../../modules/dnsmasq.nix {
