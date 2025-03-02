@@ -17,7 +17,7 @@
   ];
 
   homebrew.casks = [
-    "docker"
     "languagetool"
+    "google-chrome"
   ];
 }

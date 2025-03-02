@@ -63,7 +63,6 @@
 
     casks = [
       "slack"
-      "google-chrome"
       "spotify"
       "discord"
       "vlc"

@@ -10,6 +10,7 @@
     "notion"
     "obs"
     "steam"
+    "docker"
   ];
 
   system.defaults.dock.persistent-apps = [
