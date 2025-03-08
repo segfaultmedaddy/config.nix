@@ -11,6 +11,7 @@
     "obs"
     "steam"
     "docker"
+    "cursor"
   ];
 
   system.defaults.dock.persistent-apps = [

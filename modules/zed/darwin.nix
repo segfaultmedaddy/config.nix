@@ -1,4 +1,7 @@
 { ... }:
 {
-  homebrew.casks = [ "zed" ];
+  homebrew.casks = [
+    "zed"
+    "zed@preview"
+  ];
 }
