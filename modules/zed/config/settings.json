@@ -1,4 +1,7 @@
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -6,9 +9,12 @@
     },
     "version": "2"
   },
-  "theme": "Atelier Plateau Light",
+  "theme": "Zed Legacy: Atelier Plateau Light",
   "ui_font_size": 14,
-  "buffer_font_size": 14,
+  "buffer_font_size": 14.0,
+  "buffer_line_height": {
+    "custom": 1.5
+  },
   "vim_mode": true,
   "ui_font_family": "SF Mono",
   "buffer_font_family": "SF Mono",
@@ -19,7 +25,7 @@
   },
 
   "inlay_hints": {
-    "enabled": true,
+    "enabled": false,
     "show_parameter_hints": true
   },
 
@@ -41,7 +47,7 @@
     "gopls": {
       "initialization_options": {
         "hints": {
-          "assignVariableTypes": true,
+          "assignVariableTypes": false,
           "compositeLiteralFields": true,
           "compositeLiteralTypes": false,
           "constantValues": false,
@@ -56,7 +62,7 @@
 
   "languages": {
     "Go": {
-      "tab_size": 8,
+      "tab_size": 2,
       "preferred_line_length": 100
     },
 

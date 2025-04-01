@@ -92,6 +92,7 @@
     ga = "git add";
     gf = "git pull";
     gp = "git push";
+    gpf = "git push --force";
     gs = "git status";
     gco = "git co";
     gswi = "git swi";
