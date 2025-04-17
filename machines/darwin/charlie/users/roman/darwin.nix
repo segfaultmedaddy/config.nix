@@ -12,6 +12,7 @@
     "steam"
     "docker"
     "cursor"
+    "elgato-camera-hub"
   ];
 
   system.defaults.dock.persistent-apps = [
