@@ -8,11 +8,14 @@
     "transmission"
     "obsidian"
     "notion"
-    "obs"
     "steam"
     "docker"
     "cursor"
     "elgato-camera-hub"
+
+    # OBS
+    "obs"
+    "obs-advanced-scene-switcher"
   ];
 
   system.defaults.dock.persistent-apps = [

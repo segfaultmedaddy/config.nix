@@ -11,7 +11,7 @@
     overlays = [
       inputs.dart.overlays.default
       (import inputs.rust)
-    ] ++ import ../../lib/overlays.nix;
+    ] ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
     hostPlatform = "${system}";
   };
 

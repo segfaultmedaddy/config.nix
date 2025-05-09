@@ -18,6 +18,7 @@
     asciinema-agg # convert ascii scene to gif
     ast-grep # grep for code
     dive # docker image explorer
+    postgresql # only for psql
   ];
 
   programs.zsh = {

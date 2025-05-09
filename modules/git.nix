@@ -54,14 +54,12 @@
         gpgSign = "if-asked";
       };
 
-      url."git@github.com:" = {
+      url."ssh://git@github.com/" = {
         insteadOf = "https://github.com/";
-        pushInsteadOf = "git://github.com/";
       };
 
-      url."git@gist.github.com:" = {
+      url."ssh://git@gist.github.com/" = {
         insteadOf = "https://gist.github.com/";
-        pushInsteadOf = "git://gist.github.com/";
       };
     };
   };
