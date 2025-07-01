@@ -24,6 +24,7 @@ inputs.darwin.lib.darwinSystem {
 
     {
       networking.hostName = "${machine}";
+      system.primaryUser = "${user}";
       users.users.${user} = {
         home = "/Users/${user}";
       };

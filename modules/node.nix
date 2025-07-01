@@ -4,7 +4,7 @@
     fnm # nodejs manager
   ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     eval "$(${pkgs.fnm}/bin/fnm env --use-on-cd)"
   '';
 }

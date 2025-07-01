@@ -25,6 +25,7 @@
 
   home.packages = with pkgs; [
     typst # like latex but better
+    pdfcpu # pdf manipulation
     ffmpeg-full
 
     # Languages
@@ -40,6 +41,7 @@
     helm-docs
     kubectl
     kubectx
+    vault # HashiCorp Vault CLI
     kubeconform # manifest validator
     (google-cloud-sdk.withExtraComponents (
       with google-cloud-sdk.components;

@@ -12,11 +12,11 @@ in
   ];
 
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       eval "$(${homebrewPrefix}/bin/brew shellenv)"
     '';
     shellAliases = {
-      nix-switch-system = "cd $CONFIG_ROOT_DIR && nix run nix-darwin -- switch --flake .#${machine} && cd -";
+      nix-switch-system = "cd $CONFIG_ROOT_DIR && sudo darwin-rebuild switch --flake .#${machine}";
       nix-update-system = "cd $CONFIG_ROOT_DIR && nix flake update && cd -";
     };
   };
