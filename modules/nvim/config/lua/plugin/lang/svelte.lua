@@ -1,21 +1,21 @@
 return {
-	-- Better syntax highlighting
-	{
-		"nvim-treesitter/nvim-treesitter",
+    -- Better syntax highlighting
+    {
+        "nvim-treesitter/nvim-treesitter",
 
-		opts = function(_, opts)
-			vim.list_extend(opts.ensure_installed, { "svelte" })
-		end,
-	},
+        opts = function(_, opts)
+            vim.list_extend(opts.ensure_installed, { "svelte" })
+        end,
+    },
 
-	{
-		"neovim/nvim-lspconfig",
+    {
+        "neovim/nvim-lspconfig",
 
-		-- @param opts lspconfig.options
-		opts = {
-			servers = {
-				svelte = {},
-			},
-		},
-	},
+        -- @param opts lspconfig.options
+        opts = {
+            servers = {
+                svelte = {},
+            },
+        },
+    },
 }

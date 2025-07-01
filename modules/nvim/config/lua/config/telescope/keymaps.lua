@@ -1,5 +1,5 @@
 if not pcall(require, "telescope") then
-	return
+    return
 end
 
 local util = require("util")

@@ -7,12 +7,12 @@ map({ "n" }, "<leader>q", "<cmd>q<CR>", { desc = "Close current split" })
 
 -- Editor
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><Esc>", {
-	desc = "Save file",
+    desc = "Save file",
 })
 map("n", "<leader>nf", "<cmd>enew<cr>", {
-	desc = "New File",
+    desc = "New File",
 })
-map({ "n" }, "<leader>p", "+p") -- Paste from system clipboard
+map({ "n" }, "<leader>p", "+p")  -- Paste from system clipboard
 map({ "v" }, "<leader>y", '"+y') -- Copy to system clipboard
 
 map("v", "<S-Tab>", "<gv", { desc = "Dedent selected block" })
@@ -39,7 +39,7 @@ map({ "n", "v" }, "]", "<C-i>", { desc = "Move cursor to the next location" })
 map({ "n", "v" }, "<leader>e[", "g;", { desc = "Move cursor to previous change location" })
 map({ "n", "v" }, "<leader>e]", "g,", { desc = "Move cursor to next change location" })
 map({ "n", "v" }, "<leader>el", "gi", {
-	desc = "Move cursor to the last position where cursor was in the insert mode",
+    desc = "Move cursor to the last position where cursor was in the insert mode",
 })
 -- Window management
 map({ "n", "v" }, "<leader>wv", "<C-w>v", { desc = "Split window horizontally" })
