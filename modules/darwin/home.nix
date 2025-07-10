@@ -10,7 +10,7 @@ in
     ../wezterm/home.nix
     # ../zed/home.nix
   ];
-
+  
   programs.zsh = {
     initContent = ''
       eval "$(${homebrewPrefix}/bin/brew shellenv)"

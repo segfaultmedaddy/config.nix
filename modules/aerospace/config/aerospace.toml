@@ -138,6 +138,8 @@ r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
+alt-f = ['fullscreen', 'mode main'] # Toggle fullscreen mode
+
 alt-h = ['join-with left', 'mode main']
 alt-j = ['join-with down', 'mode main']
 alt-k = ['join-with up', 'mode main']

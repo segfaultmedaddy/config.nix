@@ -12,6 +12,10 @@
   };
 
   home.packages = with pkgs; [
+    # vm
+    utm
+    xcode-build-server
+
     # Ethereum tools
     foundry
     # cryo
