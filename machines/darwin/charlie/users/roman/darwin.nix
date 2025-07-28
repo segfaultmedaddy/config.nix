@@ -10,7 +10,6 @@
     "notion"
     "steam"
     "docker"
-    "cursor"
     "elgato-camera-hub"
 
     # OBS

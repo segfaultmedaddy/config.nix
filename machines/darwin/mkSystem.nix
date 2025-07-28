@@ -35,7 +35,7 @@ inputs.darwin.lib.darwinSystem {
         {
           # Install rosetta.
           system.activationScripts.extraActivation.text = ''
-            softwareupdate --install-rosetta --agree-to-license
+            softwareupdate --install-rosetta --agree-to-license > /dev/null 2>&1
           '';
         }
       else
