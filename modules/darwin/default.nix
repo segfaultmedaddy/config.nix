@@ -3,47 +3,64 @@
   machine,
   system,
   inputs,
+  ...
 }:
 { pkgs, ... }:
 {
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [
-      inputs.dart.overlays.default
-      (import inputs.rust)
-    ] ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
-    hostPlatform = "${system}";
-  };
-
   imports = [
-    ./nix.nix
-    ./settings.nix
-
-    inputs.agenix.darwinModules.default
-    inputs.home-manager.darwinModules.home-manager
+    (import ../nix/default.nix { isDarwin = true; } {
+      inherit
+        system
+        inputs
+        user
+        machine
+        ;
+    })
 
     {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {
-        inherit system machine user;
+      networking.hostName = "${machine}";
+      system.primaryUser = "${user}";
+      users.users.${user} = {
+        home = "/Users/${user}";
+      };
+
+      nix.gc = {
+        automatic = true;
+        interval = {
+          Weekday = 1;
+          Hour = 0;
+          Minute = 0;
+        };
+        options = "--delete-older-than 30d";
       };
 
       home-manager.users.${user} = {
         imports = [
-          inputs.nix-index-database.homeModules.nix-index
-          inputs.agenix.homeManagerModules.default
           ./home.nix
         ];
       };
     }
 
+    ./settings.nix
     ../font/darwin.nix
     ../1password/darwin
     ../aerospace/darwin.nix
     ../wezterm/darwin.nix
     ../zed/darwin.nix
   ];
+
+  # zsh is default shell on macOS, make sure that it is configured properly with
+  # nix-darwin.
+  programs.zsh = {
+    enable = true;
+    shellInit = ''
+      # Nix
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      # End Nix
+    '';
+  };
 
   environment.shells = with pkgs; [
     bashInteractive

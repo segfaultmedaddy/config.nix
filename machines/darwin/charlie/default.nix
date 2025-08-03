@@ -11,7 +11,6 @@
       port = 53;
       addresses = {
         "internal" = "127.0.0.1";
-        "localdev.exfac.xyz" = "127.0.0.1";
       };
     })
   ];

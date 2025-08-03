@@ -15,6 +15,7 @@
     # vm
     utm
     xcode-build-server
+    lima
 
     # Ethereum tools
     foundry

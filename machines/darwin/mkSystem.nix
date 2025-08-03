@@ -16,19 +16,11 @@ let
       ;
   };
 in
-inputs.darwin.lib.darwinSystem {
+inputs.darwin.lib.darwinSystem rec {
   inherit system;
   modules = [
     defaultConfig
     ./${machine}
-
-    {
-      networking.hostName = "${machine}";
-      system.primaryUser = "${user}";
-      users.users.${user} = {
-        home = "/Users/${user}";
-      };
-    }
 
     (
       if system == "aarch64-darwin" then

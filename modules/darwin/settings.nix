@@ -1,6 +1,5 @@
 { ... }:
 {
-
   system.defaults.dock = {
     show-recents = false;
     orientation = "bottom";
@@ -19,9 +18,7 @@
     InitialKeyRepeat = 15;
     KeyRepeat = 2;
     ApplePressAndHoldEnabled = false;
-  };
 
-  system.defaults.NSGlobalDomain = {
     AppleShowAllExtensions = true; # show file extensions in Finder.
     AppleShowAllFiles = true; # show hidden files in Finder.
   };

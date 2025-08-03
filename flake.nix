@@ -9,14 +9,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # nixd requires it to support flake installations.
-    flake-compat = {
-      url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
     };
 
     agenix = {
@@ -29,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dart.url = "github:roman-vanesyan/dart-overlay";
+    dart.url = "github:segfaultmedaddy/dart-overlay";
 
     rust = {
       url = "github:oxalica/rust-overlay";
@@ -38,6 +37,11 @@
 
     naersk = {
       url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lima = {
+      url = "github:nixos-lima/nixos-lima/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -51,8 +55,30 @@
       mkDarwinAarch64System = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
       };
+      mkVMLinuxSystem = import ./machines/linux/mkSystem.nix {
+        system = "aarch64-linux";
+        isVM = true;
+      };
     in
-    {
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import inputs.nixpkgs { inherit system; };
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            # Tooling
+            just
+            typos
+            lefthook
+          ];
+        };
+
+        formatter = pkgs.nixfmt-rfc-style;
+      }
+    )
+    // {
       darwinConfigurations."macbook-pro-i7" = mkDarwinX64System {
         inherit inputs;
         machine = "alpha";
@@ -68,6 +94,14 @@
       darwinConfigurations."charlie" = mkDarwinAarch64System {
         inherit inputs;
         machine = "charlie";
+        user = "roman";
+      };
+
+      # delta is nixos running in lima.
+      nixosConfigurations."delta" = mkVMLinuxSystem {
+        inherit inputs;
+
+        machine = "delta";
         user = "roman";
       };
     };
