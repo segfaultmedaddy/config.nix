@@ -13,6 +13,9 @@
   };
 
   imports = [
+    ../kube/home.nix
+    ../tf.nix
+    ../shell.nix
     ../git.nix
     ../nvim/home.nix
   ];

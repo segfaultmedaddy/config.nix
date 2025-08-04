@@ -10,15 +10,9 @@
     wget
     jq # JSON query utility
     yq-go # like jq but for yaml
-    age # tool to encrypt content
-    bat # cat clone with syntax highlighting
     coreutils-full
     pv
-    asciinema # terminal recording
-    asciinema-agg # convert ascii scene to gif
     ast-grep # grep for code
-    dive # docker image explorer
-    postgresql # only for psql
   ];
 
   programs.zsh = {
@@ -27,9 +21,6 @@
       ll = "ls -la";
       ".." = "z ..";
       "..." = "z ../..";
-      cat = "bat";
-      htop = "btop";
-      top = "btop";
     };
 
     history = {
@@ -49,6 +40,11 @@
         "brackets"
       ];
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.ssh.enable = true;
@@ -125,11 +121,6 @@
         disabled = false;
       };
     };
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
   };
 
   home.file.".fdignore".text = ''

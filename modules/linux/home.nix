@@ -2,6 +2,9 @@
   ...
 }:
 {
+  imports = [
+    ../home
+  ];
 
   programs.zsh = {
     shellAliases = {

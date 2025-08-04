@@ -11,11 +11,9 @@ in
   imports = [
     ../home
 
-    ../shell.nix
     ../node.nix
     ../go.nix
     ../grpc.nix
-    ../tf.nix
 
     ../1password/darwin/home.nix
     ../aerospace/home.nix
@@ -31,6 +29,9 @@ in
     shellAliases = {
       nix-switch-system = "cd $CONFIG_ROOT_DIR && sudo darwin-rebuild switch --flake .#${machine}";
       nix-update-system = "cd $CONFIG_ROOT_DIR && nix flake update && cd -";
+      cat = "bat";
+      htop = "btop";
+      top = "btop";
     };
   };
 
@@ -38,6 +39,13 @@ in
     typst # like latex but better
     pdfcpu # pdf manipulation
     ffmpeg-full
+
+    asciinema # terminal recording
+    asciinema-agg # convert ascii scene to gif
+    postgresql # only for psql
+    age # tool to encrypt content
+    bat # cat clone with syntax highlighting
+    dive # docker image explorer
 
     # Languages
     pkgs.rust-bin.stable.latest.default
@@ -48,12 +56,7 @@ in
     sourcekit-lsp # swift lsp
 
     # Cloud
-    kubernetes-helm
-    helm-docs
-    kubectl
-    kubectx
     vault # HashiCorp Vault CLI
-    kubeconform # manifest validator
     (google-cloud-sdk.withExtraComponents (
       with google-cloud-sdk.components;
       [

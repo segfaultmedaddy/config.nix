@@ -6,7 +6,7 @@
   inputs,
   ...
 }:
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     (import ../nix/default.nix { isDarwin = false; } {
