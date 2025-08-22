@@ -17,12 +17,26 @@ let
       isVM
       ;
   };
+  machineConfig = import ./${machine} {
+    inherit user;
+  };
 in
 inputs.nixpkgs.lib.nixosSystem {
   inherit system;
   modules = [
     defaultConfig
-    ./${machine}
+    machineConfig
+
+    (
+      if isVM then
+        {
+          home-manager.extraSpecialArgs = {
+            hostUser = user;
+          };
+        }
+      else
+        { }
+    )
 
     {
       home-manager.users.${user} = {

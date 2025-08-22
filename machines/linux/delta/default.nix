@@ -1,8 +1,9 @@
+{ user }:
 { pkgs, ... }:
 {
   system.stateVersion = "25.11";
 
-  users.users.roman = {
+  users.users.${user} = {
     shell = pkgs.zsh;
   };
 

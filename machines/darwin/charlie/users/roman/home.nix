@@ -11,11 +11,16 @@
     userEmail = "roman@vanesyan.com";
   };
 
+  programs.zsh.shellAliases = {
+    delta = "limactl shell delta";
+  };
+
   home.packages = with pkgs; [
     # vm
-    utm
-    xcode-build-server
     lima
+
+    # zed tools for iOS
+    xcode-build-server
 
     # Ethereum tools
     foundry
