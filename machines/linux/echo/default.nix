@@ -4,11 +4,16 @@
   system.stateVersion = "25.05";
 
   users.users.${user} = {
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
+  };
+
+  programs.zsh = {
+    enable = true;
   };
 
   environment.shells = with pkgs; [
     bashInteractive
+    zsh
   ];
 
   # Enable wayland
