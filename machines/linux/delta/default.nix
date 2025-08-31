@@ -18,7 +18,5 @@
     zsh
   ];
 
-  imports = [
-    ../../../modules/kube/linux.nix
-  ];
+  imports = [ ];
 }

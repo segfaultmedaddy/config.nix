@@ -13,6 +13,11 @@
     coreutils-full
     pv
     ast-grep # grep for code
+    asciinema # terminal recording
+    asciinema-agg # convert ascii scene to gif
+    age # tool to encrypt content
+    bat # cat clone with syntax highlighting
+    dive # docker image explorer
   ];
 
   programs.zsh = {

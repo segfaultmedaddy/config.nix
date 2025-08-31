@@ -5,7 +5,8 @@
     helm-docs
     kubectl
     kubectx
-    tanka
+    cue # config language
+    timoni # like helm, but based on cue
     kubeconform # manifest validator
   ];
 }

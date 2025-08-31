@@ -59,6 +59,9 @@
         system = "aarch64-linux";
         isVM = true;
       };
+      mkLinuxSystem = import ./machines/linux/mkSystem.nix {
+        system = "amd64-linux";
+      };
     in
     inputs.flake-utils.lib.eachDefaultSystem (
       system:
@@ -103,6 +106,13 @@
 
         machine = "delta";
         user = "roman";
+      };
+
+      nixosConfigurations."echo" = mkLinuxSystem {
+        inherit inputs;
+
+        machine = "echo";
+        user = "hsmaster";
       };
     };
 }

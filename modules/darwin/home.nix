@@ -40,12 +40,7 @@ in
     pdfcpu # pdf manipulation
     ffmpeg-full
 
-    asciinema # terminal recording
-    asciinema-agg # convert ascii scene to gif
     postgresql # only for psql
-    age # tool to encrypt content
-    bat # cat clone with syntax highlighting
-    dive # docker image explorer
 
     # Languages
     pkgs.rust-bin.stable.latest.default
@@ -54,15 +49,6 @@ in
     nixd # nix lsp
     nixfmt-rfc-style
     sourcekit-lsp # swift lsp
-
-    # Cloud
-    vault # HashiCorp Vault CLI
-    (google-cloud-sdk.withExtraComponents (
-      with google-cloud-sdk.components;
-      [
-        gke-gcloud-auth-plugin
-      ]
-    ))
   ];
 
   programs.awscli.enable = true;

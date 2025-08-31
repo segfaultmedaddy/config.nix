@@ -15,6 +15,10 @@
     # OBS
     "obs"
     "obs-advanced-scene-switcher"
+
+    # Remote control
+    "rustdesk"
+    "tailscale-app"
   ];
 
   system.defaults.dock.persistent-apps = [

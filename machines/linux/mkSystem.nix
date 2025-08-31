@@ -1,6 +1,6 @@
 {
   system,
-  isVM ? true,
+  isVM ? false,
 }:
 {
   user,
@@ -31,6 +31,7 @@ inputs.nixpkgs.lib.nixosSystem {
       if isVM then
         {
           home-manager.extraSpecialArgs = {
+            inherit isVM;
             hostUser = user;
           };
         }
