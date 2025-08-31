@@ -1,5 +1,6 @@
 {
   user,
+  pkgs,
   ...
 }:
 {
@@ -23,4 +24,8 @@
       # inputs.hyprland-plugins.packages.${system}.hyprbars
     ];
   };
+
+  home.packages = with pkgs; [
+    rustdesk-flutter
+  ];
 }

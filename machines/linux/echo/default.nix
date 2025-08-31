@@ -33,4 +33,10 @@
 
   networking.networkmanager.enable = true;
   services.getty.autologinUser = "${user}";
+
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+    package = pkgs.tailscale;
+  };
 }
