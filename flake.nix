@@ -55,12 +55,12 @@
       mkDarwinAarch64System = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
       };
-      mkVMLinuxSystem = import ./machines/linux/mkSystem.nix {
+      mkLimaVMSystem = import ./machines/linux/mkSystem.nix {
         system = "aarch64-linux";
         isVM = true;
       };
-      mkLinuxSystem = import ./machines/linux/mkSystem.nix {
-        system = "amd64-linux";
+      mkLinuxX64System = import ./machines/linux/mkSystem.nix {
+        system = "x86_64-linux";
       };
     in
     inputs.flake-utils.lib.eachDefaultSystem (
@@ -101,14 +101,14 @@
       };
 
       # delta is nixos running in lima.
-      nixosConfigurations."delta" = mkVMLinuxSystem {
+      nixosConfigurations."delta" = mkLimaVMSystem {
         inherit inputs;
 
         machine = "delta";
         user = "roman";
       };
 
-      nixosConfigurations."echo" = mkLinuxSystem {
+      nixosConfigurations."echo" = mkLinuxX64System {
         inherit inputs;
 
         machine = "echo";
