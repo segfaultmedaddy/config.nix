@@ -122,7 +122,7 @@
         inherit inputs;
 
         machine = "echo";
-        user = "hsmaster";
+        user = "roman";
       };
     };
 }
