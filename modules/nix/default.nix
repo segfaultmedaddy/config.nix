@@ -34,7 +34,12 @@
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = {
-        inherit system machine user;
+        inherit
+          system
+          machine
+          user
+          inputs
+          ;
       };
 
       home-manager.users.${user} = {
