@@ -55,7 +55,16 @@
           };
         }
       else
-        { }
+        {
+          imports = [
+            # Include generated hardware config.
+            # The file must be available after the system installation.
+            /etc/nixos/hardware-configuration.nix
+          ];
+
+          boot.loader.systemd-boot.enable = true;
+          boot.loader.efi.canTouchEfiVariables = true;
+        }
     )
 
     {

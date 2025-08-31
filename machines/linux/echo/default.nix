@@ -1,7 +1,7 @@
 { user }:
 { pkgs, ... }:
 {
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.05";
 
   users.users.${user} = {
     shell = pkgs.bash;
@@ -11,5 +11,6 @@
     bashInteractive
   ];
 
-  imports = [ ];
+  networking.networkmanager.enable = true;
+  services.getty.autologinUser = "${user}";
 }

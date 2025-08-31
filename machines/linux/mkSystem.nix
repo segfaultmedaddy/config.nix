@@ -36,7 +36,8 @@ inputs.nixpkgs.lib.nixosSystem {
           };
         }
       else
-        { }
+        {
+        }
     )
 
     {
