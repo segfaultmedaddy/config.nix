@@ -16,7 +16,7 @@
     "$mod" = "SUPER";
 
     plugins = [
-      inputs.hyprland-plugins.packages.${system}.hyprbars
+      # inputs.hyprland-plugins.packages.${system}.hyprbars
     ];
   };
 }
