@@ -15,6 +15,11 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  programs.hyprland = {
+    enable = true;
+  };
+  environment.systemPackages = [ pkgs.kitty ];
+
   # Enable sound
   services.pipewire = {
     enable = true;
@@ -25,11 +30,6 @@
 
   # Enable input devices
   services.libinput.enable = true;
-
-  # Enable display manager
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager.defaultSession = "hyprland";
 
   networking.networkmanager.enable = true;
   services.getty.autologinUser = "${user}";

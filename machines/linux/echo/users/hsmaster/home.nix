@@ -1,7 +1,5 @@
 {
   user,
-  inputs,
-  system,
   ...
 }:
 {
@@ -11,6 +9,12 @@
     CONFIG_ROOT_DIR = "/home/${user}/dev/personal/config.nix";
   };
 
+  # Autostart hyprland
+  programs.bash.profileExtra = ''
+    exec Hyprland
+  '';
+
+  programs.kitty.enable = true;
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
