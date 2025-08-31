@@ -34,6 +34,8 @@ inputs.nixpkgs.lib.nixosSystem {
             inherit isVM;
             hostUser = user;
           };
+
+          users.users.${user}.home = "/home/${user}.linux";
         }
       else
         {

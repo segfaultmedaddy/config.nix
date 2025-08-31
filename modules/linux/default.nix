@@ -77,7 +77,7 @@
       networking.hostName = "${machine}";
       users.users.${user} = {
         isNormalUser = true;
-        home = "/home/${user}.linux";
+        home = "/home/${user}";
         extraGroups = [
           "wheel"
           "networkmanager"
