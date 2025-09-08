@@ -7,6 +7,7 @@
   machine,
   inputs,
   sshAuthorizedKeys ? [ ],
+  tailscaleAddr ? "",
 }:
 let
   defaultConfig = import ../../modules/linux/default.nix {
@@ -22,6 +23,7 @@ let
     inherit
       user
       sshAuthorizedKeys
+      tailscaleAddr
       ;
   };
 in

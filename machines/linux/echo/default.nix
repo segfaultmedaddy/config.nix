@@ -1,4 +1,8 @@
-{ user, sshAuthorizedKeys }:
+{
+  user,
+  sshAuthorizedKeys,
+  ...
+}:
 { pkgs, ... }:
 rec {
   system.stateVersion = "25.05";

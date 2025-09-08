@@ -49,6 +49,7 @@
   outputs =
     { ... }@inputs:
     let
+      tailscaleAddr = "tail61e33.ts.net";
       mkDarwinX64System = import ./machines/darwin/mkSystem.nix {
         system = "x86_64-darwin";
       };
@@ -109,7 +110,7 @@
       };
 
       nixosConfigurations."echo" = mkLinuxX64System {
-        inherit inputs;
+        inherit inputs tailscaleAddr;
 
         machine = "echo";
         user = "roman";
