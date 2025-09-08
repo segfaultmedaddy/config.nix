@@ -45,7 +45,7 @@ rec {
   };
 
   networking.firewall.allowedTCPPorts = services.openssh.ports;
-  networking.firewall.allowedUDPPorts = [ "${services.tailscale.port}" ];
+  networking.firewall.allowedUDPPorts = [ services.tailscale.port ];
   networking.firewall.checkReversePath = "loose";
   # networking.nftables.enable = true;
 
