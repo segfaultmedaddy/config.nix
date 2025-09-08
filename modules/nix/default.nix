@@ -23,6 +23,15 @@
 
   imports = [
     (if isDarwin then inputs.agenix.darwinModules.default else inputs.agenix.nixosModules.default)
+
+    (import ../../secrets)
+
+    {
+      environment.systemPackages = [
+        inputs.agenix.packages.${system}.default # tool to encrypt content
+      ];
+    }
+
     (
       if isDarwin then
         inputs.home-manager.darwinModules.home-manager
@@ -45,7 +54,6 @@
       home-manager.users.${user} = {
         imports = [
           inputs.nix-index-database.homeModules.nix-index
-          inputs.agenix.homeManagerModules.default
         ];
       };
     }

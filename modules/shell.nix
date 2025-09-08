@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 {
   home.packages = with pkgs; [
     fastfetch # fetch system info
@@ -52,7 +56,10 @@
     enableZshIntegration = true;
   };
 
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+  };
 
   programs.btop = {
     enable = true;

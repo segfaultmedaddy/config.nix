@@ -44,16 +44,6 @@
       url = "github:nixos-lima/nixos-lima/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
   };
 
   outputs =
@@ -123,6 +113,10 @@
 
         machine = "echo";
         user = "roman";
+
+        sshAuthorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII81uV+mVwAaq64WPaURa8sX0X7+nurd/7ya2O3Zvfe3 roman@vanesyan.com"
+        ];
       };
     };
 }

@@ -6,6 +6,7 @@
   user,
   machine,
   inputs,
+  sshAuthorizedKeys ? [ ],
 }:
 let
   defaultConfig = import ../../modules/linux/default.nix {
@@ -15,6 +16,7 @@ let
       user
       machine
       isVM
+      sshAuthorizedKeys
       ;
   };
   machineConfig = import ./${machine} {
@@ -26,6 +28,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     defaultConfig
     machineConfig
+    (import ../../secrets/default.nix { inherit inputs; })
 
     (
       if isVM then
@@ -39,6 +42,7 @@ inputs.nixpkgs.lib.nixosSystem {
         }
       else
         {
+          age.identityPaths = [ "/etc/ssh/${machine}-agenix-key" ];
         }
     )
 

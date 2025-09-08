@@ -39,6 +39,8 @@
           ./home.nix
         ];
       };
+
+      age.identityPaths = [ "/Users/${user}/.ssh/${machine}-agenix-key" ];
     }
 
     ./settings.nix

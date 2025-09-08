@@ -55,3 +55,17 @@ tags
 ### NixOS ###
 result
 .direnv
+
+### Agenix Secrets ###
+# Never commit unencrypted secrets
+*.secret
+*.key
+*.pem
+# Temporary decrypted files
+*.age.decrypted
+# Backup files from secrets editing
+secrets/*.bak
+secrets/secrets.nix.bak
+# Age identity files (private keys)
+**/keys.txt
+**/.age-identity
