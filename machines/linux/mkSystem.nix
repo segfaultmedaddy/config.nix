@@ -16,11 +16,13 @@ let
       user
       machine
       isVM
-      sshAuthorizedKeys
       ;
   };
   machineConfig = import ./${machine} {
-    inherit user;
+    inherit
+      user
+      sshAuthorizedKeys
+      ;
   };
 in
 inputs.nixpkgs.lib.nixosSystem {
