@@ -15,6 +15,7 @@
     "qemu"
     "docker"
     "docker-compose"
+    "tailscale-app"
   ];
 
   system.defaults.dock.persistent-apps = [
