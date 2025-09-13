@@ -1,6 +1,6 @@
 {
   system,
-  isVM ? false,
+  isLima ? false,
 }:
 {
   user,
@@ -16,7 +16,7 @@ let
       inputs
       user
       machine
-      isVM
+      isLima
       ;
   };
   machineConfig = import ./${machine} {
@@ -35,10 +35,10 @@ inputs.nixpkgs.lib.nixosSystem {
     (import ../../secrets/default.nix { inherit inputs; })
 
     (
-      if isVM then
+      if isLima then
         {
           home-manager.extraSpecialArgs = {
-            inherit isVM;
+            inherit isLima;
             hostUser = user;
           };
 

@@ -59,6 +59,9 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+
+    # Allow extra impure configs to be included.
+    includes = [ "config.d/*" ];
   };
 
   programs.btop = {

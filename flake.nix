@@ -58,7 +58,7 @@
       };
       mkLimaVMSystem = import ./machines/linux/mkSystem.nix {
         system = "aarch64-linux";
-        isVM = true;
+        isLima = true;
       };
       mkLinuxX64System = import ./machines/linux/mkSystem.nix {
         system = "x86_64-linux";

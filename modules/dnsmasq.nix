@@ -20,7 +20,8 @@ in
       "--listen-address=${lib.strings.concatStringsSep "," bind}"
       "--port=${toString port}"
       "--keep-in-foreground"
-    ] ++ (mapEntries (domain: addr: "--address=/${domain}/${addr}") addresses);
+    ]
+    ++ (mapEntries (domain: addr: "--address=/${domain}/${addr}") addresses);
 
     serviceConfig.KeepAlive = true;
     serviceConfig.RunAtLoad = true;
