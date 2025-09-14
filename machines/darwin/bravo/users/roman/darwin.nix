@@ -7,6 +7,7 @@
   homebrew.casks = [
     "postman"
     "webstorm"
+    "tailscale-app"
   ];
 
   homebrew.brews = [
@@ -15,7 +16,6 @@
     "qemu"
     "docker"
     "docker-compose"
-    "tailscale-app"
   ];
 
   system.defaults.dock.persistent-apps = [
