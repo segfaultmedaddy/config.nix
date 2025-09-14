@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     fnm # nodejs manager
+    nodejs
   ];
 
   programs.zsh.initContent = ''

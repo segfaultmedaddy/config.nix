@@ -8,4 +8,10 @@
   home.sessionVariables = {
     CONFIG_ROOT_DIR = "/home/${user}/dev/personal/config.nix";
   };
+
+  programs.ssh = {
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
+  };
 }

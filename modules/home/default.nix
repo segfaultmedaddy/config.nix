@@ -2,7 +2,7 @@
 # It supposed to be OS independent.
 # If system dependent configuration is needed,
 # put it under modules/<system>/home.nix
-{ ... }:
+{ pkgs, ... }:
 {
   # Tell home-manager to manage itself.
   programs.home-manager.enable = true;
@@ -12,11 +12,23 @@
     LC_CTYPE = "en_US.UTF-8";
   };
 
+  home.packages = with pkgs; [
+    postgresql # only for psql
+    nixd # nix lsp
+    nixfmt-rfc-style
+    typst # like latex but better
+    pkgs.rust-bin.stable.latest.default # rust
+    pkgs.dartpkgs.stable # dart
+  ];
+
   imports = [
     ../kube/home.nix
     ../tf.nix
     ../shell.nix
     ../git.nix
     ../nvim/home.nix
+    ../node.nix
+    ../go.nix
+    ../grpc.nix
   ];
 }

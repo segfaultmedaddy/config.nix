@@ -11,10 +11,6 @@ in
   imports = [
     ../home
 
-    ../node.nix
-    ../go.nix
-    ../grpc.nix
-
     ../1password/darwin/home.nix
     ../aerospace/home.nix
     ../wezterm/home.nix
@@ -36,18 +32,10 @@ in
   };
 
   home.packages = with pkgs; [
-    typst # like latex but better
     pdfcpu # pdf manipulation
     ffmpeg-full
 
-    postgresql # only for psql
-
     # Languages
-    pkgs.rust-bin.stable.latest.default
-    pkgs.dartpkgs.stable
-    nodejs
-    nixd # nix lsp
-    nixfmt-rfc-style
     sourcekit-lsp # swift lsp
   ];
 
