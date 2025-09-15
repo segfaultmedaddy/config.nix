@@ -48,6 +48,7 @@
           machine
           user
           inputs
+          isDarwin
           ;
       };
 
