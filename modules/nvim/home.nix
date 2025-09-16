@@ -8,7 +8,7 @@
     extraPackages = with pkgs; [
       gcc # tree-sitter dep.
       ripgrep # telescope dep.
-      cmake # fzf dep
+      gnumake # fzf dep
       fzf # telescope dep.
       fd # telescope dep.
       tree-sitter
