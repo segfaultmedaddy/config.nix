@@ -88,7 +88,7 @@
       "telegram"
       "cloudflare-warp"
       "beekeeper-studio"
-      "languagetool"
+      "languagetool-desktop"
       "obsidian"
     ];
   };

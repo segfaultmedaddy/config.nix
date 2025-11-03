@@ -11,6 +11,6 @@
   };
 
   programs.git = {
-    userName = "Roman Vanesyan";
+    user.name = "Roman Vanesyan";
   };
 }

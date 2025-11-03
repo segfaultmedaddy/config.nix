@@ -7,14 +7,14 @@
   programs.git = {
     enable = true;
 
-    aliases = {
-      co = "checkout";
-      swi = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f";
-      c = "commit";
-      fr = "!git fetch origin \${1:-main} && git rebase -i \${1:-main}";
-    };
+    settings = {
+      aliases = {
+        co = "checkout";
+        swi = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f";
+        c = "commit";
+        fr = "!git fetch origin \${1:-main} && git rebase -i \${1:-main}";
+      };
 
-    extraConfig = {
       core = {
         editor = "nvim";
         pager = "delta";

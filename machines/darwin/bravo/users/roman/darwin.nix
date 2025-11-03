@@ -14,7 +14,7 @@
     "colima"
     "lima"
     "qemu"
-    "docker"
+    "docker-desktop"
     "docker-compose"
   ];
 

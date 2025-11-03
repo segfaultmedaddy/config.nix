@@ -2,7 +2,7 @@
 {
   programs.go = {
     enable = true;
-    goPath = "go";
+    env.GOPATH = "$HOME/go";
     package = pkgs.go;
   };
 

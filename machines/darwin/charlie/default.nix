@@ -16,7 +16,7 @@
   ];
 
   homebrew.casks = [
-    "languagetool"
+    "languagetool-desktop"
     "google-chrome"
   ];
 }

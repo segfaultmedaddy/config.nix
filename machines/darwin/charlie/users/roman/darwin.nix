@@ -9,7 +9,7 @@
     "obsidian"
     "notion"
     "steam"
-    "docker"
+    "docker-desktop"
     "elgato-camera-hub"
 
     # OBS
