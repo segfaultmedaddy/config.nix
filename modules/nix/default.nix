@@ -5,7 +5,7 @@
   system,
   inputs,
 }:
-{ ... }:
+{ pkgs, ... }:
 {
   nixpkgs = {
     config.allowUnfree = true;
@@ -28,7 +28,7 @@
 
     {
       environment.systemPackages = [
-        inputs.agenix.packages.${system}.default # tool to encrypt content
+        inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default # tool to encrypt content
       ];
     }
 

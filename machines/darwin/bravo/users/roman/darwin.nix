@@ -19,7 +19,6 @@
   ];
 
   system.defaults.dock.persistent-apps = [
-    "/System/Applications/Launchpad.app"
     "/System/Applications/Calendar.app"
     "/System/Applications/Mail.app"
     "/Applications/Google Chrome.app"

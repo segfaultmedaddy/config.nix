@@ -7,7 +7,7 @@
   };
 
   programs.git = {
-    settings.user.name = "Roman Vanesyan";
+    settings.user.name = "Roman";
     settings.user.email = "roman@vanesyan.com";
   };
 

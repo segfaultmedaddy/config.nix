@@ -1,11 +1,14 @@
 {
   machine,
+  user,
   ...
 }:
 {
   imports = [
     ../home
   ];
+
+  home.homeDirectory = "/home/${user}";
 
   programs.zsh = {
     shellAliases = {

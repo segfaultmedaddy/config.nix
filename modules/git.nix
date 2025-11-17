@@ -8,7 +8,7 @@
     enable = true;
 
     settings = {
-      aliases = {
+      alias = {
         co = "checkout";
         swi = "!f() { git switch $1 2>/dev/null || git switch -c $1; }; f";
         c = "commit";

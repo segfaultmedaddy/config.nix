@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.go = {
     enable = true;
-    env.GOPATH = "$HOME/go";
+    env.GOPATH = "${config.home.homeDirectory}/go";
     package = pkgs.go;
   };
 
   home.sessionPath = [
-    "$HOME/go/bin"
+    "${config.home.homeDirectory}/go/bin"
   ];
 }

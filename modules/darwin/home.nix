@@ -1,6 +1,7 @@
 {
   machine,
   system,
+  user,
   pkgs,
   ...
 }:
@@ -17,6 +18,8 @@ in
 
     # ../zed/home.nix
   ];
+
+  home.homeDirectory = "/Users/${user}";
 
   programs.zsh = {
     initContent = ''
