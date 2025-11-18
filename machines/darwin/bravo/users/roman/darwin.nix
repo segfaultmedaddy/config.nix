@@ -5,6 +5,7 @@
   };
 
   homebrew.casks = [
+    "docker-desktop"
     "postman"
     "webstorm"
     "tailscale-app"
@@ -14,7 +15,6 @@
     "colima"
     "lima"
     "qemu"
-    "docker-desktop"
     "docker-compose"
   ];
 
