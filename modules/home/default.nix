@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     postgresql # only for psql
     nixd # nix lsp
-    nixfmt-rfc-style
+    nixfmt
     typst # like latex but better
     pkgs.rust-bin.stable.latest.default # rust
     pkgs.dartpkgs.stable # dart

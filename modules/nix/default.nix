@@ -14,7 +14,6 @@
       (import inputs.rust)
     ]
     ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
-    hostPlatform = "${system}";
   };
 
   nix.settings.experimental-features = ''

@@ -90,6 +90,7 @@
       "beekeeper-studio"
       "languagetool-desktop"
       "obsidian"
+      "cursor"
     ];
   };
 }
