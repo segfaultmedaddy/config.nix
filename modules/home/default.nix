@@ -2,7 +2,12 @@
 # It supposed to be OS independent.
 # If system dependent configuration is needed,
 # put it under modules/<system>/home.nix
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   # Tell home-manager to manage itself.
   programs.home-manager.enable = true;
@@ -19,6 +24,7 @@
     typst # like latex but better
     pkgs.rust-bin.stable.latest.default # rust
     pkgs.dartpkgs.stable # dart
+    inputs.opencode.packages.${system}.default # opencode
   ];
 
   imports = [

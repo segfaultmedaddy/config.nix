@@ -22,7 +22,7 @@
     age # tool to encrypt content
     bat # cat clone with syntax highlighting
     dive # docker image explorer
-    devenv # nix based development environment
+    devenv
   ];
 
   programs.zsh = {

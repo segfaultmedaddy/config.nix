@@ -44,6 +44,11 @@
       url = "github:nixos-lima/nixos-lima/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    opencode = {
+      url = "github:anomalyco/opencode/dev";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
