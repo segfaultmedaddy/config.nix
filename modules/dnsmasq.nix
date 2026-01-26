@@ -28,7 +28,7 @@ in
   };
 
   environment.etc = builtins.listToAttrs (
-    builtins.map (domain: {
+    map (domain: {
       name = "resolver/${domain}";
       value = {
         enable = true;

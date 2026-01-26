@@ -91,6 +91,10 @@
       "languagetool-desktop"
       "obsidian"
       "cursor"
+
+      # AI
+      "conductor"
+      "handy"
     ];
   };
 }

@@ -36,10 +36,11 @@ in
 
   home.packages = with pkgs; [
     pdfcpu # pdf manipulation
-    ffmpeg-full
+    (lib.hiPrio ffmpeg-full)
+    clawdbot-app
 
     # Languages
-    sourcekit-lsp # swift lsp
+    # sourcekit-lsp # swift lsp
   ];
 
   programs.awscli.enable = true;

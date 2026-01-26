@@ -36,5 +36,6 @@
     ../node.nix
     ../go.nix
     ../grpc.nix
+    ../clawdbot
   ];
 }

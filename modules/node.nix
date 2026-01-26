@@ -1,4 +1,9 @@
-{ pkgs, isDarwin, ... }:
+{
+  lib,
+  pkgs,
+  isDarwin,
+  ...
+}:
 let
   fnm =
     if isDarwin then
@@ -13,7 +18,7 @@ in
 {
   home.packages = [
     # nodejs manager
-    pkgs.nodejs
+    (lib.hiPrio pkgs.nodejs)
   ]
   ++ (if isDarwin then [ pkgs.fnm ] else [ ]);
 }

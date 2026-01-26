@@ -69,3 +69,7 @@ secrets/secrets.nix.bak
 # Age identity files (private keys)
 **/keys.txt
 **/.age-identity
+
+
+clawd_claude_key.txt
+clawd_tg_token.txt

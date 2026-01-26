@@ -12,6 +12,7 @@
     overlays = [
       inputs.dart.overlays.default
       (import inputs.rust)
+      inputs.nix-clawdbot.overlays.default
     ]
     ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
   };
@@ -54,6 +55,7 @@
       home-manager.users.${user} = {
         imports = [
           inputs.nix-index-database.homeModules.nix-index
+          inputs.nix-clawdbot.homeManagerModules.clawdbot
         ];
       };
     }
