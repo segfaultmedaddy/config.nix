@@ -51,7 +51,7 @@
     };
 
     nix-clawdbot = {
-      url = "github:clawdbot/nix-clawdbot";
+      url = "github:moltbot/nix-clawdbot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

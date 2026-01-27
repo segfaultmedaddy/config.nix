@@ -55,6 +55,7 @@ tags
 ### NixOS ###
 result
 .direnv
+envrc.local
 
 ### Agenix Secrets ###
 # Never commit unencrypted secrets

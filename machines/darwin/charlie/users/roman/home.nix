@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ../../../../../modules/clawdbot
+  ];
+
   home.stateVersion = "24.11";
 
   home.sessionVariables = {
