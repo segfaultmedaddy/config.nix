@@ -37,7 +37,6 @@ in
   home.packages = with pkgs; [
     pdfcpu # pdf manipulation
     (lib.hiPrio ffmpeg-full)
-    clawdbot-app
 
     # Languages
     # sourcekit-lsp # swift lsp

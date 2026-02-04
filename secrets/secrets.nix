@@ -9,6 +9,4 @@ let
   allSystems = builtins.attrValues systems;
 in
 {
-  "secrets/clawdbot_telegram_token.age".publicKeys = allSystems;
-  "secrets/clawdbot_anthropic_key.age".publicKeys = allSystems;
 }

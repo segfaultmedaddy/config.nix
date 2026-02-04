@@ -49,11 +49,6 @@
       url = "github:anomalyco/opencode/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-clawdbot = {
-      url = "github:moltbot/nix-clawdbot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
