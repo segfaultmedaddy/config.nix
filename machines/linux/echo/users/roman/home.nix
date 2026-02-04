@@ -1,9 +1,14 @@
 {
   user,
+  pkgs,
   ...
 }:
 {
   home.stateVersion = "25.11";
+
+  home.packages = with pkgs; [
+    docker-compose
+  ];
 
   home.sessionVariables = {
     CONFIG_ROOT_DIR = "/home/${user}/dev/personal/config.nix";
@@ -22,5 +27,6 @@
 
   services.ssh-agent = {
     enable = true;
+    enableZshIntegration = true;
   };
 }

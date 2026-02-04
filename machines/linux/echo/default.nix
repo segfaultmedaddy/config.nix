@@ -10,6 +10,7 @@ rec {
   users.users.${user} = {
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = sshAuthorizedKeys;
+    extraGroups = [ "docker" ];
   };
 
   programs.zsh = {
@@ -56,4 +57,6 @@ rec {
   programs._1password = {
     enable = true;
   };
+
+  virtualisation.docker.enable = true;
 }
