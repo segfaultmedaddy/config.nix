@@ -16,7 +16,7 @@
     yq-go # like jq but for yaml
     coreutils-full
     pv
-    ast-grep # grep for code
+    # ast-grep # grep for code # activate once ast-grep is 0.41.1
     asciinema # terminal recording
     asciinema-agg # convert ascii scene to gif
     age # tool to encrypt content

@@ -93,7 +93,6 @@
       "cursor"
 
       # AI
-      "conductor"
       "handy"
     ];
   };

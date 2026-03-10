@@ -11,6 +11,7 @@
     config.allowUnfree = true;
     overlays = [
       inputs.dart.overlays.default
+      inputs.devenv.overlays.default
       (import inputs.rust)
     ]
     ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });

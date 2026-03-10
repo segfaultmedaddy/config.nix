@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [
-    ../../../../../modules/clawdbot
-  ];
+  imports = [ ];
 
   home.stateVersion = "24.11";
 
