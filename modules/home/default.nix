@@ -5,7 +5,6 @@
 {
   pkgs,
   inputs,
-  system,
   ...
 }:
 {
@@ -22,9 +21,10 @@
     nixd # nix lsp
     nixfmt
     typst # like latex but better
-    pkgs.rust-bin.stable.latest.default # rust
-    pkgs.dartpkgs.stable # dart
-    inputs.opencode.packages.${system}.default # opencode
+    rust-bin.stable.latest.default # rust
+    dartpkgs.stable # dart
+    # opencode
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default # opencode
   ];
 
   imports = [

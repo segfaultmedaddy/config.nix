@@ -19,6 +19,9 @@
     # Remote control
     "rustdesk"
     "tailscale-app"
+
+    # Gaming
+    "nvidia-geforce-now"
   ];
 
   system.defaults.dock.persistent-apps = [

@@ -2,7 +2,6 @@
   isLima,
   user,
   machine,
-  system,
   inputs,
   ...
 }:
@@ -11,7 +10,6 @@
   imports = [
     (import ../nix/default.nix { isDarwin = false; } {
       inherit
-        system
         inputs
         user
         machine

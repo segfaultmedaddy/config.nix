@@ -1,7 +1,6 @@
 {
   user,
   machine,
-  system,
   inputs,
   ...
 }:
@@ -10,7 +9,6 @@
   imports = [
     (import ../nix/default.nix { isDarwin = true; } {
       inherit
-        system
         inputs
         user
         machine

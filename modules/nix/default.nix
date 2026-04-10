@@ -2,7 +2,6 @@
 {
   user,
   machine,
-  system,
   inputs,
 }:
 { pkgs, ... }:
@@ -49,7 +48,6 @@
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = {
         inherit
-          system
           machine
           user
           inputs

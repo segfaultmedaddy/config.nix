@@ -1,12 +1,11 @@
 {
   machine,
-  system,
   user,
   pkgs,
   ...
 }:
 let
-  homebrewPrefix = (if system == "aarch64-darwin" then "/opt/homebrew" else "/usr/local");
+  homebrewPrefix = (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then "/opt/homebrew" else "/usr/local");
 in
 {
   imports = [

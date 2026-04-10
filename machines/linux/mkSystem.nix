@@ -12,7 +12,6 @@
 let
   defaultConfig = import ../../modules/linux/default.nix {
     inherit
-      system
       inputs
       user
       machine
@@ -28,8 +27,8 @@ let
   };
 in
 inputs.nixpkgs.lib.nixosSystem {
-  inherit system;
   modules = [
+    { nixpkgs.hostPlatform = system; }
     defaultConfig
     machineConfig
     (import ../../secrets/default.nix { inherit inputs; })

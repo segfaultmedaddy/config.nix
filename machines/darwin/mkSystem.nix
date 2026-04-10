@@ -9,16 +9,15 @@
 let
   defaultConfig = import ../../modules/darwin/default.nix {
     inherit
-      system
       inputs
       user
       machine
       ;
   };
 in
-inputs.darwin.lib.darwinSystem rec {
-  inherit system;
+inputs.darwin.lib.darwinSystem {
   modules = [
+    { nixpkgs.hostPlatform = system; }
     defaultConfig
     ./${machine}
 
