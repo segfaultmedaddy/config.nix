@@ -13,7 +13,7 @@
       inputs.devenv.overlays.default
       (import inputs.rust)
     ]
-    ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
+    ++ (import ../../lib/overlays.nix { inherit (inputs) naersk opencode; });
   };
 
   nix.settings = {
