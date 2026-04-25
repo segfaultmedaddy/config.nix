@@ -1,5 +1,9 @@
 inputs: final: prev: {
   apple-sf-mono-font = final.pkgs.callPackage ../packages/sf-mono-font.nix { };
+  bun = prev.callPackage ../packages/bun.nix {
+    bun = prev.bun;
+    fetchurl = prev.fetchurl;
+  };
   direnv = prev.direnv.overrideAttrs (old: {
     # Temporary local workaround for Darwin build/test issues.
     # Upstream: https://github.com/NixOS/nixpkgs/pull/513081
