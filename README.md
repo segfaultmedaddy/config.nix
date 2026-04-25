@@ -1,13 +1,52 @@
 # config.nix
-Nix config for my macOS devices
 
+Personal Nix flake for macOS (`nix-darwin`) and Linux (`nixos` + `home-manager`) machines.
+
+## Start here
+
+- `flake.nix`: machine registry and top-level outputs.
+- `machines/darwin/mkSystem.nix` and `machines/linux/mkSystem.nix`: how a host is assembled.
+- `modules/darwin/default.nix` and `modules/linux/default.nix`: shared OS defaults.
+- `modules/home/default.nix`: shared `home-manager` config.
+- `machines/<platform>/<machine>/`: host-specific config.
+
+## Layout
+
+- `machines/darwin/<machine>/default.nix`: machine-level macOS settings.
+- `machines/darwin/<machine>/users/<user>/darwin.nix`: user-specific `nix-darwin` settings.
+- `machines/darwin/<machine>/users/<user>/home.nix`: user-specific `home-manager` settings.
+- `machines/linux/<machine>/default.nix`: machine-level NixOS settings.
+- `machines/linux/<machine>/users/<user>/home.nix`: user-specific `home-manager` settings.
+- `modules/`: reusable shared modules.
+- `packages/`: custom packages and overlays.
+- `secrets/`: agenix-backed secret definitions.
+
+## Apply
+
+macOS:
+
+```sh
+nix run nix-darwin -- switch --flake .#<darwinConfiguration>
 ```
-nix run nix-darwin -- switch --flake .#macbook-pro-i7
+
+Linux:
+
+```sh
+sudo nixos-rebuild switch --flake .#<nixosConfiguration> --impure
 ```
 
-### Installation process
-Before applying the configuration make sure to give a full access to disk
-to the terminal used to run the command.
+`--impure` is required for NixOS hosts here because the shared Linux module imports `/etc/nixos/hardware-configuration.nix`, the default hardware config generated on the target machine.
 
-For this go to the `System Preferences -> Security & Privacy -> Full Disk Access`
-and enable the terminal.
+## Add a new machine
+
+1. Pick the platform: `machines/darwin` or `machines/linux`.
+2. Copy a nearby machine as a template.
+3. Add the minimum host files:
+   `default.nix`, plus `users/<user>/home.nix`, and on Darwin also `users/<user>/darwin.nix`.
+4. Register the machine in `flake.nix` under `darwinConfigurations` or `nixosConfigurations`.
+5. Apply it with the matching flake output name.
+
+## Notes
+
+- Shared changes usually belong in `modules/`; machine-only changes belong under `machines/`.
+- On macOS, give your terminal Full Disk Access before the first switch.
