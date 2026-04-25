@@ -1,3 +1,7 @@
+# I don't use bun for anything else beside the opencode, so it makes sense to
+# keep the global bun in sync with the opencode deps version.
+#
+# The proper fix is prolly to backport the override to opencode's flake.
 { bun, fetchurl }:
 bun.overrideAttrs (old: {
   version = "1.3.13";

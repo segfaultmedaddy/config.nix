@@ -4,14 +4,6 @@
   ...
 }:
 inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode.overrideAttrs (old: {
-  nativeBuildInputs =
-    (builtins.filter (pkg: (pkg.pname or pkg.name or "") != "bun") (old.nativeBuildInputs or [ ]))
-    ++ [ pkgs.bun ];
-
-  buildInputs =
-    (builtins.filter (pkg: (pkg.pname or pkg.name or "") != "bun") (old.buildInputs or [ ]))
-    ++ [ pkgs.bun ];
-
   # https://github.com/anomalyco/opencode/issues/23719#issuecomment-4308932129
   preBuild = (old.preBuild or "") + ''
     substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
