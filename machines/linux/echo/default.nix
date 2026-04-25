@@ -7,6 +7,10 @@
 rec {
   system.stateVersion = "25.05";
 
+  imports = [
+    ../../../modules/home-assistant
+  ];
+
   users.users.${user} = {
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = sshAuthorizedKeys;

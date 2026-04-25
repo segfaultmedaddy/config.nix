@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   # setup systemd for lima vm.
   services.lima.enable = true;

@@ -1,10 +1,10 @@
 images:
-  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.1/nixos-lima-v0.0.1-aarch64.qcow2"
-    arch: "aarch64"
-    digest: "sha512:be91ec3270690cf682d5ceccce7201580804038b9407c729d750f9d53400e215debf7504d829399fee991efbc10469ea1a1aeb8bcf95919185bd15546790a0e2"
-  - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.1/nixos-lima-v0.0.1-x86_64.qcow2"
-    arch: "x86_64"
-    digest: "sha512:40c816780b75ff2bb645dae5d800ff7a6512b171795ef381626da593afa364c614ed781e22f53afb6e959eb177d5501005d17c5fa8b4994a549700e3fecd3ff7"
+    - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.5/nixos-lima-v0.0.5-aarch64.qcow2"
+      arch: "aarch64"
+      digest: "sha512:be91ec3270690cf682d5ceccce7201580804038b9407c729d750f9d53400e215debf7504d829399fee991efbc10469ea1a1aeb8bcf95919185bd15546790a0e2"
+    - location: "https://github.com/nixos-lima/nixos-lima/releases/download/v0.0.5/nixos-lima-v0.0.5-x86_64.qcow2"
+      arch: "x86_64"
+      digest: "sha512:40c816780b75ff2bb645dae5d800ff7a6512b171795ef381626da593afa364c614ed781e22f53afb6e959eb177d5501005d17c5fa8b4994a549700e3fecd3ff7"
 
 memory: 8GiB
 cpus: 6
@@ -15,11 +15,11 @@ mountType: "virtiofs" # virtiofs requires VZ vm.
 mountInotify: true
 
 mounts:
-  - location: "~"
-    writable: false
-  - location: "/tmp/lima"
-    writable: true
+    - location: "~"
+      writable: false
+    - location: "/tmp/lima"
+      writable: true
 
 containerd:
-  system: false
-  user: false
+    system: false
+    user: false
