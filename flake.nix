@@ -32,6 +32,11 @@
 
     dart.url = "github:segfaultmedaddy/dart-overlay";
 
+    zig = {
+      url = "github:mitchellh/zig-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

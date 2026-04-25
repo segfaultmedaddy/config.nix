@@ -19,6 +19,7 @@ in
   home.packages = [
     # nodejs manager
     (lib.hiPrio pkgs.nodejs)
+    pkgs.bun
   ]
   ++ (if isDarwin then [ pkgs.fnm ] else [ ]);
 }

@@ -22,6 +22,7 @@
     typst # like latex but better
     rust-bin.stable.latest.default # rust
     dartpkgs.stable # dart
+    zigpkgs.default # zig
     opencode-patched
   ];
 
