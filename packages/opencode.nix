@@ -7,6 +7,9 @@ let
   patched-bun = pkgs.bun.overrideAttrs (old: {
     version = "1.3.13";
 
+    # remove warnings about missing src override.
+    __intentionallyOverridingVersion = true;
+
     passthru = old.passthru // {
       sources = old.passthru.sources // {
         "aarch64-darwin" = pkgs.fetchurl {
@@ -38,6 +41,7 @@ inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode.overrideAtt
     (builtins.filter (pkg: (pkg.pname or pkg.name or "") != "bun") (old.buildInputs or [ ]))
     ++ [ patched-bun ];
 
+  # https://github.com/anomalyco/opencode/issues/23719#issuecomment-4308932129
   preBuild = (old.preBuild or "") + ''
     substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
       --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \

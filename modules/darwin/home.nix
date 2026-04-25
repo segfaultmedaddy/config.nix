@@ -5,7 +5,9 @@
   ...
 }:
 let
-  homebrewPrefix = (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then "/opt/homebrew" else "/usr/local");
+  homebrewPrefix = (
+    if pkgs.stdenv.hostPlatform.system == "aarch64-darwin" then "/opt/homebrew" else "/usr/local"
+  );
 in
 {
   imports = [
@@ -32,14 +34,6 @@ in
       top = "btop";
     };
   };
-
-  home.packages = with pkgs; [
-    pdfcpu # pdf manipulation
-    (lib.hiPrio ffmpeg-full)
-
-    # Languages
-    # sourcekit-lsp # swift lsp
-  ];
 
   programs.awscli.enable = true;
 }

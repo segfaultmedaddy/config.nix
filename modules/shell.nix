@@ -19,6 +19,8 @@
     # ast-grep # grep for code # activate once ast-grep is 0.41.1
     asciinema # terminal recording
     asciinema-agg # convert ascii scene to gif
+    ffmpeg # video processing
+    pdfcpu # pdf manipulation
     age # tool to encrypt content
     bat # cat clone with syntax highlighting
     dive # docker image explorer
@@ -31,6 +33,9 @@
       ll = "ls -la";
       ".." = "z ..";
       "..." = "z ../..";
+
+      # TODO(segfaultmedaddy): maybe we should disable the override on linux?
+      cat = "bat";
     };
 
     history = {
@@ -68,6 +73,8 @@
   programs.btop = {
     enable = true;
   };
+  programs.zsh.shellAliases.htop = "btop";
+  programs.zsh.shellAliases.top = "btop";
 
   programs.direnv = {
     enable = true;

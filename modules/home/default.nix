@@ -25,10 +25,16 @@
     opencode-patched
   ];
 
+  programs.rtk = {
+    enable = true;
+    settings.tee.mode = "failures";
+  };
+
   imports = [
     ../kube/home.nix
     ../tf.nix
     ../shell.nix
+    ../rtk.nix
     ../git.nix
     ../nvim/home.nix
     ../node.nix
