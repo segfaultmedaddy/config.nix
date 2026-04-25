@@ -1,6 +1,5 @@
 inputs: final: prev: {
   apple-sf-mono-font = final.pkgs.callPackage ../packages/sf-mono-font.nix { };
-  cryo = final.pkgs.callPackage ../packages/cryo.nix { inherit (inputs) naersk; };
   direnv = prev.direnv.overrideAttrs (old: {
     # Temporary local workaround for Darwin build/test issues.
     # Upstream: https://github.com/NixOS/nixpkgs/pull/513081

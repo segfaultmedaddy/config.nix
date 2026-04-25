@@ -26,7 +26,6 @@
 
     # Ethereum tools
     foundry
-    # cryo
 
     # Cloud
     vault # HashiCorp Vault CLI
