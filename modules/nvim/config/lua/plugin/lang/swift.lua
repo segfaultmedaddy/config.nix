@@ -13,8 +13,11 @@ return {
         -- @param opts lspconfig.options
         opts = {
             servers = {
-                sourcekit = {},
-                root_dir = { "Package.swift", "Project.swift", ".git" },
+                sourcekit = {
+                    root_dir = function(fname)
+                        return require("lspconfig.util").root_pattern("Package.swift", "Project.swift", ".git")(fname)
+                    end,
+                },
             },
         },
     },

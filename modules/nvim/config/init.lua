@@ -3,7 +3,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.lsp.set_log_level("info")
+vim.lsp.log.set_level("info")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

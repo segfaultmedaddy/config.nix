@@ -7,16 +7,15 @@ return {
             vim.list_extend(opts.ensure_installed, { "lua" })
         end,
     },
+
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {},
+    },
+
     {
         "neovim/nvim-lspconfig",
-
-        dependencies = {
-            -- lua LSP and some extra goodies
-            {
-                "folke/neodev.nvim",
-                config = true,
-            },
-        },
 
         -- @param opts lspconfig.options
         opts = {

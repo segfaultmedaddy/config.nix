@@ -3,20 +3,30 @@ return {
         "kylechui/nvim-surround",
         event = "VeryLazy",
         config = function()
-            require("nvim-surround").setup({
-                keymaps = {
-                    insert = "<C-g>s",
-                    insert_line = "<C-g>S",
-                    normal = "<leader>s",
-                    normal_cur = "<leader>ss",
-                    normal_line = "yS",
-                    normal_cur_line = "ySS",
-                    visual = "S",
-                    visual_line = "gS",
-                    delete = "ds",
-                    change = "cs",
-                    change_line = "cS",
-                },
+            vim.g.nvim_surround_no_normal_mappings = true
+
+            require("nvim-surround").setup()
+
+            vim.keymap.set("n", "<leader>s", "<Plug>(nvim-surround-normal)", {
+                desc = "Add a surrounding pair around a motion",
+            })
+            vim.keymap.set("n", "<leader>ss", "<Plug>(nvim-surround-normal-cur)", {
+                desc = "Add a surrounding pair around the current line",
+            })
+            vim.keymap.set("n", "yS", "<Plug>(nvim-surround-normal-line)", {
+                desc = "Add a surrounding pair around a motion on new lines",
+            })
+            vim.keymap.set("n", "ySS", "<Plug>(nvim-surround-normal-cur-line)", {
+                desc = "Add a surrounding pair around the current line on new lines",
+            })
+            vim.keymap.set("n", "ds", "<Plug>(nvim-surround-delete)", {
+                desc = "Delete a surrounding pair",
+            })
+            vim.keymap.set("n", "cs", "<Plug>(nvim-surround-change)", {
+                desc = "Change a surrounding pair",
+            })
+            vim.keymap.set("n", "cS", "<Plug>(nvim-surround-change-line)", {
+                desc = "Change a surrounding pair on new lines",
             })
         end,
     },

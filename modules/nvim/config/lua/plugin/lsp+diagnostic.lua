@@ -45,8 +45,9 @@ return {
             local capabilities =
                 require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-            local function setup(server)
+            local function setup(server, enable)
                 local server_opts = servers[server] or {}
+                server_opts = server_opts == true and {} or server_opts
                 server_opts.capabilities = capabilities
 
                 if opts.setup[server] then
@@ -58,7 +59,10 @@ return {
                         return
                     end
                 end
-                require("lspconfig")[server].setup(server_opts)
+                vim.lsp.config(server, server_opts)
+                if enable then
+                    vim.lsp.enable(server)
+                end
             end
 
             local mlsp = require("mason-lspconfig")
@@ -68,8 +72,9 @@ return {
                 if server_opts then
                     server_opts = server_opts == true and {} or server_opts
                     if not vim.tbl_contains(available, server) then
-                        setup(server)
+                        setup(server, true)
                     else
+                        setup(server, false)
                         ensure_installed[#ensure_installed + 1] = server
                     end
                 end
@@ -77,7 +82,6 @@ return {
 
             mlsp.setup({
                 ensure_installed = ensure_installed,
-                handlers = { setup }
             })
         end,
     },
