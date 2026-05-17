@@ -2,7 +2,6 @@ inputs:
 let
   path = ../overlays;
   inherit (builtins)
-    map
     filter
     attrNames
     readDir
