@@ -5,30 +5,13 @@
   };
 
   homebrew.casks = [
-    "transmission"
-    "obsidian"
-    "notion"
-    "steam"
-    "docker-desktop"
     "elgato-camera-hub"
-
-    # OBS
-    "obs"
-    "obs-advanced-scene-switcher"
-
-    # Remote control
-    "rustdesk"
-    "tailscale-app"
-
-    # Gaming
-    "nvidia-geforce-now"
   ];
 
   system.defaults.dock.persistent-apps = [
     "/System/Applications/Calendar.app"
     "/System/Applications/Mail.app"
     "/Applications/Google Chrome.app"
-    "/Applications/Obsidian.app"
     "/Applications/WezTerm.app"
     "/Applications/Zed.app"
     "/Applications/Telegram.app"

@@ -7,8 +7,7 @@
   homebrew.casks = [
     "docker-desktop"
     "postman"
-    "webstorm"
-    "tailscale-app"
+    "cursor"
   ];
 
   homebrew.brews = [

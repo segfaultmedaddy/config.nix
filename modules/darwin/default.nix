@@ -45,8 +45,6 @@
     ../font/darwin.nix
     ../1password/darwin
     ../aerospace/darwin.nix
-    ../wezterm/darwin.nix
-    ../zed/darwin.nix
   ];
 
   # zsh is default shell on macOS, make sure that it is configured properly with
@@ -72,10 +70,8 @@
 
     masApps = {
       Xcode = 497799835;
-      Flow = 1423210932; # pomodoro timer
       DigiDoc4 = 1370791134;
       "Web eID" = 1576665083;
-      WhatsApp = 310633997;
     };
 
     casks = [
@@ -84,11 +80,11 @@
       "discord"
       "vlc"
       "telegram"
-      "cloudflare-warp"
       "beekeeper-studio"
       "languagetool-desktop"
-      "obsidian"
-      "cursor"
+      "docker-desktop"
+      "zed"
+      "tailscale-app"
 
       # AI
       "handy"

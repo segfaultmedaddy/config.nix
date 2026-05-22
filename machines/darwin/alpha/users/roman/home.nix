@@ -1,8 +1,8 @@
 { ... }:
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "25.11";
   home.sessionVariables = {
-    CONFIG_ROOT_DIR = "$HOME/dev/personal/config.nix";
+    CONFIG_ROOT_DIR = "$HOME/dev/segfaultmedaddy/config.nix";
   };
 
   programs.git = {
