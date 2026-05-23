@@ -1,5 +1,6 @@
 {
   system,
+  isDeterminate,
 }:
 {
   user,
@@ -12,26 +13,27 @@ let
       inputs
       user
       machine
+      isDeterminate
       ;
+  };
+
+  machineConfig = import ./${machine} {
+    inherit inputs;
   };
 in
 inputs.darwin.lib.darwinSystem {
   modules = [
-    { nixpkgs.hostPlatform = system; }
-    defaultConfig
-    ./${machine}
+    { nixpkgs.hostPlatform.system = system; }
 
-    (
-      if system == "aarch64-darwin" then
-        {
-          # Install rosetta.
-          system.activationScripts.extraActivation.text = ''
-            softwareupdate --install-rosetta --agree-to-license > /dev/null 2>&1
-          '';
-        }
-      else
-        { }
-    )
+    defaultConfig
+    machineConfig
+
+    {
+      # Install rosetta.
+      system.activationScripts.extraActivation.text = ''
+        softwareupdate --install-rosetta --agree-to-license > /dev/null 2>&1
+      '';
+    }
 
     ./${machine}/users/${user}/darwin.nix
 

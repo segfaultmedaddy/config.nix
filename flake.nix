@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     devenv.url = "github:cachix/devenv";
 
     darwin = {
@@ -62,8 +62,12 @@
     { ... }@inputs:
     let
       tailscaleAddr = "tail61e33.ts.net";
-      mkDarwinAarch64System = import ./machines/darwin/mkSystem.nix {
+      mkDarwinSystem = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
+      };
+      mkDarwinDeterminateSystem = import ./machines/darwin/mkSystem.nix {
+        system = "aarch64-darwin";
+        isDeterminate = true;
       };
       mkLimaVMSystem = import ./machines/linux/mkSystem.nix {
         system = "aarch64-linux";
@@ -92,19 +96,19 @@
       }
     )
     // {
-      darwinConfigurations."alpha" = mkDarwinAarch64System {
+      darwinConfigurations."alpha" = mkDarwinDeterminateSystem {
         inherit inputs;
         machine = "alpha";
         user = "roman";
       };
 
-      darwinConfigurations."bravo" = mkDarwinAarch64System {
+      darwinConfigurations."bravo" = mkDarwinSystem {
         inherit inputs;
         machine = "bravo";
         user = "roman";
       };
 
-      darwinConfigurations."charlie" = mkDarwinAarch64System {
+      darwinConfigurations."charlie" = mkDarwinSystem {
         inherit inputs;
         machine = "charlie";
         user = "roman";

@@ -32,5 +32,4 @@
     "/Applications/Zed.app"
     "/Applications/Telegram.app"
   ];
-
 }

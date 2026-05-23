@@ -2,11 +2,13 @@
   user,
   machine,
   inputs,
+  isDeterminate,
   ...
 }:
 { pkgs, ... }:
 {
   imports = [
+    (if isDeterminate then inputs.determinate.darwinModules.default else { })
     (import ../nix/default.nix { isDarwin = true; } {
       inherit
         inputs
@@ -22,16 +24,6 @@
         home = "/Users/${user}";
       };
 
-      nix.gc = {
-        automatic = true;
-        interval = {
-          Weekday = 1;
-          Hour = 0;
-          Minute = 0;
-        };
-        options = "--delete-older-than 30d";
-      };
-
       home-manager.users.${user} = {
         imports = [
           ./home.nix
@@ -40,6 +32,25 @@
 
       age.identityPaths = [ "/Users/${user}/.ssh/${machine}-agenix-key" ];
     }
+
+    (
+      if isDeterminate then
+        {
+          determinateNix.enable = true;
+        }
+      else
+        {
+          nix.gc = {
+            automatic = true;
+            interval = {
+              Weekday = 1;
+              Hour = 0;
+              Minute = 0;
+            };
+            options = "--delete-older-than 30d";
+          };
+        }
+    )
 
     ./settings.nix
     ../font/darwin.nix
