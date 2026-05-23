@@ -62,9 +62,6 @@
     { ... }@inputs:
     let
       tailscaleAddr = "tail61e33.ts.net";
-      mkDarwinX64System = import ./machines/darwin/mkSystem.nix {
-        system = "x86_64-darwin";
-      };
       mkDarwinAarch64System = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
       };
@@ -95,7 +92,7 @@
       }
     )
     // {
-      darwinConfigurations."macbook-pro-i7" = mkDarwinX64System {
+      darwinConfigurations."alpha" = mkDarwinAarch64System {
         inherit inputs;
         machine = "alpha";
         user = "roman";
