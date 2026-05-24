@@ -36,7 +36,12 @@
     (
       if isDeterminate then
         {
-          determinateNix.enable = true;
+          determinateNix = {
+            enable = true;
+            determinateNixd = {
+              garbageCollector.strategy = "automatic";
+            };
+          };
         }
       else
         {
@@ -58,8 +63,13 @@
     ../aerospace/darwin.nix
   ];
 
+  environment.shells = with pkgs; [
+    bashInteractive
+    zsh
+  ];
+
   # zsh is default shell on macOS, make sure that it is configured properly with
-  # nix-darwin.
+  # nix.
   programs.zsh = {
     enable = true;
     shellInit = ''
@@ -71,10 +81,6 @@
     '';
   };
 
-  environment.shells = with pkgs; [
-    bashInteractive
-    zsh
-  ];
 
   homebrew = {
     enable = true;
@@ -92,10 +98,11 @@
       "vlc"
       "telegram"
       "beekeeper-studio"
-      "languagetool-desktop"
       "docker-desktop"
       "zed"
+      "wezterm"
       "tailscale-app"
+      "google-chrome"
 
       # AI
       "handy"

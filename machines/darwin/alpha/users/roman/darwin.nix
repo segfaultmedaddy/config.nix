@@ -13,7 +13,6 @@
     "steam"
     "elgato-camera-hub"
     "transmission"
-    "obsidian"
 
     # OBS
     "obs"
@@ -27,9 +26,9 @@
     "/System/Applications/Calendar.app"
     "/System/Applications/Mail.app"
     "/Applications/Google Chrome.app"
-    "/Applications/Obsidian.app"
     "/Applications/WezTerm.app"
     "/Applications/Zed.app"
     "/Applications/Telegram.app"
+    "/Applications/Spotify.app"
   ];
 }
