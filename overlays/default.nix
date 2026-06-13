@@ -4,11 +4,9 @@ inputs: final: prev: {
     bun = prev.bun;
     fetchurl = prev.fetchurl;
   };
-  direnv = prev.direnv.overrideAttrs (old: {
-    # Temporary local workaround for Darwin build/test issues.
-    # Upstream: https://github.com/NixOS/nixpkgs/pull/513081
-    # Tracking: https://github.com/NixOS/nixpkgs/issues/507531
-    doCheck = if prev.stdenv.hostPlatform.isDarwin then false else old.doCheck or true;
+  kubernetes-helm = prev.kubernetes-helm.overrideAttrs (old: {
+    # Temporary local workaround for nixpkgs trying to patch a removed Helm test.
+    doCheck = false;
   });
   opencode-patched = final.pkgs.callPackage ../packages/opencode.nix { inherit inputs; };
   xcode-build-server = final.pkgs.callPackage ../packages/xcode-build-server.nix { };
