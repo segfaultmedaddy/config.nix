@@ -4,6 +4,7 @@
 # put it under modules/<system>/home.nix
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -23,7 +24,7 @@
     rust-bin.stable.latest.default # rust
     dartpkgs.stable # dart
     zigpkgs.default # zig
-    opencode-patched
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
   ];
 
   programs.rtk = {

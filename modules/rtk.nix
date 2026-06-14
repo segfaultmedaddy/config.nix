@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -29,8 +30,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.rtk;
-      defaultText = lib.literalExpression "pkgs.rtk";
+      default = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.rtk;
       description = "RTK package to install.";
     };
 
