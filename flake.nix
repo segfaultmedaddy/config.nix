@@ -64,6 +64,7 @@
       tailscaleAddr = "tail61e33.ts.net";
       mkDarwinSystem = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
+        isDeterminate = false;
       };
       mkDarwinDeterminateSystem = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
