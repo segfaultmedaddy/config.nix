@@ -25,6 +25,7 @@
     dartpkgs.stable # dart
     zigpkgs.default # zig
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr
   ];
 
   programs.rtk = {
