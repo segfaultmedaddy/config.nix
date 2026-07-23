@@ -22,7 +22,7 @@
     "nvidia-geforce-now"
 
     # opencode GUI
-    opencode-desktop
+    "opencode-desktop"
   ];
 
   system.defaults.dock.persistent-apps = [

@@ -25,11 +25,11 @@
     dartpkgs.stable # dart
     zigpkgs.default # zig
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr
   ];
 
   programs.rtk = {
     enable = true;
+    opencode.enable = true;
     settings.tee.mode = "failures";
   };
 

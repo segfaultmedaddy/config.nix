@@ -1,14 +1,23 @@
 {
   machine,
   user,
+  pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
     ../home
+    ../herdr.nix
   ];
 
   home.homeDirectory = "/home/${user}";
+
+  programs.herdr = {
+    enable = true;
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
+    opencode.enable = true;
+  };
 
   programs.zsh = {
     shellAliases = {
