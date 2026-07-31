@@ -29,6 +29,13 @@
 
   programs.zsh = {
     enable = true;
+
+    # Source a machine-local, un-tracked config file if it exists. This allows
+    # per-machine customizations without committing them to the repo.
+    initContent = ''
+      [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+    '';
+
     shellAliases = {
       ll = "ls -la";
       ".." = "z ..";
