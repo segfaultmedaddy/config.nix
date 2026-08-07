@@ -119,6 +119,7 @@
         inherit inputs;
         machine = "foxtrot";
         user = "roman";
+        hasMasSupport = false;
       };
 
       # delta is nixos running in lima.

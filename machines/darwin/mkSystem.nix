@@ -6,6 +6,7 @@
   user,
   machine,
   inputs,
+  hasMasSupport ? true,
 }:
 let
   defaultConfig = import ../../modules/darwin/default.nix {
@@ -14,6 +15,7 @@ let
       user
       machine
       isDeterminate
+      hasMasSupport
       ;
   };
 

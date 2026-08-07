@@ -3,6 +3,7 @@
   machine,
   inputs,
   isDeterminate,
+  hasMasSupport ? true,
   ...
 }:
 { pkgs, ... }:
@@ -59,7 +60,7 @@
 
     ./settings.nix
     ../font/darwin.nix
-    ../1password/darwin
+    (import ../1password/darwin { inherit hasMasSupport; })
     ../aerospace/darwin.nix
   ];
 
@@ -81,15 +82,8 @@
     '';
   };
 
-
   homebrew = {
     enable = true;
-
-    masApps = {
-      Xcode = 497799835;
-      DigiDoc4 = 1370791134;
-      "Web eID" = 1576665083;
-    };
 
     casks = [
       "slack"
@@ -107,5 +101,17 @@
       # AI
       "handy"
     ];
-  };
+  }
+  // (
+    if hasMasSupport then
+      {
+        masApps = {
+          Xcode = 497799835;
+          DigiDoc4 = 1370791134;
+          "Web eID" = 1576665083;
+        };
+      }
+    else
+      { }
+  );
 }
