@@ -115,6 +115,12 @@
         user = "roman";
       };
 
+      darwinConfigurations."foxtrot" = mkDarwinDeterminateSystem {
+        inherit inputs;
+        machine = "foxtrot";
+        user = "roman";
+      };
+
       # delta is nixos running in lima.
       nixosConfigurations."delta" = mkLimaVMSystem {
         inherit inputs;
