@@ -24,7 +24,8 @@
     age # tool to encrypt content
     bat # cat clone with syntax highlighting
     dive # docker image explorer
-    devenv
+    devenv # the best dev env manager ever
+    mise # yet another package manager
   ];
 
   programs.zsh = {
