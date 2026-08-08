@@ -6,6 +6,7 @@
 
   homebrew.casks = [
     "elgato-camera-hub"
+    "notion"
   ];
 
   system.defaults.dock.persistent-apps = [
