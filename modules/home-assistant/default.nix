@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   services.home-assistant = {
     enable = true;
@@ -24,6 +24,6 @@
   };
 
   networking.firewall.allowedTCPPorts = [
-    config.services.home-assistant.config.http.server_port
+    8123
   ];
 }
