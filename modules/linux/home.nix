@@ -1,6 +1,5 @@
 {
   machine,
-  user,
   pkgs,
   inputs,
   ...
@@ -10,8 +9,6 @@
     ../home
     ../herdr.nix
   ];
-
-  home.homeDirectory = "/home/${user}";
 
   programs.herdr = {
     enable = true;

@@ -64,6 +64,8 @@
     ../aerospace/darwin.nix
   ];
 
+  environment.systemPackages = [ pkgs.ghostty-bin ];
+
   environment.shells = with pkgs; [
     bashInteractive
     zsh
@@ -94,7 +96,6 @@
       "beekeeper-studio"
       "docker-desktop"
       "zed"
-      "wezterm"
       "tailscale-app"
       "google-chrome"
 

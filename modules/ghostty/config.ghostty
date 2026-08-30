@@ -1,0 +1,44 @@
+# Appearance
+font-family = IBM Plex Mono
+font-family = Symbols Nerd Font Mono
+font-style = Medium
+font-size = 15
+adjust-cell-height = 10%
+theme = Dayfox
+
+# Window behavior
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = false
+confirm-close-surface = false
+macos-non-native-fullscreen = false
+term = xterm-256color
+auto-update = off
+
+# Tabs
+keybind = ctrl+t=new_tab
+
+# Ghostty has no copy mode, so open the scrollback in the default editor.
+keybind = alt+space>escape=write_scrollback_file:open
+
+# Splits. Ghostty sequences have no timeout; the pane table is one-shot.
+keybind = alt+space>w=activate_key_table_once:pane
+keybind = pane/up=new_split:up
+keybind = pane/k=new_split:up
+keybind = pane/down=new_split:down
+keybind = pane/j=new_split:down
+keybind = pane/left=new_split:left
+keybind = pane/h=new_split:left
+keybind = pane/right=new_split:right
+keybind = pane/l=new_split:right
+keybind = pane/v=new_split:down
+
+# Ghostty has no visual pane selector or pane swap action.
+keybind = pane/s=goto_split:next
+keybind = pane/r=ignore
+
+# Move forward and backward by one word.
+keybind = shift+left=esc:b
+keybind = shift+right=esc:f
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f

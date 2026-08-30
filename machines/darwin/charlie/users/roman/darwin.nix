@@ -12,7 +12,7 @@
     "/System/Applications/Calendar.app"
     "/System/Applications/Mail.app"
     "/Applications/Google Chrome.app"
-    "/Applications/WezTerm.app"
+    "${pkgs.ghostty-bin}/Applications/Ghostty.app"
     "/Applications/Zed.app"
     "/Applications/Telegram.app"
     "/Applications/Slack.app"

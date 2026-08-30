@@ -5,7 +5,7 @@
   inputs,
   ...
 }:
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     (import ../nix/default.nix { isDarwin = false; } {
@@ -43,7 +43,7 @@
       networking.hostName = "${machine}";
       users.users.${user} = {
         isNormalUser = true;
-        home = "/home/${user}";
+        home = lib.mkDefault "/home/${user}";
         extraGroups = [
           "wheel"
           "networkmanager"
