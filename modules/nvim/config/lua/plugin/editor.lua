@@ -11,22 +11,13 @@ return {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         dependencies = {
-            { "nvim-tree/nvim-web-devicons", setup = true },
+            { "nvim-tree/nvim-web-devicons", opts = {} },
         },
 
         opts = {
             options = {
                 icons_enabled = true,
                 theme = "auto",
-
-                sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = {},
-                    lualine_y = {},
-                    lualine_z = {},
-                    lualine_x = {},
-                },
             },
         },
     },
@@ -38,6 +29,7 @@ return {
 
     {
         "akinsho/bufferline.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
     },
 
@@ -49,23 +41,13 @@ return {
 
     {
         "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup({})
-        end,
+        event = "VeryLazy",
+        opts = {},
     },
 
     {
-        "numToStr/Comment.nvim",
-        event = { "BufRead", "BufNewFile" },
-        dependencies = {
-            { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-        },
-        opts = function()
-            return {
-                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-            }
-        end,
+        "folke/ts-comments.nvim",
+        event = "VeryLazy",
+        opts = {},
     },
 }

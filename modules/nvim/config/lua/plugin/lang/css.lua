@@ -12,6 +12,7 @@ return {
         "neovim/nvim-lspconfig",
         opts = {
             servers = {
+                cssls = {},
                 tailwindcss = {
                     filetypes = {
                         "css",

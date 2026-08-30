@@ -7,6 +7,14 @@ return { -- Better syntax highlighting
         end,
     },
     {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                ruff = {},
+            },
+        },
+    },
+    {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {

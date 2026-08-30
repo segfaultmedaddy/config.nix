@@ -1,8 +1,8 @@
 return {
     {
         "Saecki/crates.nvim",
-        event = "BufRead",
-        setup = true,
+        event = "BufRead Cargo.toml",
+        opts = {},
     },
 
     -- Better syntax highlighting

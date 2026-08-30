@@ -13,40 +13,47 @@ return {
         -- @param opts lspconfig.options
         opts = {
             servers = {
-                sourcekit = {
-                    root_dir = function(fname)
-                        return require("lspconfig.util").root_pattern("Package.swift", "Project.swift", ".git")(fname)
-                    end,
-                },
+                sourcekit = vim.fn.executable("sourcekit-lsp") == 1 and {} or false,
             },
         },
     },
 
     {
-        "kkharji/xbase",
-        build = "make install",
-        event = "BufReadPre",
-        opts = function(_, opts)
-            return {
-                -- LSP is configured in `nvim-lspconfig`
-                sourcekit = nil,
-            }
-        end,
+        "wojciech-kulik/xcodebuild.nvim",
+        cond = vim.fn.has("macunix") == 1,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "ibhagwan/fzf-lua",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            integrations = {
+                pymobiledevice = { enabled = false },
+                fzf_lua = { enabled = true },
+                snacks_nvim = { enabled = false },
+                telescope_nvim = { enabled = false },
+            },
+        },
+        keys = {
+            { "<leader>X", "<cmd>XcodebuildPicker<cr>", desc = "Show Xcodebuild actions" },
+        },
     },
 
     {
-        "nvimtools/none-ls.nvim",
-        event = "BufReadPre",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "williamboman/mason.nvim",
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                swift = { "swift_format" },
+            },
         },
-        opts = function(_, opts)
-            local nls = require("null-ls")
-            vim.list_extend(opts.sources, {
-                nls.builtins.formatting.swift_format,
-                nls.builtins.formatting.swiftlint,
-            })
-        end,
+    },
+
+    {
+        "mfussenegger/nvim-lint",
+        opts = {
+            linters_by_ft = {
+                swift = { "swiftlint" },
+            },
+        },
     },
 }

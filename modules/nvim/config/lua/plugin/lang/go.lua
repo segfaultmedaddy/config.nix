@@ -21,20 +21,20 @@ return {
 
     -- Formatters
     {
-        "nvimtools/none-ls.nvim",
-        event = "BufReadPre",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "williamboman/mason.nvim",
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                go = { "goimports", "golines" },
+            },
         },
-        opts = function(_, opts)
-            local nls = require("null-ls")
-            vim.list_extend(opts.sources, {
-                nls.builtins.formatting.gofmt,
-                nls.builtins.formatting.golines,
-                nls.builtins.formatting.goimports,
-                nls.builtins.diagnostics.golangci_lint,
-            })
-        end,
+    },
+
+    {
+        "mfussenegger/nvim-lint",
+        opts = {
+            linters_by_ft = {
+                go = { "golangcilint" },
+            },
+        },
     },
 }

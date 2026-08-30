@@ -9,34 +9,20 @@ return {
     },
 
     {
-        "neovim/nvim-lspconfig",
-
-        -- @param opts lspconfig.options
-        opts = {
-            servers = {
-                dartls = {},
-            },
-        },
-    },
-
-    {
         "nvim-flutter/flutter-tools.nvim",
+        ft = "dart",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "stevearc/dressing.nvim",
+            "hrsh7th/cmp-nvim-lsp",
+            "mfussenegger/nvim-dap",
         },
-        setup = {
+        opts = {
             debugger = {
                 enabled = true,
-                run_via_dap = true,
                 exception_breakpoints = {},
             },
             lsp = {
-                color = {
-                    enabled = true,
-                    background = true,
-                    virtual_text = false,
-                },
                 settings = {
                     renameFilesWithClasses = "always",
                     updateImportsOnRename = true,
@@ -46,5 +32,9 @@ return {
             },
             widget_guides = { enabled = true },
         },
+        config = function(_, opts)
+            opts.lsp.capabilities = require("cmp_nvim_lsp").default_capabilities()
+            require("flutter-tools").setup(opts)
+        end,
     },
 }

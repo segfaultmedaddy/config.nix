@@ -21,13 +21,15 @@ vim.opt.backup = false
 -- Enable file write on buffer switch.
 vim.opt.autowriteall = true
 
+local undodir = vim.fn.stdpath("data") .. "/undo"
+vim.fn.mkdir(undodir, "p")
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.undodir = undodir
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.updatetime = 100
+vim.opt.updatetime = 200
 
 -- Sets terminal title to the current file name.
 vim.opt.title = true
@@ -62,5 +64,5 @@ vim.opt.splitright = true
 vim.opt.list = true
 vim.opt.listchars:append("eol:¬")
 
--- Don't show startup screen
+-- Don't show completion messages.
 vim.opt.shortmess:append("c")

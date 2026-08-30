@@ -3,10 +3,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.lsp.log.set_level("info")
+require("config.options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -23,6 +23,7 @@ vim.filetype.add({ extension = { templ = "templ" } })
 
 -- Load plugins.
 require("lazy").setup({
+    lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json",
     spec = {
         { import = "plugin" },
         { import = "plugin.lang" },
@@ -52,5 +53,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-require("config.options")
 require("config.keymaps")

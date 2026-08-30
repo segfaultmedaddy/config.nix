@@ -3,16 +3,10 @@ return {
         "hrsh7th/nvim-cmp",
 
         dependencies = {
-            "neovim/nvim-lspconfig",
-
             "hrsh7th/cmp-nvim-lsp", -- lsp suggestions
-            "hrsh7th/cmp-buffer",   -- current file suggestions
-            "hrsh7th/cmp-path",     -- fs suggestions
+            "hrsh7th/cmp-buffer", -- current file suggestions
+            "hrsh7th/cmp-path", -- fs suggestions
             "hrsh7th/cmp-nvim-lua", -- neovim's lua API suggestions
-
-            -- Snippets.
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
         },
 
         event = "InsertEnter",
@@ -20,10 +14,10 @@ return {
         opts = function()
             local cmp = require("cmp")
 
-            cmp.setup({
+            return {
                 snippet = {
                     expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
+                        vim.snippet.expand(args.body)
                     end,
                 },
                 window = {
@@ -48,15 +42,10 @@ return {
                         end,
                     },
                     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-                    ["<C-a>"] = cmp.mapping.complete({
-                        config = { sources = { name = "cody" } },
-                    }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lua" },
                     { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                    { name = "cody" },
                     { name = "buffer" },
                     { name = "path" },
                 }),
@@ -65,7 +54,7 @@ return {
                     native_menu = false,
                     ghost_text = false,
                 },
-            })
+            }
         end,
     },
 }

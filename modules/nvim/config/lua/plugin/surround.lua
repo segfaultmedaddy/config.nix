@@ -2,11 +2,11 @@ return {
     {
         "kylechui/nvim-surround",
         event = "VeryLazy",
-        config = function()
+        init = function()
             vim.g.nvim_surround_no_normal_mappings = true
-
+        end,
+        config = function()
             require("nvim-surround").setup()
-
             vim.keymap.set("n", "<leader>s", "<Plug>(nvim-surround-normal)", {
                 desc = "Add a surrounding pair around a motion",
             })
@@ -35,6 +35,14 @@ return {
         event = "InsertEnter",
         opts = {
             enable_check_bracket_line = true,
+        },
+    },
+    {
+        "nvim-mini/mini.ai",
+        main = "mini.ai",
+        event = "VeryLazy",
+        opts = {
+            n_lines = 500,
         },
     },
 }
