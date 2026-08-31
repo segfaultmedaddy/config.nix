@@ -8,7 +8,11 @@
 let
   cfg = config.programs.rtk;
   tomlFormat = pkgs.formats.toml { };
-  configPath = if pkgs.stdenv.isDarwin then "./Library/Application Support/rtk/config.toml" else "./.config/rtk/config.toml";
+  configPath =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      "./Library/Application Support/rtk/config.toml"
+    else
+      "./.config/rtk/config.toml";
 
   opencodePlugin =
     pkgs.runCommandLocal "rtk-opencode-plugin.ts"

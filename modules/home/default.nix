@@ -38,6 +38,7 @@
     ../tf.nix
     ../shell.nix
     ../rtk.nix
+    ../opencode/home.nix
     ../git.nix
     ../nvim/home.nix
     ../node.nix

@@ -4,7 +4,8 @@ font-family = Symbols Nerd Font Mono
 font-style = Medium
 font-size = 15
 adjust-cell-height = 10%
-theme = Dayfox
+
+theme = monochrome
 
 # Window behavior
 window-padding-x = 0

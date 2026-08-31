@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
+  palette = import ../theme/palette.nix;
+  theme = import ../theme/nvim.nix { inherit pkgs lib palette; };
   nvimTreesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
     parsers: with parsers; [
       css
@@ -73,4 +75,5 @@ in
     source = ./config;
     recursive = true;
   };
+  home.file."./.config/nvim/lua/themes/monochrome/palette.lua".source = theme;
 }
