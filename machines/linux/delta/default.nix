@@ -1,7 +1,13 @@
-{ user, ... }:
-{ pkgs, ... }:
+{ user, inputs, ... }:
+{ pkgs, lib, ... }:
 {
   system.stateVersion = "25.11";
+
+  nixpkgs.overlays = lib.mkAfter [
+    (final: _prev: {
+      devenv = inputs.nixpkgs.legacyPackages.${final.stdenv.hostPlatform.system}.devenv;
+    })
+  ];
 
   users.users.${user} = {
     shell = pkgs.zsh;

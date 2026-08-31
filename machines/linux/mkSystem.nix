@@ -20,6 +20,7 @@ let
   };
   machineConfig = import ./${machine} {
     inherit
+      inputs
       user
       sshAuthorizedKeys
       tailscaleAddr
