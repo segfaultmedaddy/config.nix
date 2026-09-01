@@ -32,6 +32,10 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = []
 
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['layout tiling']
+
 # Gaps betweeen windows and monitors.
 [gaps]
 # Add edges here and there.

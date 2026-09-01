@@ -2,10 +2,10 @@
 font-family = IBM Plex Mono
 font-family = Symbols Nerd Font Mono
 font-style = Medium
-font-size = 15
+font-size = 16
 adjust-cell-height = 10%
 
-theme = monochrome
+theme = Black Metal (Immortal)
 
 # Window behavior
 window-padding-x = 0

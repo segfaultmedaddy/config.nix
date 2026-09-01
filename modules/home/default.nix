@@ -33,12 +33,18 @@
     settings.tee.mode = "failures";
   };
 
+  programs.herdr = {
+    enable = true;
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
+    opencode.enable = true;
+  };
+
   imports = [
+    ../herdr.nix
     ../kube/home.nix
     ../tf.nix
     ../shell.nix
     ../rtk.nix
-    ../opencode/home.nix
     ../git.nix
     ../nvim/home.nix
     ../node.nix

@@ -1,9 +1,12 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
+  imports = [ ./atuin.nix ];
+
   home.packages = with pkgs; [
     fastfetch # fetch system info
     ripgrep # faster grep
@@ -68,6 +71,19 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    flags = [ "--disable-up-arrow" ];
+    package = inputs.atuin.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    opencode.enable = true;
+    settings = {
+      enter_accept = false;
+      update_check = false;
+      workspaces = true;
+    };
   };
 
   programs.ssh = {

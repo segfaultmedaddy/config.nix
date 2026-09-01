@@ -59,6 +59,11 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    atuin = {
+      url = "github:atuinsh/atuin/v18.21.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

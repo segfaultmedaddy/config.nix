@@ -1,9 +1,13 @@
 return {
     {
-        "EdenEast/nightfox.nvim",
+        "metalelf0/black-metal-theme-neovim",
         lazy = false,
+        priority = 1000,
         config = function()
-            vim.cmd([[colorscheme dayfox]])
+            require("black-metal").setup({
+                theme = "immortal",
+            })
+            require("black-metal").load()
         end,
     },
 

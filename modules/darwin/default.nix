@@ -87,6 +87,8 @@
   homebrew = {
     enable = true;
 
+    onActivation.autoUpdate = true;
+
     casks = [
       "slack"
       "spotify"
