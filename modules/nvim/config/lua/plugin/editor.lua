@@ -54,4 +54,20 @@ return {
         event = "VeryLazy",
         opts = {},
     },
+
+    {
+        "stevearc/oil.nvim",
+        lazy = false,
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            default_file_explorer = true,
+            view_options = {
+                show_hidden = true,
+            },
+        },
+        keys = {
+            { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" },
+            { "<leader>nf", "<cmd>Oil<cr>", desc = "Create file with Oil" },
+        },
+    },
 }

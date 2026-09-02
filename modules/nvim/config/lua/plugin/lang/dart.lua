@@ -14,7 +14,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "stevearc/dressing.nvim",
-            "hrsh7th/cmp-nvim-lsp",
+            "saghen/blink.cmp",
             "mfussenegger/nvim-dap",
         },
         opts = {
@@ -33,7 +33,7 @@ return {
             widget_guides = { enabled = true },
         },
         config = function(_, opts)
-            opts.lsp.capabilities = require("cmp_nvim_lsp").default_capabilities()
+            opts.lsp.capabilities = require("blink.cmp").get_lsp_capabilities()
             require("flutter-tools").setup(opts)
         end,
     },

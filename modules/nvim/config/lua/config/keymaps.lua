@@ -6,12 +6,19 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map({ "n" }, "<leader>q", "<cmd>q<CR>", { desc = "Close current split" })
 
 -- Editor
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><Esc>", {
-    desc = "Save file",
-})
-map("n", "<leader>nf", "<cmd>enew<cr>", {
-    desc = "New File",
-})
+map({ "i", "v", "n", "s" }, "<C-s>", function()
+    local path = vim.api.nvim_buf_get_name(0)
+    if path ~= "" then
+        vim.cmd.write()
+        return
+    end
+
+    vim.ui.input({ prompt = "Save as: ", completion = "file" }, function(new_path)
+        if new_path and new_path ~= "" then
+            vim.cmd("write " .. vim.fn.fnameescape(new_path))
+        end
+    end)
+end, { desc = "Save file" })
 map({ "n" }, "<leader>p", '"+p') -- Paste from system clipboard
 map({ "v" }, "<leader>y", '"+y') -- Copy to system clipboard
 
