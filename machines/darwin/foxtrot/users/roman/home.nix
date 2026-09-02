@@ -13,6 +13,8 @@
   };
 
   home.packages = with pkgs; [
+    colima
+
     # Cloud
     (google-cloud-sdk.withExtraComponents (
       with google-cloud-sdk.components;
