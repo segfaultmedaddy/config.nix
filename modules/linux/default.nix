@@ -8,6 +8,7 @@
 { lib, ... }:
 {
   imports = [
+    inputs.determinate.nixosModules.default
     (import ../nix/default.nix { isDarwin = false; } {
       inherit
         inputs
@@ -34,6 +35,8 @@
     )
 
     {
+      determinate.enable = true;
+
       nix.gc = {
         automatic = true;
         dates = "weekly";

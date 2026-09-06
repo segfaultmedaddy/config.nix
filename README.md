@@ -37,14 +37,23 @@ sudo nixos-rebuild switch --flake .#<nixosConfiguration> --impure
 
 `--impure` is required for NixOS hosts here because the shared Linux module imports `/etc/nixos/hardware-configuration.nix`, the default hardware config generated on the target machine.
 
-## Add a new machine
+## Ghostty on remote machines
 
-1. Pick the platform: `machines/darwin` or `machines/linux`.
-2. Copy a nearby machine as a template.
-3. Add the minimum host files:
+Run this once for each remote machine to install Ghostty's terminfo entry:
+
+```sh
+infocmp -x xterm-ghostty | ssh <machine-ip> -- tic -x -
+```
+
+## Spin up a new machine
+
+1. Set up Nix on the target machine: install [Determinate Nix](https://docs.determinate.systems/determinate-nix/) on macOS, or install NixOS, which includes Nix.
+2. Pick the platform: `machines/darwin` or `machines/linux`.
+3. Copy a nearby machine as a template.
+4. Add the minimum host files:
    `default.nix`, plus `users/<user>/home.nix`, and on Darwin also `users/<user>/darwin.nix`.
-4. Register the machine in `flake.nix` under `darwinConfigurations` or `nixosConfigurations`.
-5. Apply it with the matching flake output name.
+5. Register the machine in `flake.nix` under `darwinConfigurations` or `nixosConfigurations`.
+6. Apply it with the matching flake output name.
 
 ## Notes
 
