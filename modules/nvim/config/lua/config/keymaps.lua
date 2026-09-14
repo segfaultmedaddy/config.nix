@@ -106,6 +106,8 @@ map("n", "<leader>gb", function()
 end, { desc = "Switch Git branch" })
 
 -- Code navigation
+map({ "n", "v" }, "<leader>[", "<C-o>", { desc = "Move cursor to previous position" })
+map({ "n", "v" }, "<leader>]", "<C-i>", { desc = "Move cursor to next position" })
 map({ "n", "v" }, "<leader>e[", "g;", { desc = "Move cursor to previous change location" })
 map({ "n", "v" }, "<leader>e]", "g,", { desc = "Move cursor to next change location" })
 map({ "n", "v" }, "<leader>el", "gi", {
