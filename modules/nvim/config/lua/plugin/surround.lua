@@ -1,32 +1,39 @@
 local M = {}
 
 function M.setup()
-    require("nvim-surround").setup()
-    vim.keymap.set("n", "<leader>s", "<Plug>(nvim-surround-normal)", {
-        desc = "Add a surrounding pair around a motion",
-    })
-    vim.keymap.set("n", "<leader>ss", "<Plug>(nvim-surround-normal-cur)", {
-        desc = "Add a surrounding pair around the current line",
-    })
-    vim.keymap.set("n", "yS", "<Plug>(nvim-surround-normal-line)", {
-        desc = "Add a surrounding pair around a motion on new lines",
-    })
-    vim.keymap.set("n", "ySS", "<Plug>(nvim-surround-normal-cur-line)", {
-        desc = "Add a surrounding pair around the current line on new lines",
-    })
-    vim.keymap.set("n", "ds", "<Plug>(nvim-surround-delete)", {
-        desc = "Delete a surrounding pair",
-    })
-    vim.keymap.set("n", "cs", "<Plug>(nvim-surround-change)", {
-        desc = "Change a surrounding pair",
-    })
-    vim.keymap.set("n", "cS", "<Plug>(nvim-surround-change-line)", {
-        desc = "Change a surrounding pair on new lines",
+    require("mini.surround").setup({
+        mappings = {
+            add = "<leader>s",
+            delete = "ds",
+            find = "",
+            find_left = "",
+            highlight = "",
+            replace = "cs",
+            suffix_last = "",
+            suffix_next = "",
+        },
+        respect_selection_type = true,
+        search_method = "cover_or_next",
     })
 
-    require("nvim-autopairs").setup({
-        enable_check_bracket_line = true,
+    vim.keymap.set("n", "<leader>ss", "<leader>s_", {
+        desc = "Add a surrounding pair around the current line",
+        remap = true,
     })
+    vim.keymap.set("n", "yS", "<leader>s", {
+        desc = "Add a surrounding pair around a motion",
+        remap = true,
+    })
+    vim.keymap.set("n", "ySS", "<leader>s_", {
+        desc = "Add a surrounding pair around the current line on new lines",
+        remap = true,
+    })
+    vim.keymap.set("n", "cS", "cs", {
+        desc = "Change a surrounding pair",
+        remap = true,
+    })
+
+    require("mini.pairs").setup()
     require("mini.ai").setup({
         n_lines = 500,
     })

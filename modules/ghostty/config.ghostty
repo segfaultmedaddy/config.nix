@@ -1,13 +1,12 @@
 # Appearance
-font-family = IBM Plex Mono
+font-family = SF Mono
 font-family = Symbols Nerd Font Mono
 font-style = Normal
 font-thicken = true
 font-thicken-strength = 3
-font-size = 16
+font-size = 14
 adjust-cell-height = 15%
-
-theme = Black Metal (Immortal)
+theme = Catppuccin Mocha
 
 # Window behavior
 window-padding-x = 0

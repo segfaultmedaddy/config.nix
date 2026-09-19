@@ -33,8 +33,8 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = []
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = ['layout tiling']
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout tiling"]
 
 # Gaps betweeen windows and monitors.
 [gaps]
