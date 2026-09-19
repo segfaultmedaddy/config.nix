@@ -1,59 +1,27 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, { "swift" })
-        end,
+    treesitter = { "swift" },
+    servers = {
+        sourcekit = vim.fn.executable("sourcekit-lsp") == 1 and {} or false,
     },
-
-    {
-        "neovim/nvim-lspconfig",
-
-        -- @param opts lspconfig.options
-        opts = {
-            servers = {
-                sourcekit = vim.fn.executable("sourcekit-lsp") == 1 and {} or false,
-            },
-        },
+    formatters_by_ft = {
+        swift = { "swift_format" },
     },
+    linters_by_ft = {
+        swift = { "swiftlint" },
+    },
+    setup = function()
+        if vim.fn.has("macunix") ~= 1 then
+            return
+        end
 
-    {
-        "wojciech-kulik/xcodebuild.nvim",
-        cond = vim.fn.has("macunix") == 1,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "ibhagwan/fzf-lua",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        opts = {
+        require("xcodebuild").setup({
             integrations = {
                 pymobiledevice = { enabled = false },
                 fzf_lua = { enabled = true },
                 snacks_nvim = { enabled = false },
                 telescope_nvim = { enabled = false },
             },
-        },
-        keys = {
-            { "<leader>X", "<cmd>XcodebuildPicker<cr>", desc = "Show Xcodebuild actions" },
-        },
-    },
-
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                swift = { "swift_format" },
-            },
-        },
-    },
-
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                swift = { "swiftlint" },
-            },
-        },
-    },
+        })
+        vim.keymap.set("n", "<leader>X", "<cmd>XcodebuildPicker<cr>", { desc = "Show Xcodebuild actions" })
+    end,
 }

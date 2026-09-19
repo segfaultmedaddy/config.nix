@@ -1,73 +1,29 @@
-return {
-    {
-        "metalelf0/black-metal-theme-neovim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("black-metal").setup({
-                theme = "immortal",
-            })
-            require("black-metal").load()
-        end,
-    },
+local M = {}
 
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons", opts = {} },
+function M.setup()
+    vim.cmd.colorscheme("carbonfox")
+
+    require("nvim-web-devicons").setup()
+    require("lualine").setup({
+        options = {
+            icons_enabled = true,
+            theme = "auto",
         },
-
-        opts = {
-            options = {
-                icons_enabled = true,
-                theme = "auto",
-            },
+    })
+    require("fidget").setup()
+    require("bufferline").setup()
+    require("ibl").setup()
+    require("which-key").setup()
+    require("ts-comments").setup()
+    require("oil").setup({
+        default_file_explorer = true,
+        view_options = {
+            show_hidden = true,
         },
-    },
+    })
 
-    {
-        "j-hui/fidget.nvim",
-        opts = {},
-    },
+    vim.keymap.set("n", "<leader>e", "<cmd>Oil<cr>", { desc = "Open file explorer" })
+    vim.keymap.set("n", "<leader>nf", "<cmd>Oil<cr>", { desc = "Create file with Oil" })
+end
 
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {},
-    },
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
-
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
-
-    {
-        "folke/ts-comments.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
-
-    {
-        "stevearc/oil.nvim",
-        lazy = false,
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            default_file_explorer = true,
-            view_options = {
-                show_hidden = true,
-            },
-        },
-        keys = {
-            { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" },
-            { "<leader>nf", "<cmd>Oil<cr>", desc = "Create file with Oil" },
-        },
-    },
-}
+return M

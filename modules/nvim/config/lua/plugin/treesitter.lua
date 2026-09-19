@@ -1,44 +1,25 @@
-return {
-    -- Better syntax highlighting
-    {
-        "nvim-treesitter/nvim-treesitter",
-        name = "nvim-treesitter",
-        dir = vim.fn.stdpath("data") .. "/site/pack/hm/start/nvim-treesitter",
-        build = false,
-        lazy = false,
+local M = {}
 
-        -- @type TSConfig
-        opts = {
-            ensure_installed = {},
-        },
+function M.setup(parser_names)
+    local treesitter = require("nvim-treesitter")
+    treesitter.setup()
 
-        config = function(_, opts)
-            local treesitter = require("nvim-treesitter")
-            treesitter.setup()
+    local parsers = {}
+    for _, parser in ipairs(parser_names) do
+        parsers[parser] = true
+    end
 
-            -- Parsers are installed declaratively by Nix; this list controls activation.
-            local parsers = {}
-            for _, parser in ipairs(opts.ensure_installed) do
-                parsers[parser] = true
+    vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
+        callback = function(event)
+            local language = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
+            if language and parsers[language] and pcall(vim.treesitter.start, event.buf, language) then
+                vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end
-
-            vim.api.nvim_create_autocmd("FileType", {
-                group = vim.api.nvim_create_augroup("treesitter_start", { clear = true }),
-                callback = function(event)
-                    local language = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
-                    if language and parsers[language] and pcall(vim.treesitter.start, event.buf, language) then
-                        vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                    end
-                end,
-            })
         end,
-    },
+    })
 
-    -- Sticky header for scope context.
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        opts = {
-            enable = true,
-        },
-    },
-}
+    require("treesitter-context").setup({ enable = true })
+end
+
+return M

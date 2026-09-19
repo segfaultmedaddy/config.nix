@@ -1,36 +1,12 @@
 return {
-    {
-        "Saecki/crates.nvim",
-        event = "BufRead Cargo.toml",
-        opts = {},
+    treesitter = { "rust" },
+    servers = {
+        rust_analyzer = {},
     },
-
-    -- Better syntax highlighting
-    {
-        "nvim-treesitter/nvim-treesitter",
-
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, { "rust" })
-        end,
+    formatters_by_ft = {
+        rust = { "rustfmt" },
     },
-
-    {
-        "neovim/nvim-lspconfig",
-
-        -- @param opts lspconfig.options
-        opts = {
-            servers = {
-                rust_analyzer = {},
-            },
-        },
-    },
-
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                rust = { "rustfmt" },
-            },
-        },
-    },
+    setup = function()
+        require("crates").setup()
+    end,
 }

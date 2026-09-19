@@ -1,11 +1,5 @@
 return {
-    -- Formatters
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                sql = { "sql_formatter" },
-            },
-        },
+    formatters_by_ft = {
+        sql = { "sql_formatter" },
     },
 }

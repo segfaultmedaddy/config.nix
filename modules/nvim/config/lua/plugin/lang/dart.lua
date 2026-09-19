@@ -1,28 +1,13 @@
 return {
-    -- Better syntax highlighting
-    {
-        "nvim-treesitter/nvim-treesitter",
-
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, { "dart" })
-        end,
-    },
-
-    {
-        "nvim-flutter/flutter-tools.nvim",
-        ft = "dart",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "stevearc/dressing.nvim",
-            "saghen/blink.cmp",
-            "mfussenegger/nvim-dap",
-        },
-        opts = {
+    treesitter = { "dart" },
+    setup = function()
+        require("flutter-tools").setup({
             debugger = {
                 enabled = true,
                 exception_breakpoints = {},
             },
             lsp = {
+                capabilities = require("blink.cmp").get_lsp_capabilities(),
                 settings = {
                     renameFilesWithClasses = "always",
                     updateImportsOnRename = true,
@@ -31,10 +16,6 @@ return {
                 },
             },
             widget_guides = { enabled = true },
-        },
-        config = function(_, opts)
-            opts.lsp.capabilities = require("blink.cmp").get_lsp_capabilities()
-            require("flutter-tools").setup(opts)
-        end,
-    },
+        })
+    end,
 }
