@@ -14,19 +14,10 @@ let
     else
       "./.config/rtk/config.toml";
 
-  opencodePlugin =
-    pkgs.runCommandLocal "rtk-opencode-plugin.ts"
-      {
-        nativeBuildInputs = [ cfg.package ];
-      }
-      ''
-        export HOME="$TMPDIR/home"
-        mkdir -p "$HOME"
-
-        rtk init -g --opencode >/dev/null
-
-        install -Dm644 "$HOME/.config/opencode/plugins/rtk.ts" "$out"
-      '';
+  # `rtk init --opencode` only ships a V1 plugin, so the V2 port is maintained here.
+  opencodePlugin = pkgs.replaceVars ./rtk/opencode-plugin.ts {
+    rtk = lib.getExe' cfg.package "rtk";
+  };
 in
 {
   options.programs.rtk = {
@@ -57,7 +48,7 @@ in
     opencode.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "Install the RTK OpenCode plugin into ~/.config/opencode/plugins/rtk.ts.";
+      description = "Install the RTK OpenCode (V2) plugin into ~/.config/opencode/plugins/rtk.ts.";
     };
   };
 

@@ -24,7 +24,20 @@
     rust-bin.stable.latest.default # rust
     dartpkgs.stable # dart
     zigpkgs.default # zig
-    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+    lane # copy-on-write worktrees; backs the opencode-plugin-lane worktree strategy
+    # OpenCode V2 ships its binary as `opencode2`; expose it as `opencode` too.
+    (
+      let
+        opencode2 = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode2;
+      in
+      pkgs.symlinkJoin {
+        name = "opencode-${opencode2.version}";
+        paths = [ opencode2 ];
+        postBuild = ''
+          ln -s opencode2 "$out/bin/opencode"
+        '';
+      }
+    )
   ];
 
   programs.rtk = {

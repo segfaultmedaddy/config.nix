@@ -78,7 +78,9 @@
     enableZshIntegration = true;
     flags = [ "--disable-up-arrow" ];
     package = inputs.atuin.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    opencode.enable = true;
+    # atuin only ships a V1 OpenCode plugin; re-enable once V2 support lands
+    # (atuinsh/atuin#4116, #4077).
+    opencode.enable = false;
     settings = {
       enter_accept = false;
       update_check = false;

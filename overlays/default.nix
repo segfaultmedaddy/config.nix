@@ -4,5 +4,6 @@ inputs: final: prev: {
     # Temporary local workaround for nixpkgs trying to patch a removed Helm test.
     doCheck = false;
   });
+  lane = final.pkgs.callPackage ../packages/lane.nix { };
   xcode-build-server = final.pkgs.callPackage ../packages/xcode-build-server.nix { };
 }
