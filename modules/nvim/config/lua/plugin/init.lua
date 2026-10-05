@@ -49,6 +49,7 @@ local plugins = {
     gh("nvim-flutter/flutter-tools.nvim"),
     gh("Saecki/crates.nvim"),
     gh("folke/lazydev.nvim"),
+    gh("nickjvandyke/opencode.nvim"),
 }
 
 if vim.fn.has("macunix") == 1 then
@@ -76,3 +77,4 @@ require("plugin.fff").setup()
 require("plugin.test").setup()
 require("plugin.search").setup()
 require("plugin.git").setup()
+require("plugin.opencode").setup()

@@ -25,7 +25,6 @@
     ffmpeg # video processing
     pdfcpu # pdf manipulation
     age # tool to encrypt content
-    bat # cat clone with syntax highlighting
     dive # docker image explorer
     devenv # the best dev env manager ever
     mise # yet another package manager
@@ -67,6 +66,9 @@
       ];
     };
   };
+
+  # cat clone with syntax highlighting
+  programs.bat.enable = true;
 
   programs.zoxide = {
     enable = true;

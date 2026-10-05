@@ -1,8 +1,16 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    delta # custom highlighter
-  ];
+  # custom highlighter
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      side-by-side = true;
+      line-numbers = true;
+      hyperlinks = true;
+      navigate = true;
+    };
+  };
 
   programs.git = {
     enable = true;
@@ -19,24 +27,12 @@
 
       core = {
         editor = "nvim";
-        pager = "delta";
         untrackedCache = true;
         whitespace = "space-before-tab,trailing-space";
         autocrlf = "input";
       };
 
       merge.conflictstyle = "diff3";
-
-      delta = {
-        side-by-side = true;
-        line-numbers = true;
-        hyperlinks = true;
-        navigate = true;
-      };
-
-      interactive = {
-        diffFilter = "delta --color-only";
-      };
 
       rebase = {
         # Always update all children branches of the current one when rebasing.

@@ -13,7 +13,8 @@ let
   # tui.jsonc entry is V1-only, so neither is installed.
   #
   # All files are linked out of this single store path so the relative
-  # `../herdr-tui-session.js` import resolves after symlink resolution.
+  # `../herdr-tui-session.js` import resolves after symlink resolution. The
+  # cli.json plugin entry is merged into programs.opencode2.cli.settings instead.
   opencodeIntegration =
     pkgs.runCommandLocal "herdr-opencode-integration"
       {
@@ -26,7 +27,6 @@ let
         herdr integration install opencode >/dev/null
 
         src="$HOME/.config/opencode"
-        install -Dm644 "$src/cli.json" "$out/cli.json"
         install -Dm644 "$src/herdr-tui-session.js" "$out/herdr-tui-session.js"
         install -Dm644 "$src/herdr-opencode/tui.js" "$out/herdr-opencode/tui.js"
       '';
@@ -46,8 +46,9 @@ in
       }
     ];
 
+    programs.opencode2.cli.settings.plugins = [ "./herdr-opencode" ];
+
     home.file = {
-      "./.config/opencode/cli.json".source = "${opencodeIntegration}/cli.json";
       "./.config/opencode/herdr-tui-session.js".source = "${opencodeIntegration}/herdr-tui-session.js";
       "./.config/opencode/herdr-opencode".source = "${opencodeIntegration}/herdr-opencode";
     };

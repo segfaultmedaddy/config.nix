@@ -60,6 +60,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin-opencode = {
+      url = "github:catppuccin/opencode";
+      flake = false;
+    };
+
     atuin = {
       url = "github:atuinsh/atuin/v18.21.0";
       inputs.nixpkgs.follows = "nixpkgs";

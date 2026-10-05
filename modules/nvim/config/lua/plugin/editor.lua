@@ -2,10 +2,10 @@ local M = {}
 
 function M.setup()
     require("catppuccin").setup({
-        flavour = "mocha",
+        flavour = "latte",
         auto_integrations = true,
     })
-    vim.cmd.colorscheme("catppuccin-mocha")
+    vim.cmd.colorscheme("catppuccin-latte")
 
     require("mini.icons").setup()
     require("mini.input").setup()
