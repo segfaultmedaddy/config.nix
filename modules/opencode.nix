@@ -22,7 +22,7 @@ in
       type = jsonFormat.type;
       default = { };
       example = {
-        theme.name = "catppuccin-latte-mauve";
+        theme.name = "catppuccin-mocha-mauve";
       };
       description = "OpenCode V2 terminal settings written to ~/.config/opencode/cli.json.";
     };

@@ -1,13 +1,13 @@
 # Appearance
 font-family = SF Mono
 font-family = Symbols Nerd Font Mono
-font-style = Medium
+font-style = Normal
 font-thicken = true
 font-thicken-strength = 3
 font-size = 14
 # SF Mono's natural line height is ~1.18em; +27% matches Zed's buffer_line_height 1.5.
 adjust-cell-height = 27%
-theme = Catppuccin Latte
+theme = Catppuccin Mocha
 
 # Window behavior
 window-padding-x = 0
