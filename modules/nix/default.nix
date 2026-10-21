@@ -14,7 +14,7 @@
       inputs.zig.overlays.default
       (import inputs.rust)
     ]
-    ++ (import ../../lib/overlays.nix { inherit (inputs) naersk; });
+    ++ (import ../../lib/overlays.nix { inherit (inputs) naersk devenv; });
   };
 
   nix.settings = {

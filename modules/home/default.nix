@@ -57,6 +57,12 @@
 
   programs.opencode2 = {
     catppuccin.enable = true;
+    settings.plugins = [
+      {
+        package = "git+https://github.com/anomalyco/opencode-plugin-lane.git";
+        options.executable = "${pkgs.lane}/bin/lane";
+      }
+    ];
     cli.settings.theme = {
       name = "catppuccin-mocha-mauve";
       mode = "dark";
@@ -65,7 +71,10 @@
 
   programs.herdr = {
     enable = true;
-    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
+    # Vendored libghostty-vt requires Zig 0.16; the upstream default is now 0.17.
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr.override {
+      zig = pkgs.zig_0_16;
+    };
     opencode.enable = true;
     settings = {
       onboarding = false;

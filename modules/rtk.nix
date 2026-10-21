@@ -14,10 +14,20 @@ let
     else
       "./.config/rtk/config.toml";
 
-  # `rtk init --opencode` only ships a V1 plugin, so the V2 port is maintained here.
-  opencodePlugin = pkgs.replaceVars ./rtk/opencode-plugin.ts {
-    rtk = lib.getExe' cfg.package "rtk";
-  };
+  opencodePlugin =
+    pkgs.runCommandLocal "rtk-opencode-plugin.ts"
+      {
+        nativeBuildInputs = [ cfg.package ];
+      }
+      ''
+        export HOME="$TMPDIR/home"
+        export XDG_CONFIG_HOME="$HOME/.config"
+        mkdir -p "$XDG_CONFIG_HOME"
+
+        rtk init --global --opencode --no-patch --no-trust-filters >/dev/null
+
+        install -Dm644 "$XDG_CONFIG_HOME/opencode/plugins/rtk.ts" "$out"
+      '';
 in
 {
   options.programs.rtk = {
