@@ -16,6 +16,7 @@ in
     ../1password/darwin/home.nix
     ../aerospace/home.nix
     ../ghostty/home.nix
+    ../vicinae/home.nix
 
     # ../zed/home.nix
   ];

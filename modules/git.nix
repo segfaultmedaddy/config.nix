@@ -1,5 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  # lazygit 0.66 moved gui.authorColors to gui.theme.authorColors, but the
+  # catppuccin port still uses the old key, so lazygit tries (and fails) to
+  # migrate the read-only theme file in the nix store on every launch.
+  # TODO: drop once catppuccin/lazygit ships the new key.
+  catppuccinLazygit = pkgs.runCommandLocal "catppuccin-lazygit-migrated" { } ''
+    cp -r ${(import inputs.catppuccin { inherit pkgs; }).packages.lazygit} $out
+    chmod -R u+w $out
+    for f in $out/*/*.yml; do
+      ${pkgs.lib.getExe pkgs.yq-go} -i \
+        'with(select(.gui.authorColors); .gui.theme.authorColors = .gui.authorColors | del(.gui.authorColors))' "$f"
+    done
+  '';
+in
 {
+  catppuccin.sources.lazygit = catppuccinLazygit;
+
   # custom highlighter
   programs.delta = {
     enable = true;

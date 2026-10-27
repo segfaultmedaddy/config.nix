@@ -71,10 +71,7 @@
 
   programs.herdr = {
     enable = true;
-    # Vendored libghostty-vt requires Zig 0.16; the upstream default is now 0.17.
-    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr.override {
-      zig = pkgs.zig_0_16;
-    };
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
     opencode.enable = true;
     settings = {
       onboarding = false;
@@ -96,5 +93,6 @@
     ../node.nix
     ../go.nix
     ../grpc.nix
+    ../lane.nix
   ];
 }

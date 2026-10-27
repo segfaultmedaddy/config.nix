@@ -42,6 +42,17 @@
             determinateNixd = {
               garbageCollector.strategy = "automatic";
             };
+            # nix.settings is ignored by Determinate Nix, so caches must be set here too.
+            customSettings = {
+              extra-substituters = [
+                "https://devenv.cachix.org"
+                "https://vicinae.cachix.org"
+              ];
+              extra-trusted-public-keys = [
+                "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+                "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+              ];
+            };
           };
         }
       else
