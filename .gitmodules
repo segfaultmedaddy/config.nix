@@ -1,0 +1,3 @@
+[submodule "private/config-rex"]
+	path = private/config-rex
+	url = git@github.com:segfaultmedaddy/config-rex.git

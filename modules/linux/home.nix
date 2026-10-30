@@ -1,10 +1,12 @@
 {
   machine,
+  inputs,
   ...
 }:
 {
   imports = [
     ../home
+    inputs.rex-config.homeModules.default
   ];
 
   programs.zsh = {

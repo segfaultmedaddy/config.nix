@@ -2,6 +2,8 @@
   description = "Roman's dotfiles";
 
   inputs = {
+    self.submodules = true;
+    rex-config.url = "path:./private/config-rex";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     devenv = {

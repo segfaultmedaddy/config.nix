@@ -23,6 +23,18 @@ Personal Nix flake for macOS (`nix-darwin`) and Linux (`nixos` + `home-manager`)
 
 ## Apply
 
+Initialize the private Rex submodule before applying the configuration. GitHub
+SSH access to `segfaultmedaddy/config-rex` is required:
+
+```sh
+git submodule update --init --recursive
+```
+
+The submodule installs Rex through Home Manager on Linux hosts. To update Rex,
+update its snapshot lock in `private/config-rex`, commit and push that change to
+the private repository, then update this repository's submodule pointer and run
+`nix flake update rex-config/rex` before applying the configuration.
+
 macOS:
 
 ```sh
