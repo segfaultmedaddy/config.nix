@@ -59,20 +59,9 @@
     };
   };
 
-  programs.herdr = {
-    enable = true;
-    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.herdr;
-    opencode.enable = true;
-    settings = {
-      onboarding = false;
-      theme.name = "rose-pine";
-    };
-  };
-
   imports = [
     ../theme.nix
     ../opencode.nix
-    ../herdr.nix
     ../rex/home.nix
     ../kube/home.nix
     ../tf.nix

@@ -16,7 +16,7 @@ rex.bind("panes/shift+h", "pane.split", { direction = "down" })
 rex.bind("panes/x", "pane.close")
 rex.bind("panes/z", "pane.zoom")
 
--- Herdr's resize mode: move the divider repeatedly, then leave with Esc.
+-- Resize mode: move the divider repeatedly, then leave with Esc.
 rex.mode("resize", { exclusive = true })
 rex.bind("panes/r", "client.mode.enter", { name = "resize" })
 rex.bind("resize/h", "pane.resize", { direction = "left" })
