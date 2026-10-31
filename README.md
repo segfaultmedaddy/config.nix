@@ -49,14 +49,6 @@ sudo nixos-rebuild switch --flake .#<nixosConfiguration> --impure
 
 `--impure` is required for NixOS hosts here because the shared Linux module imports `/etc/nixos/hardware-configuration.nix`, the default hardware config generated on the target machine.
 
-## Ghostty on remote machines
-
-Run this once for each remote machine to install Ghostty's terminfo entry:
-
-```sh
-infocmp -x xterm-ghostty | ssh <machine-ip> -- tic -x -
-```
-
 ## Spin up a new machine
 
 1. Set up Nix on the target machine: install [Determinate Nix](https://docs.determinate.systems/determinate-nix/) on macOS, or install NixOS, which includes Nix.

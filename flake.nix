@@ -25,6 +25,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Keep the nightly's own nixpkgs to match its tree-sitter dependency.
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,16 +65,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    catppuccin-opencode = {
-      url = "github:catppuccin/opencode";
+    rose-pine-atuin = {
+      url = "github:rose-pine/atuin";
       flake = false;
     };
-
+    rose-pine-btop = {
+      url = "github:rose-pine/btop";
+      flake = false;
+    };
+    rose-pine-delta = {
+      url = "github:rose-pine/delta";
+      flake = false;
+    };
+    rose-pine-tm-theme = {
+      url = "github:rose-pine/tm-theme";
+      flake = false;
+    };
     atuin = {
       url = "github:atuinsh/atuin/v18.21.0";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -6,8 +6,11 @@
 {
   imports = [
     ../home
-    inputs.rex-config.homeModules.default
+    inputs.rex-config.inputs.rex.homeManagerModules.default
   ];
+
+  # Keep the personal server running under the same account as Rex sessions.
+  services.rex.enable = true;
 
   programs.zsh = {
     shellAliases = {

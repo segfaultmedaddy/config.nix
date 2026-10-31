@@ -17,10 +17,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 local plugins = {
-    {
-        src = gh("catppuccin/nvim"),
-        name = "catppuccin",
-    },
     gh("nvim-lua/plenary.nvim"),
     gh("nvim-neotest/nvim-nio"),
     gh("antoinemadec/FixCursorHold.nvim"),

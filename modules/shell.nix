@@ -131,22 +131,22 @@
         "$kubernetes"
       ];
 
-      directory.style = "blue";
+      directory.style = "foam";
 
       character = {
-        success_symbol = "[❯](purple)";
-        error_symbol = "[❯](red)";
-        vimcmd_symbol = "[❮](green)";
+        success_symbol = "[❯](iris)";
+        error_symbol = "[❯](love)";
+        vimcmd_symbol = "[❮](foam)";
       };
 
       git_branch = {
         format = "[$branch]($style)";
-        style = "bright-black";
+        style = "muted";
       };
 
       git_status = {
-        format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
-        style = "cyan";
+        format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](rose) ($ahead_behind$stashed)]($style)";
+        style = "foam";
         conflicted = "​";
         untracked = "​";
         modified = "​";
@@ -158,17 +158,17 @@
 
       git_state = {
         format = "([$state( $progress_current/$progress_total)]($style)) ";
-        style = "bright-black";
+        style = "muted";
       };
 
       cmd_duration = {
         format = "[$duration]($style) ";
-        style = "yellow";
+        style = "gold";
       };
 
       kubernetes = {
         format = "[$context:$namespace]($style)";
-        style = "blue";
+        style = "foam";
         disabled = false;
       };
     };

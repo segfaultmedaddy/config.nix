@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   nvimTreesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
     parsers: with parsers; [
@@ -22,12 +22,17 @@ in
 {
   programs.neovim = {
     enable = true;
+    # Nightly includes native multi-cursor editing (Q, zq, Ctrl-L and gQ).
+    package = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     withRuby = false;
     withPython3 = false;
-    plugins = [ nvimTreesitter ];
+    plugins = [
+      nvimTreesitter
+      pkgs.vimPlugins.rose-pine
+    ];
     extraPackages = with pkgs; [
       cargo-nextest
       curl

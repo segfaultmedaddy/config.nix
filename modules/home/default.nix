@@ -46,17 +46,7 @@
     settings.tee.mode = "failures";
   };
 
-  # Catppuccin Mocha everywhere catppuccin/nix supports. Neovim, Ghostty and Zed
-  # are configured from their own files, and OpenCode/herdr below.
-  catppuccin = {
-    enable = true;
-    autoEnable = true;
-    flavor = "mocha";
-    nvim.enable = false;
-  };
-
   programs.opencode2 = {
-    catppuccin.enable = true;
     settings.plugins = [
       {
         package = "git+https://github.com/anomalyco/opencode-plugin-lane.git";
@@ -64,7 +54,7 @@
       }
     ];
     cli.settings.theme = {
-      name = "catppuccin-mocha-mauve";
+      name = "rosepine";
       mode = "dark";
     };
   };
@@ -75,15 +65,15 @@
     opencode.enable = true;
     settings = {
       onboarding = false;
-      # herdr's "catppuccin" theme is the Mocha flavor.
-      theme.name = "catppuccin";
+      theme.name = "rose-pine";
     };
   };
 
   imports = [
-    inputs.catppuccin.homeModules.catppuccin
+    ../theme.nix
     ../opencode.nix
     ../herdr.nix
+    ../rex/home.nix
     ../kube/home.nix
     ../tf.nix
     ../shell.nix

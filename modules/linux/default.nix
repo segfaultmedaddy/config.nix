@@ -46,6 +46,7 @@
       networking.hostName = "${machine}";
       users.users.${user} = {
         isNormalUser = true;
+        linger = true;
         home = lib.mkDefault "/home/${user}";
         extraGroups = [
           "wheel"

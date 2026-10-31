@@ -21,7 +21,7 @@
     # vm
     lima
 
-    # zed tools for iOS
+    # iOS development
     xcode-build-server
 
     # Ethereum tools

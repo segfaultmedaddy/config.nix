@@ -1,6 +1,7 @@
 {
   user,
   sshAuthorizedKeys,
+  inputs,
   ...
 }:
 { pkgs, ... }:
@@ -9,6 +10,7 @@ rec {
 
   imports = [
     ../../../modules/home-assistant
+    inputs.rex-config.inputs.rex.nixosModules.default
   ];
 
   users.users.${user} = {
@@ -38,6 +40,14 @@ rec {
     package = pkgs.tailscale;
     port = 41641; # default port of tailscale.
     useRoutingFeatures = "server";
+  };
+
+  # Tailscale Serve authenticates the caller; Rex maps only this identity to
+  # the existing personal server and its sessions.
+  services.rex.loginServer = {
+    enable = true;
+    accounts.${user}.principals = [ "tailscale:segfaultmedaddy@github" ];
+    tailscaleServe.enable = true;
   };
 
   services.openssh = {
