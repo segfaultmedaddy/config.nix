@@ -1,4 +1,9 @@
-{ inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   # Rosé Pine's main (dark) palette, shared by tools without an upstream port.
   colors = {
@@ -15,6 +20,12 @@ let
     foam = "#9ccfd8";
     iris = "#c4a7e7";
   };
+  starshipTheme = builtins.fromTOML (builtins.readFile "${inputs.rose-pine-starship}/rose-pine.toml");
+  lazygitConfigDir =
+    if pkgs.stdenv.hostPlatform.isDarwin && !config.xdg.enable then
+      "${config.home.homeDirectory}/Library/Application Support"
+    else
+      config.xdg.configHome;
 in
 {
   programs.atuin.settings.theme.name = "rose-pine";
@@ -38,34 +49,24 @@ in
   };
   programs.git.includes = [ { path = "${inputs.rose-pine-delta}/dist/rose-pine.gitconfig"; } ];
 
-  # The colors follow the official rose-pine/lazygit theme.
-  programs.lazygit.settings.gui.theme = {
-    activeBorderColor = [
-      colors.pine
-      "bold"
-    ];
-    inactiveBorderColor = [ colors.muted ];
-    searchingActiveBorderColor = [
-      colors.rose
-      "bold"
-    ];
-    optionsTextColor = [ colors.foam ];
-    selectedLineBgColor = [ colors.pine ];
-    inactiveViewSelectedLineBgColor = [
-      colors.overlay
-      "bold"
-    ];
-    cherryPickedCommitFgColor = [ colors.surface ];
-    cherryPickedCommitBgColor = [ colors.rose ];
-    markedBaseCommitFgColor = [ colors.foam ];
-    markedBaseCommitBgColor = [ colors.gold ];
-    unstagedChangesColor = [ colors.love ];
-    defaultFgColor = [ colors.text ];
-  };
+  # Ensure Home Manager creates the base file even when there are no other
+  # LazyGit settings, then merge the upstream theme after it.
+  programs.lazygit.settings.gui = { };
+  home.sessionVariables.LG_CONFIG_FILE =
+    "${lazygitConfigDir}/lazygit/config.yml,${inputs.rose-pine-lazygit}/themes/rose-pine.yml";
 
-  programs.starship.settings = {
-    palette = "rose_pine";
-    palettes.rose_pine = colors;
+  programs.starship.settings = starshipTheme // {
+    # Keep the existing context indicators alongside the upstream prompt layout.
+    format = builtins.replaceStrings [ "$username" "$git_status" ] [
+      "$username$hostname"
+      "$git_status$git_state$cmd_duration"
+    ] starshipTheme.format;
+    right_format = "$kubernetes";
+    kubernetes = {
+      format = "[$context:$namespace]($style)";
+      style = "foam";
+      disabled = false;
+    };
   };
 
   programs.zsh.syntaxHighlighting.styles = {

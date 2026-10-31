@@ -34,16 +34,6 @@
     DSDontWriteUSBStores = true;
   };
 
-  # Rex's macOS client stores these appearance and Sparkle settings in its
-  # preferences rather than in the server's init.lua. Names are app-specific.
-  system.defaults.CustomUserPreferences."com.superlogical.rex" = {
-    "Workspace.terminalFontName" = "SF Mono";
-    "Workspace.terminalFallbackFontNames" = [ "Symbols Nerd Font Mono" ];
-    "Workspace.terminalFontPointSize" = 15;
-    SUAutomaticallyUpdate = false;
-    SUEnableAutomaticChecks = false;
-  };
-
   system.defaults.finder = {
     FXRemoveOldTrashItems = true; # remove items in the trash after 30 days
     ShowPathbar = true; # show path at the bottom of a Finder window.

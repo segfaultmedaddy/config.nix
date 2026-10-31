@@ -70,6 +70,7 @@
     )
 
     ./settings.nix
+    ../rex/darwin.nix
     ../font/darwin.nix
     (import ../1password/darwin { inherit hasMasSupport; })
     ../aerospace/darwin.nix

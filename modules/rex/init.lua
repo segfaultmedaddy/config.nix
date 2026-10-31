@@ -1,22 +1,24 @@
 -- Keep Ctrl+B available to applications inside a pane.
 rex.bind("ctrl+b>ctrl+b", "pane.send_key", { key = "ctrl+b" })
 
--- Herdr's default pane bindings, using Ctrl+B as the prefix.
-rex.bind("ctrl+b>h", "pane.focus", { direction = "left" })
-rex.bind("ctrl+b>j", "pane.focus", { direction = "down" })
-rex.bind("ctrl+b>k", "pane.focus", { direction = "up" })
-rex.bind("ctrl+b>l", "pane.focus", { direction = "right" })
-rex.bind("ctrl+b>tab", "pane.focus_next")
-rex.bind("ctrl+b>shift+tab", "pane.focus_previous")
+-- Ctrl+B, then W enters pane mode; Escape leaves it.
+rex.mode("panes", { exclusive = true })
+rex.bind("ctrl+b>w", "client.mode.enter", { name = "panes" })
+rex.bind("panes/h", "pane.focus", { direction = "left" })
+rex.bind("panes/j", "pane.focus", { direction = "down" })
+rex.bind("panes/k", "pane.focus", { direction = "up" })
+rex.bind("panes/l", "pane.focus", { direction = "right" })
+rex.bind("panes/tab", "pane.focus_next")
+rex.bind("panes/shift+tab", "pane.focus_previous")
 
-rex.bind("ctrl+b>v", "pane.split", { direction = "right" })
-rex.bind("ctrl+b>h", "pane.split", { direction = "down" })
-rex.bind("ctrl+b>x", "pane.close")
-rex.bind("ctrl+b>z", "pane.zoom")
+rex.bind("panes/v", "pane.split", { direction = "right" })
+rex.bind("panes/shift+h", "pane.split", { direction = "down" })
+rex.bind("panes/x", "pane.close")
+rex.bind("panes/z", "pane.zoom")
 
 -- Herdr's resize mode: move the divider repeatedly, then leave with Esc.
 rex.mode("resize", { exclusive = true })
-rex.bind("ctrl+b>r", "client.mode.enter", { name = "resize" })
+rex.bind("panes/r", "client.mode.enter", { name = "resize" })
 rex.bind("resize/h", "pane.resize", { direction = "left" })
 rex.bind("resize/j", "pane.resize", { direction = "down" })
 rex.bind("resize/k", "pane.resize", { direction = "up" })

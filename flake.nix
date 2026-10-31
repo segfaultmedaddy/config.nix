@@ -77,6 +77,14 @@
       url = "github:rose-pine/delta";
       flake = false;
     };
+    rose-pine-lazygit = {
+      url = "github:rose-pine/lazygit";
+      flake = false;
+    };
+    rose-pine-starship = {
+      url = "github:rose-pine/starship";
+      flake = false;
+    };
     rose-pine-tm-theme = {
       url = "github:rose-pine/tm-theme";
       flake = false;

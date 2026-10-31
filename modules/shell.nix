@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -113,65 +112,6 @@
 
   programs.starship = {
     enable = true;
-    settings = {
-      format = lib.concatStrings [
-        "$username"
-        "$hostname"
-        "$directory"
-        "$git_branch"
-        "$git_state"
-        "$git_status"
-        "$cmd_duration"
-        "$line_break"
-        "$python"
-        "$character"
-      ];
-
-      right_format = lib.concatStrings [
-        "$kubernetes"
-      ];
-
-      directory.style = "foam";
-
-      character = {
-        success_symbol = "[❯](iris)";
-        error_symbol = "[❯](love)";
-        vimcmd_symbol = "[❮](foam)";
-      };
-
-      git_branch = {
-        format = "[$branch]($style)";
-        style = "muted";
-      };
-
-      git_status = {
-        format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](rose) ($ahead_behind$stashed)]($style)";
-        style = "foam";
-        conflicted = "​";
-        untracked = "​";
-        modified = "​";
-        staged = "​";
-        renamed = "​";
-        deleted = "​";
-        stashed = "≡";
-      };
-
-      git_state = {
-        format = "([$state( $progress_current/$progress_total)]($style)) ";
-        style = "muted";
-      };
-
-      cmd_duration = {
-        format = "[$duration]($style) ";
-        style = "gold";
-      };
-
-      kubernetes = {
-        format = "[$context:$namespace]($style)";
-        style = "foam";
-        disabled = false;
-      };
-    };
   };
 
   home.file.".fdignore".text = ''
