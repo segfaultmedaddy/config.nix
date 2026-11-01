@@ -41,7 +41,6 @@ local plugins = {
     gh("lukas-reineke/indent-blankline.nvim"),
     gh("folke/ts-comments.nvim"),
     gh("kdheepak/lazygit.nvim"),
-    gh("sindrets/diffview.nvim"),
     gh("nvim-flutter/flutter-tools.nvim"),
     gh("Saecki/crates.nvim"),
     gh("folke/lazydev.nvim"),

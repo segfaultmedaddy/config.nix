@@ -43,6 +43,11 @@
       diff = {
         renames = "copies";
         colorMoved = "default";
+        tool = "nvim_difftool";
+      };
+      difftool = {
+        prompt = false;
+        nvim_difftool.cmd = ''nvim -c 'packadd nvim.difftool' -c 'lua require("difftool").open(vim.fn.argv(0), vim.fn.argv(1))' -- "$LOCAL" "$REMOTE"'';
       };
       help.autoCorrect = "1";
       log.merge = true;

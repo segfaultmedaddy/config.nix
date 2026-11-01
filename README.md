@@ -44,8 +44,12 @@ nix run nix-darwin -- switch --flake .#<darwinConfiguration>
 Linux:
 
 ```sh
-sudo nixos-rebuild switch --flake .#<nixosConfiguration> --impure
+nixos-rebuild switch --flake .#<nixosConfiguration> --impure --sudo
 ```
+
+Run `nixos-rebuild` as your normal user so private flake inputs can use your
+SSH credentials. `--sudo` elevates only the privileged deployment steps; do not
+prefix the whole command with `sudo`.
 
 `--impure` is required for NixOS hosts here because the shared Linux module imports `/etc/nixos/hardware-configuration.nix`, the default hardware config generated on the target machine.
 

@@ -3,7 +3,11 @@
 
   inputs = {
     self.submodules = true;
-    rex-config.url = "path:./private/config-rex";
+    rex-config = {
+      url = "path:./private/config-rex";
+      # The login server loads the host's PAM modules, so its glibc must match.
+      inputs.rex.inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     devenv = {

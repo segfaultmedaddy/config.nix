@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+    vim.cmd.packadd("nvim.difftool")
     require("mini.git").setup()
     require("mini.diff").setup({
         view = {

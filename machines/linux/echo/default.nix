@@ -47,7 +47,10 @@ rec {
   services.rex.loginServer = {
     enable = true;
     accounts.${user}.principals = [ "tailscale:segfaultmedaddy@github" ];
-    tailscaleServe.enable = true;
+    tailscaleServe = {
+      enable = true;
+      httpsPort = 443;
+    };
   };
 
   services.openssh = {
