@@ -23,9 +23,16 @@ in
   programs.zsh = {
     initContent = ''
       eval "$(${homebrewPrefix}/bin/brew shellenv)"
+
+      nix-switch-system() {
+        cd "$CONFIG_ROOT_DIR" || return
+        local system_config
+        system_config=$(nix build --no-link --print-out-paths ".#darwinConfigurations.${machine}.system") || return
+        sudo nix-env -p /nix/var/nix/profiles/system --set "$system_config" || return
+        sudo "$system_config/sw/bin/darwin-rebuild" activate
+      }
     '';
     shellAliases = {
-      nix-switch-system = "cd $CONFIG_ROOT_DIR && sudo darwin-rebuild switch --flake .#${machine}";
       nix-update-system = "cd $CONFIG_ROOT_DIR && nix flake update && cd -";
       cat = "bat";
       htop = "btop";

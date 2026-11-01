@@ -35,11 +35,19 @@ update its snapshot lock in `private/config-rex`, commit and push that change to
 the private repository, then update this repository's submodule pointer and run
 `nix flake update rex-config/rex` before applying the configuration.
 
-macOS:
+macOS, first setup: from the repository root, replace `<darwinConfiguration>`
+with the machine's flake output name. Build as your normal user so private
+inputs can use your SSH credentials, then use sudo to update the system profile
+and activate it:
 
 ```sh
-nix run nix-darwin -- switch --flake .#<darwinConfiguration>
+system_config=$(nix build --no-link --print-out-paths '.#darwinConfigurations.<darwinConfiguration>.system') &&
+  sudo nix-env -p /nix/var/nix/profiles/system --set "$system_config" &&
+  sudo "$system_config/sw/bin/darwin-rebuild" activate
 ```
+
+After activation, open a new shell and use `nix-switch-system` for subsequent
+updates. It builds as your user and requests sudo for activation.
 
 Linux:
 
