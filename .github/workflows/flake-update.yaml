@@ -41,7 +41,8 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Update flake inputs
-        run: nix flake update
+        # Checkout already authenticated and initialized the private submodule.
+        run: nix flake update --flake path:.
 
       - name: Create or refresh update PR
         id: pr
