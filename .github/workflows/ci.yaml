@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build:
+        description: Build all configurations instead of only evaluating them
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      ref:
+        description: Exact commit to validate
+        type: string
+        default: ""
+      build:
+        description: Build all configurations instead of only evaluating them
+        type: boolean
+        default: false
+    secrets:
+      CI_GITHUB_TOKEN:
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ inputs.ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  targets:
+    name: Discover configurations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      matrix: ${{ steps.targets.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
+          submodules: recursive
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Provide CI-only hardware configuration
+        run: sudo install -Dm644 .github/ci/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+
+      - name: Discover all NixOS and Darwin configurations
+        id: targets
+        shell: bash
+        run: |
+          matrix=$(nix eval --impure --json --no-update-lock-file \
+            --file .github/ci/targets.nix)
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
+
+  validate:
+    name: ${{ inputs.build && 'Build' || 'Validate' }} ${{ matrix.name }}
+    needs: targets
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: ${{ inputs.build && 360 || 30 }}
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.targets.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
+          submodules: recursive
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+        with:
+          extra-conf: |
+            extra-substituters = https://devenv.cachix.org https://vicinae.cachix.org
+            extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=
+
+      - name: Provide CI-only hardware configuration
+        if: runner.os == 'Linux'
+        run: sudo install -Dm644 .github/ci/hardware-configuration.nix /etc/nixos/hardware-configuration.nix
+
+      - name: Evaluate system derivation
+        shell: bash
+        env:
+          TARGET: ${{ matrix.target }}
+        run: |
+          args=()
+          if [[ "$RUNNER_OS" == Linux ]]; then
+            args+=(--impure)
+          fi
+          nix eval "${args[@]}" --raw --show-trace --no-update-lock-file \
+            ".#$TARGET.drvPath"
+
+      - name: Build system without activation
+        if: inputs.build
+        shell: bash
+        env:
+          TARGET: ${{ matrix.target }}
+        run: |
+          args=()
+          if [[ "$RUNNER_OS" == Linux ]]; then
+            args+=(--impure)
+          fi
+          nix build "${args[@]}" --no-link --print-build-logs --show-trace --no-update-lock-file \
+            ".#$TARGET"

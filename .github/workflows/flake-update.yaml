@@ -1,0 +1,107 @@
+name: Flake update
+
+on:
+  schedule:
+    - cron: "23 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flake-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Update flake lock
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      number: ${{ steps.pr.outputs.pull-request-number }}
+      head-sha: ${{ steps.pr.outputs.pull-request-head-sha }}
+      base-sha: ${{ steps.base.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          submodules: recursive
+          token: ${{ secrets.CI_GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Record base commit
+        id: base
+        shell: bash
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Update flake inputs
+        run: nix flake update
+
+      - name: Create or refresh update PR
+        id: pr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ github.token }}
+          branch: automation/flake-update
+          base: ${{ github.event.repository.default_branch }}
+          add-paths: flake.lock
+          delete-branch: true
+          commit-message: "chore: update flake inputs"
+          title: "chore: update flake inputs"
+          body: |
+            Daily `nix flake update`. Only the root `flake.lock` is updated;
+            the private Rex submodule remains pinned.
+
+            This PR is merged only after every NixOS and Darwin configuration
+            has been evaluated and built on a native runner without activation.
+            Fetch errors and failed builds block the merge.
+
+            Build results: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  build:
+    name: Build updated configurations
+    needs: update
+    if: needs.update.outputs.number != ''
+    # GITHUB_TOKEN-created PRs do not trigger pull_request workflows, so invoke CI explicitly.
+    uses: ./.github/workflows/ci.yaml
+    with:
+      ref: ${{ needs.update.outputs.head-sha }}
+      build: true
+    secrets:
+      CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+
+  merge:
+    name: Merge successfully built update
+    needs: [update, build]
+    if: needs.update.outputs.number != '' && needs.build.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Verify and merge the exact tested lockfile update
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ needs.update.outputs.number }}
+          EXPECTED_HEAD: ${{ needs.update.outputs.head-sha }}
+          EXPECTED_BASE: ${{ needs.update.outputs.base-sha }}
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          gh pr view "$PR_NUMBER" \
+            --json state,isDraft,isCrossRepository,baseRefName,baseRefOid,headRefName,headRefOid,files |
+            jq -e --arg head "$EXPECTED_HEAD" --arg base "$EXPECTED_BASE" --arg branch "$BASE_BRANCH" '
+              .state == "OPEN" and .isDraft == false and .isCrossRepository == false and
+              .baseRefName == $branch and .baseRefOid == $base and
+              .headRefName == "automation/flake-update" and .headRefOid == $head and
+              (.files | length == 1 and .[0].path == "flake.lock")
+            '
+          gh pr merge "$PR_NUMBER" --squash --delete-branch --match-head-commit "$EXPECTED_HEAD"
