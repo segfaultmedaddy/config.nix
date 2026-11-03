@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   nvimTreesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
     parsers: with parsers; [
@@ -33,40 +38,43 @@ in
       nvimTreesitter
       pkgs.vimPlugins.rose-pine
     ];
-    extraPackages = with pkgs; [
-      cargo-nextest
-      curl
-      fd
-      fzf
-      gcc
-      gzip
-      golangci-lint
-      golines
-      gopls
-      gotools
-      gnutar
-      lua-language-server
-      nixd
-      nixfmt
-      opentofu
-      prettier
-      ripgrep
-      ruff
-      rust-analyzer
-      rustfmt
-      sql-formatter
-      stylua
-      svelte-language-server
-      swift-format
-      swiftlint
-      tailwindcss-language-server
-      templ
-      terraform-ls
-      tree-sitter
-      typescript-language-server
-      unzip
-      vscode-langservers-extracted
-    ];
+    extraPackages =
+      with pkgs;
+      [
+        cargo-nextest
+        curl
+        fd
+        fzf
+        gcc
+        gzip
+        golangci-lint
+        golines
+        gopls
+        gotools
+        gnutar
+        lua-language-server
+        nixd
+        nixfmt
+        opentofu
+        prettier
+        ripgrep
+        ruff
+        rust-analyzer
+        rustfmt
+        sql-formatter
+        stylua
+        svelte-language-server
+        swiftlint
+        tailwindcss-language-server
+        templ
+        terraform-ls
+        tree-sitter
+        typescript-language-server
+        unzip
+        vscode-langservers-extracted
+      ]
+      # Swift's compiler is broken on aarch64-linux; SwiftLint is prebuilt.
+      ++ lib.optional (!(swift.swiftc.meta.broken or false)) swift-format;
   };
 
   home.packages = with pkgs; [

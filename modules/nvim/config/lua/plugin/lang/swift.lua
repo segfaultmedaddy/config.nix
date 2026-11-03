@@ -4,7 +4,7 @@ return {
         sourcekit = vim.fn.executable("sourcekit-lsp") == 1 and {} or false,
     },
     formatters_by_ft = {
-        swift = { "swift_format" },
+        swift = vim.fn.executable("swift-format") == 1 and { "swift_format" } or {},
     },
     linters_by_ft = {
         swift = { "swiftlint" },
