@@ -93,11 +93,6 @@
       url = "github:rose-pine/tm-theme";
       flake = false;
     };
-    atuin = {
-      url = "github:atuinsh/atuin/v18.21.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Do not follow nixpkgs to hit vicinae.cachix.org instead of building Qt from source.
     vicinae.url = "github:vicinaehq/vicinae";
   };

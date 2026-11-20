@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [ ./atuin.nix ];
 
@@ -78,14 +74,14 @@
     enable = true;
     enableZshIntegration = true;
     flags = [ "--disable-up-arrow" ];
-    package = inputs.atuin.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    # atuin only ships a V1 OpenCode plugin; re-enable once V2 support lands
-    # (atuinsh/atuin#4116, #4077).
-    opencode.enable = false;
+    package = pkgs.atuin;
+    opencode.enable = true;
+    daemon.enable = true;
     settings = {
       enter_accept = false;
       update_check = false;
       workspaces = true;
+      threads.capture = true;
     };
   };
 

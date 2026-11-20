@@ -2,11 +2,7 @@
 # It supposed to be OS independent.
 # If system dependent configuration is needed,
 # put it under modules/<system>/home.nix
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 {
   # Tell home-manager to manage itself.
   programs.home-manager.enable = true;
@@ -26,19 +22,6 @@
     dartpkgs.stable # dart
     zigpkgs.default # zig
     lane # copy-on-write worktrees; backs the opencode-plugin-lane worktree strategy
-    # OpenCode V2 ships its binary as `opencode2`; expose it as `opencode` too.
-    (
-      let
-        opencode2 = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode2;
-      in
-      pkgs.symlinkJoin {
-        name = "opencode-${opencode2.version}";
-        paths = [ opencode2 ];
-        postBuild = ''
-          ln -s opencode2 "$out/bin/opencode"
-        '';
-      }
-    )
   ];
 
   programs.rtk = {
@@ -48,6 +31,7 @@
   };
 
   programs.opencode2 = {
+    # The Git strategy is built in; Lane is still needed for copy-on-write worktrees.
     settings.plugins = [
       {
         package = "git+https://github.com/anomalyco/opencode-plugin-lane.git";
