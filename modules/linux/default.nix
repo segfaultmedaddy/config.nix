@@ -5,7 +5,7 @@
   inputs,
   ...
 }:
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     inputs.determinate.nixosModules.default
@@ -36,6 +36,7 @@
 
     {
       determinate.enable = true;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       nix.gc = {
         automatic = true;
