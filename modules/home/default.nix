@@ -21,6 +21,7 @@
     nixd # nix lsp
     nixfmt
     typst # like latex but better
+    gcx # grafana cloud cli
     rust-bin.stable.latest.default # rust
     dartpkgs.stable # dart
     zigpkgs.default # zig
@@ -53,9 +54,13 @@
         options.executable = "${pkgs.lane}/bin/lane";
       }
     ];
-    cli.settings.theme = {
-      name = "rosepine";
-      mode = "dark";
+    cli.settings = {
+      theme = {
+        name = "rosepine";
+        mode = "dark";
+      };
+      session.sidebar = "hide";
+      tabs.mode = "off";
     };
   };
 

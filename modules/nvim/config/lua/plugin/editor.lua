@@ -10,10 +10,10 @@ function M.setup()
     require("mini.pick").setup()
     require("mini.notify").setup()
     require("mini.statusline").setup()
-    require("mini.tabline").setup()
 
     local miniclue = require("mini.clue")
     miniclue.setup({
+        window = { delay = 300 },
         triggers = {
             { mode = { "n", "x" }, keys = "<Leader>" },
             { mode = "n", keys = "[" },

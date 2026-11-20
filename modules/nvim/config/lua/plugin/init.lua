@@ -45,6 +45,7 @@ local plugins = {
     gh("Saecki/crates.nvim"),
     gh("folke/lazydev.nvim"),
     gh("nickjvandyke/opencode.nvim"),
+    gh("nvim-tree/nvim-tree.lua"),
 }
 
 if vim.fn.has("macunix") == 1 then
@@ -63,6 +64,7 @@ vim.cmd.packadd("nvim-treesitter")
 local lang = require("plugin.lang")
 
 require("plugin.editor").setup()
+require("plugin.tree").setup()
 require("plugin.completion").setup()
 require("plugin.treesitter").setup(lang.treesitter)
 lang.setup()

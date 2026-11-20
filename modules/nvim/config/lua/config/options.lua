@@ -31,8 +31,9 @@ vim.opt.incsearch = true
 
 vim.opt.updatetime = 200
 
--- Sets terminal title to the current file name.
-vim.opt.title = true
+-- Shorten the wait for multi-key mappings and escape sequences.
+vim.opt.timeoutlen = 300
+vim.opt.ttimeoutlen = 10
 
 -- Show line numbers.
 -- At current line number is absolute number,
