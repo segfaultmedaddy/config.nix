@@ -44,7 +44,6 @@ local plugins = {
     gh("nvim-flutter/flutter-tools.nvim"),
     gh("Saecki/crates.nvim"),
     gh("folke/lazydev.nvim"),
-    gh("nickjvandyke/opencode.nvim"),
     gh("nvim-tree/nvim-tree.lua"),
 }
 
@@ -74,4 +73,3 @@ require("plugin.fff").setup()
 require("plugin.test").setup()
 require("plugin.search").setup()
 require("plugin.git").setup()
-require("plugin.opencode").setup()
