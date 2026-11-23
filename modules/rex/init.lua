@@ -12,7 +12,7 @@ rex.bind("panes/tab", "pane.focus_next")
 rex.bind("panes/shift+tab", "pane.focus_previous")
 
 rex.bind("panes/v", "pane.split", { direction = "right" })
-rex.bind("panes/shift+h", "pane.split", { direction = "down" })
+rex.bind("panes/h", "pane.split", { direction = "down" })
 rex.bind("panes/x", "pane.close")
 rex.bind("panes/z", "pane.zoom")
 

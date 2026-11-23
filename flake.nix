@@ -103,10 +103,6 @@
       tailscaleAddr = "tail61e33.ts.net";
       mkDarwinSystem = import ./machines/darwin/mkSystem.nix {
         system = "aarch64-darwin";
-        isDeterminate = false;
-      };
-      mkDarwinDeterminateSystem = import ./machines/darwin/mkSystem.nix {
-        system = "aarch64-darwin";
         isDeterminate = true;
       };
       mkLimaVMSystem = import ./machines/linux/mkSystem.nix {
@@ -136,7 +132,7 @@
       }
     )
     // {
-      darwinConfigurations."alpha" = mkDarwinDeterminateSystem {
+      darwinConfigurations."alpha" = mkDarwinSystem {
         inherit inputs;
         machine = "alpha";
         user = "roman";
@@ -148,13 +144,7 @@
         user = "roman";
       };
 
-      darwinConfigurations."charlie" = mkDarwinSystem {
-        inherit inputs;
-        machine = "charlie";
-        user = "roman";
-      };
-
-      darwinConfigurations."foxtrot" = mkDarwinDeterminateSystem {
+      darwinConfigurations."foxtrot" = mkDarwinSystem {
         inherit inputs;
         machine = "foxtrot";
         user = "roman";

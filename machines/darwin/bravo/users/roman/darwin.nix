@@ -22,7 +22,6 @@
     "/System/Applications/Mail.app"
     "/Applications/Google Chrome.app"
     "/Applications/Rex Beta.app"
-    "/Applications/WebStorm.app"
     "/Applications/Slack.app"
     "/Applications/Telegram.app"
   ];
