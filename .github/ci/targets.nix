@@ -17,6 +17,8 @@ let
 in
 {
   include =
-    targets "darwinConfigurations" "system"
-    ++ targets "nixosConfigurations" "config.system.build.toplevel";
+    if builtins.match ".*-darwin" builtins.currentSystem != null then
+      targets "darwinConfigurations" "system"
+    else
+      targets "nixosConfigurations" "config.system.build.toplevel";
 }
